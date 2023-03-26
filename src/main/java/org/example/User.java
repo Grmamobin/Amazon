@@ -2,14 +2,13 @@ package org.example;
 
 import java.util.ArrayList;
 
-public abstract class User extends Account{
+public class User extends Account{
     private String address;
     private ArrayList<Order> ListOrder;
     private ArrayList<Product> PurchasedProducts;
     private ShoppingCart cart;
     public  User(String username , String password , String emailAddress , String phoneNumber , String address){
-
-        super(username , password , emailAddress , phoneNumber);
+        super(username,password,emailAddress,phoneNumber,address);
         this.address = address;
         this.ListOrder = new ArrayList<>();
         this.PurchasedProducts = new ArrayList<>();
@@ -53,6 +52,10 @@ public abstract class User extends Account{
     }
     public void viewProfile(){}//*
     public void editProfile(){}//*
+    @Override
+    public String getType() {
+        return "User";
+    }
 
     @Override
     public String toString() {

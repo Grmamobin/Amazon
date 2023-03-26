@@ -2,11 +2,11 @@ package org.example;
 
 import java.util.ArrayList;
 
-public abstract class Seller extends Account{
+public class Seller extends Account{
     private String ShopName;
     private ArrayList<Product> ListAvailableProducts;
-    public  Seller(String ShopName, String password , String username , String emailAddress , String phoneNumber){
-        super(username , password ,emailAddress,phoneNumber);
+    public  Seller(String ShopName, String password , String username , String emailAddress , String phoneNumber , String address){
+        super(username , password ,emailAddress,phoneNumber ,address);
         this.ShopName = ShopName;
         this.ListAvailableProducts = new ArrayList<>();
     }
@@ -34,6 +34,10 @@ public abstract class Seller extends Account{
     }
     public boolean IsAuthorization(){
         return false;
+    }
+    @Override
+    public String getType() {
+        return "Seller";
     }
 
 

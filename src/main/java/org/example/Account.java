@@ -1,17 +1,19 @@
 package org.example;
 
-public class Account {
+public abstract class Account {
     private String username;
     private String password;
     private String emailAddress;
     private String phoneNumber;
+    private String address;
     private Wallet wallet;
 
-    public Account(String username , String password , String emailAddress , String phoneNumber){
+    public Account(String username , String password , String emailAddress , String phoneNumber , String address){
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
+        this.address = address;
     }
 
     public String getUsername() {
@@ -53,6 +55,7 @@ public class Account {
     public void setWallet(Wallet wallet) {
         this.wallet = wallet;
     }
+
     public void login(){ //*
 
     }
@@ -62,4 +65,5 @@ public class Account {
     public void logout(){ //*
 
     }
+    public abstract String getType();
 }
