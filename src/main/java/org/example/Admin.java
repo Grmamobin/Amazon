@@ -2,9 +2,9 @@ package org.example;
 
 public class Admin extends Account{
 
-    public Admin(String username , String password , String emailAddress , String phoneNumber ,String address) {
+    public Admin(String username , String password , String emailAddress , String phoneNumber ,String address,String gender) {
 
-        super(username ,password ,emailAddress,phoneNumber,address);
+        super(username ,password ,emailAddress,phoneNumber,address ,gender);
     }
 
     public void addAdmin(Admin admin) {}
@@ -15,10 +15,21 @@ public class Admin extends Account{
     public boolean rejectRequest(){
         return false;
     }
-    @Override
+/*    @Override
     public String getType() {
         return "Admin";
+    }*/
+/*
+public void addFunds(double amount) {
+    wallet += amount;
+}
+
+    public void removeFunds(double amount) {
+        wallet -= amount;
     }
+*/
+
+
 
     @Override
     public String toString() {

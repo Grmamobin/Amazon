@@ -12,14 +12,16 @@ public class Shop {
     private double TotalProfit;
     private Account currentAccount; //*
     public Shop() {
-        currentAccount = new Account("", "", "", "","") {
+        currentAccount = new Account("", "", "", "","","");
+        ListAccounts = null;
+        /*{
             @Override
             public String getType() {
                 return null;
             }
-        };
-        Account admin = new Admin("Mobina", "2004", "dymamsijhidjj@gmail.com", "09102000040","iran");
-        ListAccounts.add(admin);
+        };*/
+        Account admin = new Admin("Mobina", "2004", "dymamsijhidjj@gmail.com", "09102000040","iran","Woman");
+     /*   ListAccounts.add(admin);*/
     }
     public Shop(String ShopName , String WebAddress , String SupportPhone ,Account currentAccount){
         this.ShopName = ShopName;
@@ -54,16 +56,26 @@ public class Shop {
         ListAccounts.add(account);
     }
 
-    public Account getCurrentAccount() {
+  /*  public Account getCurrentAccount() {
         return currentAccount;
+    }*/
+    public Account getCurrentAccount(String username) {
+
+        for (Account user : this.ListAccounts) {
+
+            if (user.getUsername().equals(username)) {
+                return user;
+            }
+        }
+        return null;
     }
+
 
     public void setCurrentAccount(Account currentAccount) {
         this.currentAccount = currentAccount;
     }
 
-    public boolean createAccount(String username, String password, String email, String phone, String address,
-                                 String typeAccount , String shopName) {
+    public boolean createAccount(String username, String password , String typeAccount) {
 
         for (Account account : ListAccounts) {
 
@@ -81,20 +93,20 @@ public class Shop {
             }*/
         }
         if (typeAccount.equals("Admin")) {
-            Account account = new Admin(username, password, email, phone, address);
+            /*Account account = new Admin(username, password, email, phone, address);ListAccounts.add(account);*/
             System.out.println("...........***...........................WELCOME New Admin...........***...........................");
-            ListAccounts.add(account);
+
             return true;
         }
         if (typeAccount.equals("Seller")) {
-            Account account = new Seller(username, password, email, password, address, shopName);
+           /* Account account = new Seller(username, password, email, password, address, shopName); ListAccounts.add(account);*/
             System.out.println("...........***...........................WELCOME New Seller...........***...........................");
-            ListAccounts.add(account);
+
             return true;
         }
             System.out.println("...........***...........................WELCOME New User...........***...........................");
-            Account account = new User(username, password, email, password, address);
-            ListAccounts.add(account);
+          /*  Account account = new User(username, password, email, password, address);
+            ListAccounts.add(account);*/
             return true;
 
     }

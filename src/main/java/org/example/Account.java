@@ -1,19 +1,29 @@
 package org.example;
 
-public abstract class Account {
+public class Account {
     private String username;
     private String password;
     private String emailAddress;
     private String phoneNumber;
     private String address;
+    private String gender;
     private Wallet wallet;
 
-    public Account(String username , String password , String emailAddress , String phoneNumber , String address){
+    public Account(String username , String password , String emailAddress , String phoneNumber , String address,String gender){
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.gender = gender;
+    }
+    public Account(String username ,String password){
+        this.username = username;
+        this.password = password;
+        this.emailAddress = getUsername();
+        this.phoneNumber = getPhoneNumber();
+        this.address = getAddress();
+        this.gender = getGender();
     }
 
     public String getUsername() {
@@ -32,6 +42,10 @@ public abstract class Account {
         return phoneNumber;
     }
 
+    public String getAddress() {return address;}
+
+    public String getGender() {return gender;}
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -47,6 +61,10 @@ public abstract class Account {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    public void setAddress(String address) {this.address = address;}
+
+    public void setGender(String gender) {this.gender = gender;}
 
     public Wallet getWallet() {
         return wallet;
@@ -65,5 +83,5 @@ public abstract class Account {
     public void logout(){ //*
 
     }
-    public abstract String getType();
+   /* public abstract String getType();*/
 }

@@ -1,11 +1,22 @@
 package org.example;
 
-public class Electronics {
-    public static String electronics;
+import java.util.ArrayList;
 
-    public static void setElectronics(String electronics) {
-        Electronics.electronics = electronics;
-        System.out.print("   .-----------------------===------------------------.\n" +
+public class Electronics extends SubCategory {
+    public Electronics(String id,String name, double price, int quantity, ArrayList<String> commentList, String subcategory) {
+
+        super(id,name, price, quantity,commentList ,"Electronics", subcategory);
+
+    }
+    public double getDiscount() {
+     return getPrice() * (0.2); // 20% off
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+    /*System.out.print("   .-----------------------===------------------------.\n" +
                 "  :o  ______________________________________________  o:\n" +
                 "  ;   :                                            :   ;\n" +
                 "  `.  `.                                          .'  .'\n" +
@@ -39,6 +50,6 @@ public class Electronics {
                 "       |             '.___________.'             |\n" +
                 "       |                   ___                   |grp\n" +
                 "       '-----------------------------------------'\n" +
-                "\n");
+                "\n");*/
     }
-}
+

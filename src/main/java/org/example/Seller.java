@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public class Seller extends Account{
     private String ShopName;
     private ArrayList<Product> ListAvailableProducts;
-    public  Seller(String ShopName, String password , String username , String emailAddress , String phoneNumber , String address){
-        super(username , password ,emailAddress,phoneNumber ,address);
+    public  Seller(String ShopName, String password , String username , String emailAddress , String phoneNumber
+            , String address , String gender){
+        super(username , password ,emailAddress,phoneNumber ,address ,gender);
         this.ShopName = ShopName;
         this.ListAvailableProducts = new ArrayList<>();
     }
@@ -35,10 +36,11 @@ public class Seller extends Account{
     public boolean IsAuthorization(){
         return false;
     }
-    @Override
+   /* @Override
     public String getType() {
         return "Seller";
-    }
+    }*/
+
 
 
     @Override

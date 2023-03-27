@@ -3,12 +3,14 @@ package org.example;
 import java.util.ArrayList;
 
 public class Product {
+    private String id;
     private String productName;
     private double price;
     private int quantity;
     private ArrayList<String> commentList;
 
-    public Product(String productName , double price , int quantity , ArrayList<String> commentList){
+    public Product( String id, String productName , double price , int quantity , ArrayList<String> commentList){
+        this.id = id;
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
@@ -31,6 +33,8 @@ public class Product {
         return commentList;
     }
 
+    public String getId() {return id;}
+
     public void setProductName(String productName) {
         this.productName = productName;
     }
@@ -46,6 +50,9 @@ public class Product {
     public void setCommentList(ArrayList<String> commentList) {
         this.commentList = commentList;
     }
+
+    public void setId(String id) {this.id = id;}
+
     public void addComment(String comment){
         commentList.add(comment);
     }
