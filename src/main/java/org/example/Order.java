@@ -20,9 +20,6 @@ public class Order {
         this.detailsSeller = detailsSeller;
     }
 
-    public boolean isCheckout() {
-        return checkout;
-    }
 
     public Date getDate() {
         return new Date();

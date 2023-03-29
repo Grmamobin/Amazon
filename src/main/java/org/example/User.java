@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class User extends Account{
     private String address;
-    private ArrayList<Order> ListOrder;
+    private ArrayList<Product> ListOrder;
     private ArrayList<Product> PurchasedProducts;
     private ShoppingCart cart;
     public  User(String username , String password , String emailAddress , String phoneNumber , String address, String gender){
@@ -20,27 +20,33 @@ public class User extends Account{
         return address;
     }
 
-    public void setListOrder(ArrayList<Order> listOrder) {
+    public void setListOrder(ArrayList<Product> listOrder) {
         ListOrder = listOrder;
     }
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public ArrayList<Order> getListOrder() {
+    public ArrayList<Product> getListOrder() {
         return ListOrder;
     }
-    public void addToListOrder(Order order){ListOrder.add(order);System.out.println("Add successfully to your order list");}
+    public void addToListOrder(Product product) {
+        ListOrder.add(product);
+        System.out.println("Add successfully to your order list");
+    }
     public ArrayList<Product> getPurchasedProducts() {
         return PurchasedProducts;
     }
 
-    public void setPurchasedProducts(ArrayList<Product> purchasedProducts) {PurchasedProducts = purchasedProducts;}
-
+    public void setPurchasedProducts(ArrayList<Product> purchasedProducts) {
+        PurchasedProducts = purchasedProducts;
+    }
     public ShoppingCart getCart() {return cart;}
 
     public void setCart(ShoppingCart cart) {this.cart = cart;}
-    public void addToCart(){}//*
+    public void addToCart(Product product){
+
+    }
 
     public void addPurchasedProducts(Product product){
         PurchasedProducts.add(product);

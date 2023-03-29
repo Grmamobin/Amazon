@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.ArrayList;
-
 public class Wallet {
     private double currentMoney;
     public Wallet(){
@@ -18,16 +16,30 @@ public class Wallet {
     public void setCurrentMoney(double currentMoney) {
         this.currentMoney = currentMoney;
     }
-    public void requestToAdmin(User user){
+    public void requestToAdmin(User user, double amount){
 
     }
-    public void confirmRequest(Seller seller){
+    public boolean confirmRequest(User user,double amount){
+        this.currentMoney += amount;
+        System.out.println("Funds request for $" + amount + " from user " + user.getUsername() + "has been approved.");
+        System.out.println("Your current money is" + this.currentMoney + "now.");
+        return true;
+    }
+    public boolean ignoreRequest(User user){
+        System.out.println("Sorry"+ user.getUsername()+ "request has been denied by the Admin.");
+        System.out.println("Your current money is" + this.currentMoney + "now.");
+        return false;
+    }
 
+    public void deductFunds(double amount) {
+        this.currentMoney -= amount;
     }
     public void addFunds(User user){
 
     }
 
-
-
+    @Override
+    public String toString() {
+        return "currentMoney =" + currentMoney;
+    }
 }

@@ -7,20 +7,6 @@ public class Books extends SubCategory {
         super(id,name, price, quantity, commentList, "Books", subcategory);
     }
 
-
-/*
-
-        System.out.print("\n" +
-                "                .-~~~~~~~~~-._       _.-~~~~~~~~~-.\n" +
-                "            __.'              ~.   .~              `.__\n" +
-                "          .'//                  \\./                  \\\\`.\n" +
-                "        .'//                     |                     \\\\`.\n" +
-                "      .'// .-~\"\"\"\"\"\"\"~~~~-._     |     _,-~~~~\"\"\"\"\"\"\"~-. \\\\`.     Unknown\n" +
-                "    .'//.-\"                 `-.  |  .-'                 \"-.\\\\`.\n" +
-                "  .'//______.============-..   \\ | /   ..-============.______\\\\`.\n" +
-                ".'______________________________\\|/______________________________`.");
-*/
-
     @Override
     public double getDiscount() {
         return getPrice() * (0.6); //60% off

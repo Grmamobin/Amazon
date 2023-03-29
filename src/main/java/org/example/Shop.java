@@ -7,7 +7,8 @@ public class Shop {
     private String WebAddress;
     private String SupportPhone;
     private ArrayList<Account> ListAccounts;
-    private HashMap<Product , Product> ListProducts; // name / price *
+    private ArrayList<Product> ListProducts;
+    private HashMap<String, Integer> ProductMaps;
     private ArrayList<Order> ListOrders;
     private double TotalProfit;
     private Account currentAccount; //*
@@ -28,7 +29,7 @@ public class Shop {
         this.WebAddress=WebAddress;
         this.SupportPhone = SupportPhone;
         this.ListAccounts = new ArrayList<>();
-        this.ListProducts = new HashMap<>();
+        this.ListProducts = new ArrayList<>();
         this.ListOrders = new ArrayList<>();
         this.TotalProfit = 0.0;
         this.currentAccount = currentAccount;
@@ -49,8 +50,8 @@ public class Shop {
     public double getTotalProfit() {
         return TotalProfit;
     }
-    public void addToListProducts(Product product , Product price){
-        ListProducts.put(product , price);
+    public void addToListProducts(Product product ){
+        ListProducts.add(product);
     }
     public void addToListAccounts(Account account){
         ListAccounts.add(account);
@@ -69,8 +70,17 @@ public class Shop {
         }
         return null;
     }
+    public Product getChoosenProduct(String id) {
 
+        for (Product product : this.ListProducts) {
 
+            if (product.getId().equals(id)) {
+
+                return product;
+            }
+        }
+        return null;
+    }
     public void setCurrentAccount(Account currentAccount) {
         this.currentAccount = currentAccount;
     }
@@ -93,19 +103,19 @@ public class Shop {
             }*/
         }
         if (typeAccount.equals("Admin")) {
-            /*Account account = new Admin(username, password, email, phone, address);ListAccounts.add(account);*/
+            /*Account accokunt = new Admin(username, password, email, phone, address);ListAccounts.add(account);*/
             System.out.println("...........***...........................WELCOME New Admin...........***...........................");
 
             return true;
         }
         if (typeAccount.equals("Seller")) {
-           /* Account account = new Seller(username, password, email, password, address, shopName); ListAccounts.add(account);*/
+           /* Account ackcount = new Seller(username, password, email, password, address, shopName); ListAccounts.add(account);*/
             System.out.println("...........***...........................WELCOME New Seller...........***...........................");
 
             return true;
         }
             System.out.println("...........***...........................WELCOME New User...........***...........................");
-          /*  Account account = new User(username, password, email, password, address);
+          /*  Account acckount = new User(username, password, email, password, address);
             ListAccounts.add(account);*/
             return true;
 
@@ -128,7 +138,31 @@ public class Shop {
         this.currentAccount = null;
         return;
     }
+    public void increaseQuantity(String id){
+        if (!ProductMaps.containsKey(id)) {
 
-    public void addToListOrder(Order order){ListOrders.add(order); TotalProfit += order.getTotalPrice();}
+            ProductMaps.put(id, 1);
+        } else {
+
+            ProductMaps.replace(id, ProductMaps.get(id) + 1);
+        }
+    }
+    public void decreaseQuantity(String id) {
+        ProductMaps.replace(id,ProductMaps.get(id) - 1);
+    }
+    public boolean doesProductExist(String id) {
+        for (Product product : this.ListProducts) {
+
+            if (product.getId().equals(id) && ProductMaps.get(product.getId()) > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addToListOrder(Order order){
+        ListOrders.add(order);
+        TotalProfit += order.getTotalPrice();
+    }
     public void confirmOrder(Order order){} //*
 }

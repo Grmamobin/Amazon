@@ -20,14 +20,16 @@ public class ShoppingCart {
         return productName;
     }
 
-    public double getTotalPrice() {
+    public double getUnitPrice() {
         return (unitPrice * quantity);
     }
-
-    public double getUnitPrice() {
-        return unitPrice;
+    public double getTotalPrice() {
+        double totalPrice = 0;
+        for (Product product : ProductInCart) {
+            totalPrice += product.getPrice() * product.getQuantity();
+        }
+        return totalPrice;
     }
-
     public int getQuantity() {
         return quantity;
     }
@@ -44,6 +46,7 @@ public class ShoppingCart {
     public void showCart(){
         System.out.println(ProductInCart);
     }
+
 
     @Override
     public String toString() {
