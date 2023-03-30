@@ -16,6 +16,7 @@ public class Account {
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.gender = gender;
+        this.getWallet();
     }
     public Account(String username ,String password){
         this.username = username;
@@ -24,6 +25,7 @@ public class Account {
         this.phoneNumber = getPhoneNumber();
         this.address = getAddress();
         this.gender = getGender();
+        this.wallet = new Wallet();
     }
 
     public String getUsername() {

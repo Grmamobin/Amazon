@@ -16,9 +16,7 @@ public class Wallet {
     public void setCurrentMoney(double currentMoney) {
         this.currentMoney = currentMoney;
     }
-    public void requestToAdmin(User user, double amount){
 
-    }
     public boolean confirmRequest(User user,double amount){
         this.currentMoney += amount;
         System.out.println("Funds request for $" + amount + " from user " + user.getUsername() + "has been approved.");

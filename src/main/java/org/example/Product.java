@@ -3,6 +3,7 @@ package org.example;
 import java.util.ArrayList;
 import java.util.HashMap;
 public class Product {
+   /* private static int nextId = 1;*/
     private String id;
     private String productName;
     private double price;
@@ -19,7 +20,7 @@ public class Product {
     public static ArrayList<Books> Fiction = new ArrayList<>();
 
     public Product( String id, String productName , double price ,int quantity , ArrayList<String> commentList){
-        this.id = id;
+        this.id = /*nextId++;*/ id;
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
@@ -265,12 +266,12 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id='" + id + '\'' +
-                ", productName='" + productName + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                ", commentList=" + commentList +
-                '}';
+
+        return "Product  = " +
+                " id =  " +  id  +"\n" +
+                "  productName =   "  + productName +  "\n" +
+                "  price =  " + price +   "\n" +
+                "  quantity = " + quantity +   "\n" +
+                "  commentList = " + commentList +   "\n\n";
     }
 }

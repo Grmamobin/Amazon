@@ -18,10 +18,10 @@ public abstract class SubCategory extends Category {
         this.subCategory = subCategory;
     }
 
-    @Override
+/*    @Override
     public String toString() {
         return "SubCategory{" +
                 "subCategory='" + subCategory + '\'' +
                 '}';
-    }
+    }*/
 }

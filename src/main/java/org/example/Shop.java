@@ -1,5 +1,6 @@
 package org.example;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Shop {
@@ -10,21 +11,23 @@ public class Shop {
     private ArrayList<Product> ListProducts;
     private HashMap<String, Integer> ProductMaps;
     private ArrayList<Order> ListOrders;
+
     private double TotalProfit;
     private Account currentAccount; //*
-    public Shop() {
+/*    public Shop() {
         currentAccount = new Account("", "", "", "","","");
-        ListAccounts = null;
-        /*{
+        ListAccounts = new ArrayList<>();
+        *//*{
             @Override
             public String getType() {
                 return null;
             }
-        };*/
+        };*//*
         Account admin = new Admin("Mobina", "2004", "dymamsijhidjj@gmail.com", "09102000040","iran","Woman");
-     /*   ListAccounts.add(admin);*/
-    }
-    public Shop(String ShopName , String WebAddress , String SupportPhone ,Account currentAccount){
+     *//*   ListAccounts.add(admin);*//*
+    }*/
+
+    public Shop(String ShopName , String WebAddress , String SupportPhone /*,Account currentAccount*/){
         this.ShopName = ShopName;
         this.WebAddress=WebAddress;
         this.SupportPhone = SupportPhone;
@@ -138,31 +141,58 @@ public class Shop {
         this.currentAccount = null;
         return;
     }
-    public void increaseQuantity(String id){
-        if (!ProductMaps.containsKey(id)) {
-
-            ProductMaps.put(id, 1);
+    public void increaseQuantity(Product product, int quantity){
+        int currentQuantity = product.getQuantity();
+        product.setQuantity(currentQuantity + quantity);
+    }
+    public void decreaseQuantity(Product product , int quantity , Shop shop ,String id , int count , User user) {
+        int currentQuantity = product.getQuantity();
+        if (currentQuantity >= quantity) {
+            product.setQuantity(currentQuantity - quantity);
+            System.out.println("ADD SUCCESSFULLY");
+            Order order = new Order(shop.getChoosenProduct(id).getId(),count, new Date(), shop.getChoosenProduct(id).getPrice(),shop.getChoosenProduct(id).getPrice(), user, null);
+            shop.addToListOrder(user,order);
         } else {
-
-            ProductMaps.replace(id, ProductMaps.get(id) + 1);
+            System.out.println("If you haven't noticed, this product no longer exists.");
         }
-    }
-    public void decreaseQuantity(String id) {
-        ProductMaps.replace(id,ProductMaps.get(id) - 1);
-    }
-    public boolean doesProductExist(String id) {
-        for (Product product : this.ListProducts) {
 
-            if (product.getId().equals(id) && ProductMaps.get(product.getId()) > 0) {
+    }
+    public void addComment(Product product , String comment) {
+            product.addComment(comment);
+    }
+
+    public boolean doesProductExist(String id) {
+        for (Product product : ListProducts) {
+
+            if (product.getId().equals(id) && product.getQuantity() >= 1) {
                 return true;
             }
         }
         return false;
     }
 
-    public void addToListOrder(Order order){
-        ListOrders.add(order);
+    public void addToListOrder(User user,Order order){
+        ListOrders.add(order); //related to doc we should have list of all order
+        user.addToListOrderForUser(order);
         TotalProfit += order.getTotalPrice();
     }
-    public void confirmOrder(Order order){} //*
+    public void confirmOrder(Order order){
+/*        public void confirm() {
+            confirmed = true;
+            if (buyer.getWalletBalance() >= totalPrice) {
+                buyer.addToWallet(-totalPrice);
+                seller.addToWallet(totalPrice * 0.9); // seller gets 90% of the total price
+                for (Prosduct product : products) {
+                    product.setQuantity(product.getQuantity() - 1); // decrease product quantity by 1
+                }
+                buyer.addOrder(this);
+                seller.addOrder(this);
+            } else {
+                cancel();
+            }
+        }*/
+
+    } //*
+
+
 }

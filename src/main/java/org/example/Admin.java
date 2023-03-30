@@ -8,13 +8,30 @@ public class Admin extends Account{
     }
 
     public void addAdmin(Admin admin) {}
-    public void addFunds(User user, double amount) {}
-    public boolean confirmRequest(){
+    public void sendFunds(double amount, User user, Admin admin) {
+        if (admin.confirmRequest(amount)) {
+
+            admin.addFunds(amount, user.getWallet());
+            System.out.println("Transferred "+amount+" money from Admin to recipient's wallet");
+
+        }
+
+        if(admin.rejectRequest(amount)){
+            System.out.println("Request denied by admin");
+        }
+
+    }
+    public void addFunds(double amount , Wallet wallet){
+
+    }
+    public boolean confirmRequest(double amount){
+
         return true;
     }
-    public boolean rejectRequest(){
+    public boolean rejectRequest(double amount){
         return false;
     }
+
 /*    @Override
     public String getType() {
         return "Admin";

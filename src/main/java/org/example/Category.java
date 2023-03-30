@@ -18,10 +18,10 @@ public abstract class Category extends Product {
     }
     public abstract double getDiscount();
 
-    @Override
+/*    @Override
     public String toString() {
         return "Category{" +
                 "category='" + category + '\'' +
                 '}';
-    }
+    }*/
 }
