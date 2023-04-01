@@ -11,6 +11,12 @@ public class Seller extends Account{
         this.ShopName = ShopName;
         this.ListAvailableProducts = new ArrayList<>();
     }
+    public Seller(String ShopName,String username , String password){
+        super(username, password);
+        this.ShopName = ShopName;
+    }
+
+
 
     public String getShopName() {
         return ShopName;
@@ -20,8 +26,9 @@ public class Seller extends Account{
         return ListAvailableProducts;
     }
 
-    public void setShopName(String shopName) {
+    public void setShopName(String shopName , Shop shop) {
         ShopName = shopName;
+        shop.setShopName(shopName);
     }
 
     public void setListAvailableProducts(ArrayList<Product> listAvailableProducts) {

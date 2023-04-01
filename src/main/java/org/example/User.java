@@ -81,12 +81,7 @@ public  class User extends Account{
     public void addPurchasedProducts(Product product){
         PurchasedProducts.add(product);
     }
-    public void searchByTitle(){ //*
 
-    }
-    public void searchByModel(){ //*
-
-    }
     public void viewProfile(){
 
         if(getGender().equals("Woman")){

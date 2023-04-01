@@ -1,7 +1,5 @@
 package org.example;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 
 public class Shop {
     private String ShopName;
@@ -11,6 +9,18 @@ public class Shop {
     private ArrayList<Product> ListProducts;
     private HashMap<String, Integer> ProductMaps;
     private ArrayList<Order> ListOrders;
+    public static String ANSI_RESET = "\u001B[0m";
+    // Declaring the color
+    // Custom declaration
+
+    public static String ANSI_BLACK_BACKGROUND = "\u001B[40m";
+    public static String ANSI_RED_BACKGROUND = "\u001B[41m";
+    public static String ANSI_GREEN_BACKGROUND = "\u001B[42m";
+    public static String ANSI_YELLOW_BACKGROUND = "\u001B[43m";
+    public static String ANSI_BLUE_BACKGROUND = "\u001B[44m";
+    public static String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
+    public static String ANSI_CYAN_BACKGROUND = "\u001B[46m";
+    public static String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
     private double TotalProfit;
     private Account currentAccount; //*
@@ -42,6 +52,33 @@ public class Shop {
         return ShopName;
     }
 
+    public void setShopName(String shopName) {
+        ShopName = shopName;
+    }
+    public String setColor(String color){
+     if(color.equals("BLACK")){
+         return ANSI_BLACK_BACKGROUND;
+     }
+     if(color.equals("YELLOW")){
+         return ANSI_YELLOW_BACKGROUND;
+     }
+     if(color.equals("BLUE")){
+         return ANSI_BLUE_BACKGROUND;
+     }
+     if(color.equals("CYAN")){
+         return ANSI_CYAN_BACKGROUND;
+     }
+     if(color.equals("PURPLE")){
+         return ANSI_PURPLE_BACKGROUND;
+     }
+     if(color.equals("WHITE")){
+         return ANSI_YELLOW_BACKGROUND;
+     }
+     if(color.equals("RED")){
+            return ANSI_RED_BACKGROUND;
+     }
+     return ANSI_GREEN_BACKGROUND;
+    }
     public String getWebAddress() {
         return WebAddress;
     }
@@ -181,28 +218,9 @@ public class Shop {
         TotalProfit += order.getTotalPrice();
     }
 
-
     public ArrayList<Account> getListAccounts() {
         return ListAccounts;
     }
-
-    public void confirmOrder(Order order){
-/*        public void confirm() {
-            confirmed = true;
-            if (buyer.getWalletBalance() >= totalPrice) {
-                buyer.addToWallet(-totalPrice);
-                seller.addToWallet(totalPrice * 0.9); // seller gets 90% of the total price
-                for (Prosduct product : products) {
-                    product.setQuantity(product.getQuantity() - 1); // decrease product quantity by 1
-                }
-                buyer.addOrder(this);
-                seller.addOrder(this);
-            } else {
-                cancel();
-            }
-        }*/
-
-    } //*
 
     public ArrayList<Account>  searchByUsername(String username) {
         // Implement search by genre logic here
@@ -212,6 +230,48 @@ public class Shop {
                 result.add(account);
             }
         }
+        return result;
+    }
+
+    public ArrayList<Product> searchByTitle(String title) {
+
+        ArrayList<Product> result = new ArrayList<>();
+        for (Product product : ListProducts)
+        {
+            if(title.compareTo(product.getProductName())== 0)
+            {
+                result.add(product);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Product> ClassifiedHigher(String title) {
+
+        ArrayList<Product> result = new ArrayList<>();
+        for (Product product : ListProducts)
+        {
+            if(title.compareTo(product.getProductName())== 0)
+            {
+                result.add(product);
+            }
+        }
+        Collections.sort(result , Comparator.comparing( Product::getPrice));
+        return result;
+    }
+
+    public ArrayList<Product> ClassifiedLower(String title) {
+
+        ArrayList<Product> result = new ArrayList<>();
+        for (Product product : ListProducts)
+        {
+            if(title.compareTo(product.getProductName())== 0)
+            {
+                result.add(product);
+            }
+        }
+        Collections.sort(result , Comparator.comparing( Product::getPrice));
+        Collections.reverse(result);
         return result;
     }
 
