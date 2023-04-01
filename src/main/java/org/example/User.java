@@ -1,8 +1,9 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class User extends Account{
+public  class User extends Account{
     private String address;
     private ArrayList<Order> ListOrderforUser;
     private ArrayList<Product> PurchasedProducts;
@@ -145,17 +146,18 @@ public class User extends Account{
 
     public void requestFunds(double amount, User user) {
         System.out.println("Sent--> request to admin for "+amount+" money from  "+ user.getUsername() +"'s wallet");
-
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "username='" + getUsername() + '\'' +
-                ", password='" + getPassword() + '\'' +
-                ", emailAddress='" + getEmailAddress() + '\'' +
-                ", phoneNumber='" + getPhoneNumber() + '\'' +
-                ", address='" + getAddress() + '\'' +
-                '}';
+        return "User :" +
+                " username='" + getUsername() + '\'' +
+                " password='" + getPassword() + '\'' +
+                " emailAddress='" + getEmailAddress() + '\'' +
+                " phoneNumber='" + getPhoneNumber() + '\'' +
+                " address='" + getAddress() + '\''+
+                " Request price is =  "+ getUserAndNewAmount();
+
     }
+
 }

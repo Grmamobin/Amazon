@@ -1,7 +1,11 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Wallet {
     private double currentMoney;
+
     public Wallet(){
         this.currentMoney = 0.0;
     }
@@ -33,7 +37,6 @@ public class Wallet {
         this.currentMoney -= amount;
     }
     public void addFunds(User user){
-
     }
 
     @Override

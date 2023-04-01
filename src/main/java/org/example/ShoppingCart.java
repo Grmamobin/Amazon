@@ -58,7 +58,7 @@ public class ShoppingCart {
 
 
     public double PriceInCart(User user){
-        w
+
         return 0;
     }
 

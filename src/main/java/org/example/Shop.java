@@ -60,9 +60,13 @@ public class Shop {
         ListAccounts.add(account);
     }
 
-  /*  public Account getCurrentAccount() {
+    public void removeFromListAccount(Account account){
+        ListAccounts.remove(account);
+    }
+
+    public Account getCurrentAccount() {
         return currentAccount;
-    }*/
+    }
     public Account getCurrentAccount(String username) {
 
         for (Account user : this.ListAccounts) {
@@ -107,7 +111,7 @@ public class Shop {
         }
         if (typeAccount.equals("Admin")) {
             /*Account accokunt = new Admin(username, password, email, phone, address);ListAccounts.add(account);*/
-            System.out.println("...........***...........................WELCOME New Admin...........***...........................");
+            System.out.println("...........***...........................WELCOME New Admin Plz Wait For Head Of Admins To Accept you And Try It Again In LogIn ...........***...........................");
 
             return true;
         }
@@ -176,6 +180,12 @@ public class Shop {
         user.addToListOrderForUser(order);
         TotalProfit += order.getTotalPrice();
     }
+
+
+    public ArrayList<Account> getListAccounts() {
+        return ListAccounts;
+    }
+
     public void confirmOrder(Order order){
 /*        public void confirm() {
             confirmed = true;
@@ -194,5 +204,19 @@ public class Shop {
 
     } //*
 
+    public ArrayList<Account>  searchByUsername(String username) {
+        // Implement search by genre logic here
+        ArrayList<Account> result = new ArrayList<>();
+        for (Account account : ListAccounts) {
+            if (username.compareTo(account.getUsername()) == 0) {
+                result.add(account);
+            }
+        }
+        return result;
+    }
 
+    @Override
+    public String toString() {
+        return "ListAccounts = " + getListAccounts();
+    }
 }

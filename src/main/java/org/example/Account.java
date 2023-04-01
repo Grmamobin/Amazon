@@ -1,6 +1,8 @@
 package org.example;
 
-public class Account {
+import java.util.HashMap;
+
+public abstract class Account {
     private String username;
     private String password;
     private String emailAddress;
@@ -8,6 +10,7 @@ public class Account {
     private String address;
     private String gender;
     private Wallet wallet;
+    private static HashMap< String,Double> UserAndNewAmount;
 
     public Account(String username , String password , String emailAddress , String phoneNumber , String address,String gender){
         this.username = username;
@@ -16,7 +19,8 @@ public class Account {
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.gender = gender;
-        this.getWallet();
+        this.wallet = new Wallet();
+        this.UserAndNewAmount = new HashMap<String, Double>();
     }
     public Account(String username ,String password){
         this.username = username;
@@ -75,15 +79,22 @@ public class Account {
     public void setWallet(Wallet wallet) {
         this.wallet = wallet;
     }
-
-    public void login(){ //*
-
+    public static HashMap<String,Double> getUserAndNewAmount() {
+        return UserAndNewAmount;
     }
-    public void signup(){ //*
 
+    public void setUserAndNewAmount(HashMap<String, Double> userAndNewAmount) {
+        UserAndNewAmount = userAndNewAmount;
     }
-    public void logout(){ //*
 
+    public void addToUserAndNewAmountList(User user , Double amount){
+        UserAndNewAmount.put(user.getUsername() ,amount);
     }
+    public void removeUserAndNewAmountList(User user , Double amount){
+        UserAndNewAmount.remove(user.getUsername(),amount);
+    }
+
+
    /* public abstract String getType();*/
+
 }
