@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class Account {
@@ -11,6 +12,7 @@ public abstract class Account {
     private String gender;
     private Wallet wallet;
     private static HashMap< String,Double> UserAndNewAmount;
+    private boolean confirm;
 
     public Account(String username , String password , String emailAddress , String phoneNumber , String address , String gender){
         this.username = username;
@@ -21,6 +23,8 @@ public abstract class Account {
         this.gender = gender;
         this.wallet = new Wallet();
         this.UserAndNewAmount = new HashMap<String, Double>();
+        this.confirm = false;
+
     }
     public Account(String username ,String password){
         this.username = username;
@@ -96,10 +100,10 @@ public abstract class Account {
         UserAndNewAmount.remove(user.getUsername(),amount);
     }
     public boolean getConfirm(){
-        return true;
+        return  this.confirm;
     }
-    public boolean getReject(){
-        return false;
+    public void setConfirm(boolean confirm){
+        this.confirm = confirm;
     }
 
 

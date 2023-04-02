@@ -9,6 +9,7 @@ public class Shop {
     private ArrayList<Product> ListProducts;
     private HashMap<String, Integer> ProductMaps;
     private ArrayList<Order> ListOrders;
+    private ArrayList<Seller> ListAuthorization;
     public static String ANSI_RESET = "\u001B[0m";
     // Declaring the color
     // Custom declaration
@@ -46,6 +47,7 @@ public class Shop {
         this.ListOrders = new ArrayList<>();
         this.TotalProfit = 0.0;
         this.currentAccount = currentAccount;
+        this.ListAuthorization = new ArrayList<>();
     }
 
     public String getShopName() {
@@ -274,6 +276,19 @@ public class Shop {
         Collections.sort(result , Comparator.comparing( Product::getPrice));
         Collections.reverse(result);
         return result;
+    }
+    public ArrayList<Seller> getListAuthorization() {
+        return ListAuthorization;
+    }
+
+    public void setListListAuthorization(ArrayList<Product> listListAuthorization) {
+        ListAuthorization = ListAuthorization;
+    }
+    public void addSeller(Seller seller){
+        ListAuthorization.add(seller);
+    }
+    public void removeSeller(Seller seller) {
+        ListAuthorization.remove(seller);
     }
 
     @Override

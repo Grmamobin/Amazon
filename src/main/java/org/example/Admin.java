@@ -12,6 +12,12 @@ public class Admin extends Account{
         this.ListWaitedAdmin = new ArrayList<>();
 
     }
+    public Admin(String username , String password ) {
+
+        super(username ,password);
+        this.ListWaitedAdmin = new ArrayList<>();
+
+    }
 
     public void addAdmin(Admin admin) {}
     public void sendFunds(double amount, User user, Admin admin) {

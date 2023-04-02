@@ -141,7 +141,7 @@ public static String color = "YELLOW";
         System.out.print("Username :");String username = input.next();
         System.out.print("Password :");String password = input.next();
         System.out.print("Email Address :");String email = input.next();
-        System.out.print("Phone Number :"); String phone = input.next();
+        System.out.print("Phone Number : +98"); String phone = input.next();
         System.out.print("Address :");String address = input.next();
         System.out.println("Gender : (Man/Woman)"); String gender = input.next();
 
@@ -195,7 +195,7 @@ public static String color = "YELLOW";
 
         if(shop.login(username, password)){
             System.out.println("...........***...........................WELCOME ADMIN...........***...........................");
-            /*adminMenu(shop);*/
+            /*Account admin = new Admin(username,password);*/
             userMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin, seller);
         }
         else{run(shop);}
@@ -272,7 +272,7 @@ public static String color = "YELLOW";
                     double amount = input.nextInt();
                     user.requestFunds(amount, user);
                     user.addToUserAndNewAmountList(user, amount);
-                    System.out.println("To find out about the results of requests, go to the 'consequences of the request' section.");
+                    System.out.println("To find out about the result wait for admin to accept your requests.");
                 }
                 TimeUnit.SECONDS.sleep(2);
                 userMenu(shop, user, admin, seller);
@@ -554,13 +554,13 @@ public static String color = "YELLOW";
                         }
 
                     }
-                    if (shop.getCurrentAccount(seller.getUsername()).getReject()) {
+                    if (!shop.getCurrentAccount(seller.getUsername()).getConfirm()) {
                         System.out.println("Sorry --> admin reject you to sell product....");
                     }
                 }
                 if(yn.equals("n")){
-                    System.out.println("send --> "+seller.getPassword()+ " Ask for sell the product");
-                    seller.addSeller(seller);
+                    System.out.println("send --> "+seller.getUsername()+ " Ask for sell the product");
+                    shop.addSeller(seller);
                 }
 
                 userMenu(shop, user, admin, seller);
@@ -595,16 +595,16 @@ public static String color = "YELLOW";
                 userMenu(shop,user,admin, seller);
 
             case 16:
-                System.out.println(seller.getListAuthorization());
+                System.out.println(shop.getListAuthorization());
                 System.out.println("Write seller username..."); String name = input.next();
                 System.out.println("Do you want to confirm it?(y/n)"); yn = input.next();
                 if(yn.equals("y")){
-                    shop.getCurrentAccount(name).getConfirm();
+                    shop.getCurrentAccount(name).setConfirm(true);
                 }
                 if (yn.equals("n")){
-                    shop.getCurrentAccount(name).getReject();
+                    shop.getCurrentAccount(name).setConfirm(false);
                 }
-                seller.removeSeller((Seller) shop.getCurrentAccount(name));
+                shop.removeSeller((Seller) shop.getCurrentAccount(name));
                 userMenu(shop,user,admin,seller);
 
         }
