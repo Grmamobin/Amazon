@@ -56,28 +56,28 @@ public class Shop {
         ShopName = shopName;
     }
     public String setColor(String color){
-     if(color.equals("BLACK")){
-         return ANSI_BLACK_BACKGROUND;
-     }
-     if(color.equals("YELLOW")){
-         return ANSI_YELLOW_BACKGROUND;
-     }
-     if(color.equals("BLUE")){
-         return ANSI_BLUE_BACKGROUND;
-     }
-     if(color.equals("CYAN")){
-         return ANSI_CYAN_BACKGROUND;
-     }
-     if(color.equals("PURPLE")){
-         return ANSI_PURPLE_BACKGROUND;
-     }
-     if(color.equals("WHITE")){
-         return ANSI_YELLOW_BACKGROUND;
-     }
-     if(color.equals("RED")){
+        if(color.equals("BLACK")){
+            return ANSI_BLACK_BACKGROUND;
+        }
+        if(color.equals("YELLOW")){
+            return ANSI_YELLOW_BACKGROUND;
+        }
+        if(color.equals("BLUE")){
+            return ANSI_BLUE_BACKGROUND;
+        }
+        if(color.equals("CYAN")){
+            return ANSI_CYAN_BACKGROUND;
+        }
+        if(color.equals("PURPLE")){
+            return ANSI_PURPLE_BACKGROUND;
+        }
+        if(color.equals("WHITE")){
+            return ANSI_YELLOW_BACKGROUND;
+        }
+        if(color.equals("RED")){
             return ANSI_RED_BACKGROUND;
-     }
-     return ANSI_GREEN_BACKGROUND;
+        }
+        return ANSI_GREEN_BACKGROUND;
     }
     public String getWebAddress() {
         return WebAddress;
@@ -101,9 +101,9 @@ public class Shop {
         ListAccounts.remove(account);
     }
 
-    public Account getCurrentAccount() {
+  /*  public Account getCurrentAccount() {
         return currentAccount;
-    }
+    }*/
     public Account getCurrentAccount(String username) {
 
         for (Account user : this.ListAccounts) {
@@ -114,6 +114,7 @@ public class Shop {
         }
         return null;
     }
+
     public Product getChoosenProduct(String id) {
 
         for (Product product : this.ListProducts) {
@@ -153,15 +154,15 @@ public class Shop {
             return true;
         }
         if (typeAccount.equals("Seller")) {
-           /* Account ackcount = new Seller(username, password, email, password, address, shopName); ListAccounts.add(account);*/
+            /* Account ackcount = new Seller(username, password, email, password, address, shopName); ListAccounts.add(account);*/
             System.out.println("...........***...........................WELCOME New Seller...........***...........................");
 
             return true;
         }
-            System.out.println("...........***...........................WELCOME New User...........***...........................");
+        System.out.println("...........***...........................WELCOME New User...........***...........................");
           /*  Account acckount = new User(username, password, email, password, address);
             ListAccounts.add(account);*/
-            return true;
+        return true;
 
     }
     public boolean login(String username, String password) {
@@ -178,7 +179,7 @@ public class Shop {
         return false;
     }
     public void logout() {
-        System.out.println("Hop you're Entertaining");
+        System.out.println("Hope you're Entertaining");
         this.currentAccount = null;
         return;
     }
@@ -199,7 +200,7 @@ public class Shop {
 
     }
     public void addComment(Product product , String comment) {
-            product.addComment(comment);
+        product.addComment(comment);
     }
 
     public boolean doesProductExist(String id) {
@@ -223,7 +224,7 @@ public class Shop {
     }
 
     public ArrayList<Account>  searchByUsername(String username) {
-        // Implement search by genre logic here
+
         ArrayList<Account> result = new ArrayList<>();
         for (Account account : ListAccounts) {
             if (username.compareTo(account.getUsername()) == 0) {

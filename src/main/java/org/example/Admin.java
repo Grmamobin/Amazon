@@ -27,6 +27,7 @@ public class Admin extends Account{
         }
 
     }
+
     public void addFunds(double amount , Wallet wallet , User user){
         user.getWallet().setCurrentMoney(user.getWallet().getCurrentMoney() + amount);
     }
@@ -50,22 +51,24 @@ public void addFunds(double amount) {
         wallet -= amount;
     }
 */
-public void ListWaitedAdmin(Admin admin){
+    public void ListWaitedAdmin(Admin admin){
     ListWaitedAdmin.add(admin);
 }
     public void removeListWaited(Admin admin){
-        ListWaitedAdmin.add(admin);
+        ListWaitedAdmin.remove(admin);
     }
-
-  /*  public  getListWaitedAdmin() {
-        for (Admin admin : ListWaitedAdmin) {
-            System.out.println(ListWaitedAdmin);
-
-        }
-}*/
 
     public ArrayList<Admin> getListWaitedAdmin() {
         return ListWaitedAdmin;
+    }
+    public Admin ListWaited(String username){
+        for (Admin user : this.ListWaitedAdmin) {
+
+            if (user.getUsername().equals(username)) {
+                return user;
+            }
+        }
+        return null;
     }
 
     @Override

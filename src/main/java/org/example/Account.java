@@ -12,7 +12,7 @@ public abstract class Account {
     private Wallet wallet;
     private static HashMap< String,Double> UserAndNewAmount;
 
-    public Account(String username , String password , String emailAddress , String phoneNumber , String address,String gender){
+    public Account(String username , String password , String emailAddress , String phoneNumber , String address , String gender){
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
@@ -25,7 +25,7 @@ public abstract class Account {
     public Account(String username ,String password){
         this.username = username;
         this.password = password;
-        this.emailAddress = getUsername();
+        this.emailAddress = getEmailAddress();
         this.phoneNumber = getPhoneNumber();
         this.address = getAddress();
         this.gender = getGender();
@@ -48,7 +48,9 @@ public abstract class Account {
         return phoneNumber;
     }
 
-    public String getAddress() {return address;}
+    public String getAddress() {
+        return address;
+    }
 
     public String getGender() {return gender;}
 
@@ -92,6 +94,12 @@ public abstract class Account {
     }
     public void removeUserAndNewAmountList(User user , Double amount){
         UserAndNewAmount.remove(user.getUsername(),amount);
+    }
+    public boolean getConfirm(){
+        return true;
+    }
+    public boolean getReject(){
+        return false;
     }
 
 

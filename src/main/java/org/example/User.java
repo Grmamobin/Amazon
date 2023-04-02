@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public  class User extends Account{
-    private String address;
     private ArrayList<Order> ListOrderforUser;
     private ArrayList<Product> PurchasedProducts;
     private ArrayList<Order> cart;
@@ -13,14 +12,10 @@ public  class User extends Account{
         super(username,password,emailAddress,phoneNumber,address , gender);
         this.ListOrderforUser = new ArrayList<>();
         this.PurchasedProducts = new ArrayList<>();
-        /*this.cart = new ShoppingCart();*/
         this.cart = new ArrayList<Order>();
     }
     public User(String username , String password){
         super(username, password);
-    }
-    public String getAddress() {
-        return address;
     }
 
     public void setListOrder(int quantity , Order order) {
@@ -29,17 +24,11 @@ public  class User extends Account{
         order.setTotalPrice(order.getUnitPrice() * quantity);
 
     }
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public ArrayList<Order> getListOrder() {
         return ListOrderforUser;
     }
- /*   public void addToListOrder(Product product) {
-        ListOrder.add(product);
-        System.out.println("Add successfully to your order list");
-    }*/
+
     public ArrayList<Product> getPurchasedProducts() {
         return PurchasedProducts;
     }
@@ -150,9 +139,8 @@ public  class User extends Account{
                 " password='" + getPassword() + '\'' +
                 " emailAddress='" + getEmailAddress() + '\'' +
                 " phoneNumber='" + getPhoneNumber() + '\'' +
-                " address='" + getAddress() + '\''+
+                " address='" + getAddress()+ '\'' +
                 " Request price is =  "+ getUserAndNewAmount();
-
     }
 
 }

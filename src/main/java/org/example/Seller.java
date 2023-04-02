@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Seller extends Account{
     private String ShopName;
-    private ArrayList<Product> ListAvailableProducts;
-    public  Seller(String ShopName, String password , String username , String emailAddress , String phoneNumber
+    private ArrayList<Seller> ListAuthorization;
+    public  Seller(String ShopName, String username,String password , String emailAddress , String phoneNumber
             , String address , String gender){
         super(username , password ,emailAddress,phoneNumber ,address ,gender);
         this.ShopName = ShopName;
-        this.ListAvailableProducts = new ArrayList<>();
+        this.ListAuthorization = new ArrayList<>();
     }
     public Seller(String ShopName,String username , String password){
         super(username, password);
@@ -22,8 +22,8 @@ public class Seller extends Account{
         return ShopName;
     }
 
-    public ArrayList<Product> getListAvailableProducts() {
-        return ListAvailableProducts;
+    public ArrayList<Seller> getListAuthorization() {
+        return ListAuthorization;
     }
 
     public void setShopName(String shopName , Shop shop) {
@@ -31,35 +31,29 @@ public class Seller extends Account{
         shop.setShopName(shopName);
     }
 
-    public void setListAvailableProducts(ArrayList<Product> listAvailableProducts) {
-        ListAvailableProducts = listAvailableProducts;
+    public void setListListAuthorization(ArrayList<Product> listListAuthorization) {
+        ListAuthorization = ListAuthorization;
     }
-    public void addProduct(Product product){
-        ListAvailableProducts.add(product);
+    public void addSeller(Seller seller){
+        ListAuthorization.add(seller);
     }
-    public void removeProduct(Product product) {
-        ListAvailableProducts.remove(product);
+    public void removeSeller(Seller seller) {
+        ListAuthorization.remove(seller);
     }
     public boolean IsAuthorization(){
         return false;
     }
+
    /* @Override
     public String getType() {
         return "Seller";
     }*/
 
 
-
     @Override
     public String toString() {
-        return "Seller{" +
-                "ShopName='" + ShopName + '\'' +
-                ", username='" + getUsername() + '\'' +
-                ", password='" + getPassword() + '\'' +
-                ", phone number='" + getPhoneNumber()+ '\'' +
-                ", ListAvailableProducts=" + ListAvailableProducts +
-                ", wallet=" + getWallet() +
-                '}';
+        return "Name seller : " + getUsername() + "\n"+
+                "PassWord seller : " + getPassword() + "\n";
     }
 }
 
