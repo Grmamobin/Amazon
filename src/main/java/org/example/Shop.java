@@ -48,6 +48,7 @@ public class Shop {
         this.ListOrders = new ArrayList<>();
         this.currentAccount = currentAccount;
         this.ListAuthorization = new ArrayList<>();
+        this.ListAuthorize = new ArrayList<>();
     }
 
     public String getShopName() {
@@ -194,12 +195,12 @@ public class Shop {
         int currentQuantity = product.getQuantity();
         product.setQuantity(currentQuantity + quantity);
     }
-    public void decreaseQuantity(Product product , int quantity , Shop shop ,String id , int count , User user,Seller seller) {
+    public void decreaseQuantity(Product product , int quantity , Shop shop ,String id , int count , User user) {
         int currentQuantity = product.getQuantity();
         if (currentQuantity >= quantity) {
             product.setQuantity(currentQuantity - quantity);
             System.out.println("ADD SUCCESSFULLY");
-            Order order = new Order(shop.getChoosenProduct(id).getId(),count, new Date(), shop.getChoosenProduct(id).getPrice(),shop.getChoosenProduct(id).getPrice(), user, seller);
+            Order order = new Order(shop.getChoosenProduct(id).getId(),count, new Date(), shop.getChoosenProduct(id).getPrice(),shop.getChoosenProduct(id).getPrice(), user,null);
             shop.addToListOrder(user,order);
         } else {
             System.out.println("If you haven't noticed, this product no longer exists.");

@@ -106,6 +106,6 @@ public class Order {
                 " totalPrice = " + totalPrice + "\n" +
                 " unitPrice = " + unitPrice + "\n" +
                 " detailsBuyer = " + detailsBuyer + "\n" +
-                " detailsSeller = " + getDetailsBuyer()+ "\n";
+                " detailsSeller = " + getDetailsSeller()+ "\n";
     }
 }

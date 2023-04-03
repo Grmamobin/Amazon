@@ -236,10 +236,10 @@ public static String color = "YELLOW";
         System.out.println("1.View profile \uD83D\uDC64        2.Edit profile \uD83D\uDC64                   3.Orders \uD83D\uDC64                     4.Wallet \uD83D\uDC64 ");
         System.out.println("5.Shopping cart \uD83D\uDC64       6.Products \uD83D\uDC64                       7.Search for product \uD83D\uDC64         8.Log out⚪      ");
         System.out.println("************************************************************* --ADMIN ACCESS-- **************************************************************");
-        System.out.println("1.Confirm/Reject request of admin to become member \uD83D\uDCBC            2.List All of users and admin & Edit desired user \uD83D\uDCBC   5.Confirm/reject user to bye \uD83D\uDCBC              ");
+        System.out.println("1.Confirm/Reject request of admin to become member \uD83D\uDCBC            2.List All of users and admin & Edit desired user \uD83D\uDCBC   5.Confirm/reject user to buy \uD83D\uDCBC              ");
         System.out.println("3.Confirm request of User for money \uD83D\uDCBC                           4.Confirm/Reject request of seller for sell product \uD83D\uDCBC    6.Log out⚪");
         System.out.println("************************************************************* --SELLER ACCESS-- *************************************************************");
-        System.out.println("1.Sell Product \uD83D\uDECD     2.Change ShopName \uD83D\uDECD      3.Wallet \uD83D\uDECD    4.List Available Product \uD83D\uDECD       4.Log out⚪ \n");
+        System.out.println("1.Sell Product \uD83D\uDECD        2.Change ShopName \uD83D\uDECD               3.Wallet \uD83D\uDECD             4.Log out⚪ \n");
         System.out.println("        Web address : " + shop.getWebAddress()     +     "      Support Phone : "  +shop.getSupportPhone()  +      "       Shop totalProfit : "+shop.getTotalProfit());
 
     }
@@ -356,14 +356,14 @@ public static String color = "YELLOW";
                                 user.addPurchasedProducts();
                                 user.getListOrder().clear();
                                 user.getCart().clear();
-
+                                shop.getCurrentAccount(user.getUsername()).setConfirm(false);
                             } else {
                                 System.out.println("You have insufficient funds to purchase these products.");
                             }
                         }
 
                         if (!shop.getCurrentAccount(user.getUsername()).getConfirm()) {
-                            System.out.println("Sorry\uD83D\uDD12 --> admin reject you to sell product....");
+                            System.out.println("Sorry\uD83D\uDD12 --> admin reject you to buy product....");
                         }
 
                     } else {
@@ -462,18 +462,23 @@ public static String color = "YELLOW";
             switch (select) {
                 case 1:
                     System.out.println(admin.getListWaitedAdmin());
-                    System.out.println("Which admin do you want to confirm OR reject?");
+                    System.out.println("Do you want to reject or confirm?(y/n)"); String yn = input.next();
+                    if(yn.equals("y")) {
 
-                    System.out.print("username = ");String admin1 = input.next();
-                    System.out.println("Do you want to confirm?(y,n)");
-                    String yn = input.next();
-                    if (yn.equals("y")) {
-                        Admin account = admin.ListWaited(admin1);
-                        shop.addToListAccounts(account);
-                        admin.removeListWaited(account);
-                    } else {
-                        Admin account = admin.ListWaited(admin1);
-                        admin.removeListWaited(account);
+                        System.out.println("Which admin do you want to confirm OR reject?");
+
+                        System.out.print("username = ");
+                        String admin1 = input.next();
+                        System.out.println("Do you want to confirm?(y,n)");
+                        yn = input.next();
+                        if (yn.equals("y")) {
+                            Admin account = admin.ListWaited(admin1);
+                            shop.addToListAccounts(account);
+                            admin.removeListWaited(account);
+                        } else {
+                            Admin account = admin.ListWaited(admin1);
+                            admin.removeListWaited(account);
+                        }
                     }
 
                     adminMenu(shop, user, admin, seller);
@@ -492,41 +497,56 @@ public static String color = "YELLOW";
 
                 case 3:
                     System.out.println(Account.getUserAndNewAmount());
-                    System.out.println("Which user do you want to add Fund?");
-                    System.out.print("username = ");  String username = input.next();
-                    System.out.println("How much money does it want?");
-                    double amount = input.nextDouble();
-                    admin.addFunds(amount, new Wallet(), (User) shop.getCurrentAccount(username));
-                    admin.removeUserAndNewAmountList((User) shop.getCurrentAccount(username),amount);
+                    System.out.println("Do you want to add Fund?(y/n)"); yn = input.next();
+                    if(yn.equals("y")) {
+                        System.out.println("Which user do you want to add Fund?");
+                        System.out.print("username = ");
+                        String username = input.next();
+                        System.out.println("How much money does it want?");
+                        double amount = input.nextDouble();
+                        admin.addFunds(amount, new Wallet(), (User) shop.getCurrentAccount(username));
+                        admin.removeUserAndNewAmountList((User) shop.getCurrentAccount(username), amount);
 
-
+                    }
                     adminMenu(shop, user, admin, seller);
 
                 case 4:
                     System.out.println(shop.getListAuthorization());
-
-                    System.out.println("Write seller username..."); String name = input.next();
-                    System.out.println("Do you want to confirm it?(y/n)");   yn = input.next();
-                    if(yn.equals("y")){
-                        shop.getCurrentAccount(name).setConfirm(true);
+                    System.out.println("Do you want to check it now?(y/n)"); yn = input.next();
+                    if(yn.equals("y")) {
+                        System.out.println("Write seller username...");
+                        String name = input.next();
+                        System.out.println("Do you want to confirm it?(y/n)");
+                        yn = input.next();
+                        if (yn.equals("y")) {
+                            shop.getCurrentAccount(name).setConfirm(true);
+                        }
+                        if (yn.equals("n")) {
+                            shop.getCurrentAccount(name).setConfirm(false);
+                        }
+                        shop.removeSeller((Seller) shop.getCurrentAccount(name));
                     }
-                    if (yn.equals("n")){
-                        shop.getCurrentAccount(name).setConfirm(false);
-                    }
-                    shop.removeSeller((Seller) shop.getCurrentAccount(name));
                     adminMenu(shop,user,admin,seller);
 
                 case 5:
                     System.out.println(shop.getListAuthorize());
-                    System.out.println("Write User username..."); name = input.next();
-                    System.out.println("Do you want to confirm it?(y/n)");   yn = input.next();
-                    if(yn.equals("y")){
-                        shop.getCurrentAccount(name).setConfirm(true);
+                    System.out.println("Do you want to check it now?(y/n)"); yn = input.next();
+                    if(yn.equals("y")) {
+                        System.out.println();
+                        System.out.println("Write User username...");
+                        String name = input.next();
+                        User user1 = (User) shop.getCurrentAccount(name);
+                        System.out.println(user1.getListOrder());
+                        System.out.println("Do you want to confirm it?(y/n)");
+                        yn = input.next();
+                        if (yn.equals("y")) {
+                            shop.getCurrentAccount(name).setConfirm(true);
+                        }
+                        if (yn.equals("n")) {
+                            shop.getCurrentAccount(name).setConfirm(false);
+                        }
+                        shop.removeUser((User) shop.getCurrentAccount(name));
                     }
-                    if (yn.equals("n")){
-                        shop.getCurrentAccount(name).setConfirm(false);
-                    }
-                    shop.removeUser((User) shop.getCurrentAccount(name));
                     adminMenu(shop,user,admin,seller);
 
                 case 6:
@@ -625,7 +645,7 @@ public static String color = "YELLOW";
                                 Product.Poetry.add(books);
                                 shop.addToListProducts(books);
                             }
-
+                            shop.getCurrentAccount(user.getUsername()).setConfirm(false);
                         }
                         if (!shop.getCurrentAccount(seller.getUsername()).getConfirm()) {
                             System.out.println("Sorry\uD83D\uDD12 --> admin reject you to sell product....");
@@ -686,10 +706,10 @@ public static String color = "YELLOW";
                 System.out.println("How many of this product do you want?");
                 int count = input.nextInt();
                /* Seller seller1 = user.FindOrderUser(id).getDetailsBuyer();*/
-                 Seller seller1 = shop.getChoosenProduct(id).getBuyer();
-                shop.takeMoneyBack(shop.getChoosenProduct(id).getPrice(),(Seller) shop.getCurrentAccount(seller1.getUsername()));
+                 /*Seller seller1 = shop.getChoosenProduct(id).getBuyer();*/
+              /*  shop.takeMoneyBack(shop.getChoosenProduct(id).getPrice());*/
                /* seller1.saveMoney(count,shop.getChoosenProduct(id).getPrice());*/
-                shop.decreaseQuantity(shop.getChoosenProduct(id), count, shop, id, count, user,seller1);
+                shop.decreaseQuantity(shop.getChoosenProduct(id), count, shop, id, count, user);
 
                 System.out.println("Do you want to add comment below of this product?(y/n)");
                 yn = input.next();
