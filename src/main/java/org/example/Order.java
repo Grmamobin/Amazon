@@ -24,8 +24,8 @@ public class Order {
         this.detailsSeller = detailsSeller;
     }
     public Order( User detailsBuyer){
-        this.totalPrice = totalPrice;
-        this.detailsBuyer = detailsBuyer;
+        this.totalPrice = getTotalPrice();
+        this.detailsBuyer = getDetailsBuyer();
     }
 
     public Date getDate() {
@@ -106,6 +106,6 @@ public class Order {
                 " totalPrice = " + totalPrice + "\n" +
                 " unitPrice = " + unitPrice + "\n" +
                 " detailsBuyer = " + detailsBuyer + "\n" +
-                " detailsSeller = " + detailsSeller + "\n";
+                " detailsSeller = " + getDetailsBuyer()+ "\n";
     }
 }

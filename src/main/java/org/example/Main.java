@@ -16,7 +16,8 @@ public class Main {
     public  static Shop shop = new Shop(ShopName,WebAddress,SupportPhone);
     public static Admin admin = new Admin("Mobina", "2004", "dymamsijhidjj@gmail.com", "09100000040","iran","Woman");
     public static User user = new User("","");
-    public static Seller seller =  new Seller(shop.getShopName(),"","");
+    public static Seller seller =  new Seller(shop.getShopName(),"me","4560");
+    public static Seller sellers = new Seller(shop.getShopName(),"cole","9360");
     public static Scanner input = new Scanner(System.in);
     public static void main(String[] args) throws InterruptedException {
         shop.addToListAccounts(admin);
@@ -28,7 +29,7 @@ public class Main {
                 " The MacBook Pro 13 inch offers a beautiful Retina display that's wildly clear and vivid." +
                 " This laptop is incredibly lightweight and slim.");
 
-        Electronics laptop = new Electronics("Lap002","MacbookPro", 920.99, 5, new ArrayList<String>(), "Laptops","dylan");
+        Electronics laptop = new Electronics("Lap002","MacbookPro", 920.99, 5, new ArrayList<String>(), "Laptops","me");
         laptop.addComment("Amazon made finding a MacBook Air within my budget easy!" +
                 " I settled on the 2015 version because it had all the specs I needed for home and work use." +
                 " And after trying out the 2017 MacBook Pro in-store, I am happy with my decision." +
@@ -41,9 +42,9 @@ public class Main {
                 " I am still learning everything." +
                 " I looked a long time for a new phone and I believe I made a good choice.");
 
-        Electronics phone = new Electronics("Ph002","SamsungS23" ,700.12,3,new ArrayList<String>(),"Phone","cole");
+        Electronics phone = new Electronics("Ph002","SamsungS23" ,700.12,3,new ArrayList<String>(),"Phone","me");
 
-        Electronics Tvs = new Electronics("Tv001","LG" ,1200.8,8,new ArrayList<String>(),"Tv","dylan");
+        Electronics Tvs = new Electronics("Tv001","LG" ,1200.8,8,new ArrayList<String>(),"Tv","cole");
 
         Electronics Tv = new Electronics("Tv002","Sony️" ,3290.8,7,new ArrayList<String>(),"Tv","me");
         Tv.addComment("Like others I was frustrated trying to interact with this skill directly through Alexa," +
@@ -63,26 +64,26 @@ public class Main {
         shop.addToListProducts(phone);
         shop.addToListProducts(phones);
 
-        Books fictions = new Books("Fi001","EyesOfTheMind \uD83D\uDCD6",100 ,3,new ArrayList<String>(),"Fiction","me");
+        Books fictions = new Books("Fi001","EyesOfTheMind",100 ,3,new ArrayList<String>(),"Fiction","cole");
         fictions.addComment("I really like James Dashner's writing," +
                 " and was excited to read the first installment in The Mortality Doctrine series." +
                 " The Eye of Minds was very different from my usual reads:" +
                 " it's about high-intensity virtual gaming. I'm not a gamer," +
                 " but I still really enjoyed this unique, imaginative, thrilling book.");
 
-        Books fiction = new Books("Fi002","KillOrder \uD83D\uDCD3",124 ,1,new ArrayList<String>(),"Fiction","me");
+        Books fiction = new Books("Fi002","KillOrder",124 ,1,new ArrayList<String>(),"Fiction","me");
 
-        Books dramas = new Books("Dr001","Hamlet \uD83D\uDCD5",98,4,new ArrayList<String>(),"Drama","cole");
+        Books dramas = new Books("Dr001","Hamlet",98,4,new ArrayList<String>(),"Drama","cole");
         dramas.addComment("We got this for our teenager who is studying Shakespeare in school." +
                 " When asked if the book were helpful, I received a “Yeah, it’s fine” type of response." +
                 "For those who do not speak teenager, that means: “It did what I needed it to do." +
                 " I am not really thrilled about it but thank you.”");
 
-        Books drama = new Books("Dr002","Freedom \uD83D\uDCD7",83 ,7,new ArrayList<String>(),"Drama","dylan");
+        Books drama = new Books("Dr002","Freedom",83 ,7,new ArrayList<String>(),"Drama","cole");
 
-        Books poetrys = new Books("Py001","MilkAndHoney \uD83D\uDCD8",120 ,6,new ArrayList<String>(),"Poetry","dylan");
+        Books poetrys = new Books("Py001","MilkAndHoney",120 ,6,new ArrayList<String>(),"Poetry","me");
 
-        Books poetry = new Books("Py002","TheSonAndHerFlowers \uD83D\uDCD9",170 ,5,new ArrayList<String>(),"Poetry","sellerFirst");
+        Books poetry = new Books("Py002","TheSonAndHerFlowers",170 ,5,new ArrayList<String>(),"Poetry","cole");
         poetry.addComment("I absolutely love this book I love the author and it is so great.\n");
         poetry.addComment("I read this After., \"Milk and Honey\", and it's made made me more of a fan." +
                 " This is a great follow up to her first. You can definitely hear her voice and feel her tone and style." +
@@ -97,15 +98,15 @@ public class Main {
         shop.addToListProducts(poetry);
         shop.addToListProducts(poetrys);
 
-        Clothes man = new Clothes("Mn001","ShirtBlue \uD83D\uDC55",560,12,new ArrayList<String>(),"Man","me");
+        Clothes man = new Clothes("Mn001","ShirtBlue",560,12,new ArrayList<String>(),"Man","me");
         man.addComment("bought the solid dark & light blue shirts for my husband but had to return both." +
                 " First the fiber blend is not as stated cotton/linen but Rayon/Linen." +
                 " They are true to size and fabric is not too thick for summer" +
                 " BUT they itch..... Probably because of the linen being a coarser natural fibers so had to return them. ");
 
-        Clothes woman = new Clothes("Wn001","DressCyan \uD83D\uDC57",710.78,8,new ArrayList<String>(),"Woman","me");
+        Clothes woman = new Clothes("Wn001","DressCyan",710.78,8,new ArrayList<String>(),"Woman","me");
 
-        Clothes kid = new Clothes("Ks001","Socks \uD83E\uDDE6",211.23,35,new ArrayList<String>(),"Kids","me");
+        Clothes kid = new Clothes("Ks001","Socks",211.23,35,new ArrayList<String>(),"Kids","me");
         Product.ManClothes.add(man);
         Product.WomanClothes.add(woman);
         Product.KidsClothes.add(kid);
@@ -159,7 +160,7 @@ public static String color = "YELLOW";
 
         if(shop.login(username, password)){
             Account user = new User(username,password);
-            System.out.println("...........***...........................WELCOME BACK USER...........***...........................");
+            System.out.println("                  WELCOME BACK USER              ");
             userMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin,seller);
         }
         else{run(shop);}
@@ -194,9 +195,9 @@ public static String color = "YELLOW";
         System.out.print("Password :"); String password = input.next();
 
         if(shop.login(username, password)){
-            System.out.println("...........***...........................WELCOME ADMIN...........***...........................");
+            System.out.println("            WELCOME ADMIN            ");
             /*Account admin = new Admin(username,password);*/
-            userMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin, seller);
+            adminMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin, seller);
         }
         else{run(shop);}
 
@@ -212,7 +213,7 @@ public static String color = "YELLOW";
         if(shop.createAccount(username,password,"Seller")){
             Account seller = new Seller(shop.getShopName(),username, password, email, phone, address , gender);
             shop.addToListAccounts(seller);
-            userMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin ,(Seller) shop.getCurrentAccount(seller.getUsername()));
+            sellerMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin ,(Seller) shop.getCurrentAccount(seller.getUsername()));
         }
         else{run(shop);}
     }
@@ -223,22 +224,23 @@ public static String color = "YELLOW";
 
         if(shop.login(username, password)){
             Account seller = new Seller(shop.getShopName(),username,password);
-            System.out.println("...........***...........................WELCOME BACK SELLER...........***...........................");
-            userMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin ,(Seller) shop.getCurrentAccount(seller.getUsername()));
+            System.out.println("             WELCOME BACK SELLER             ");
+            sellerMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin ,(Seller) shop.getCurrentAccount(seller.getUsername()));
         }
         else{run(shop);}
 
     }
     public static void Design(){
+
         System.out.println("************************************************************* --USER ACCESS-- ***************************************************************");
         System.out.println("1.View profile \uD83D\uDC64        2.Edit profile \uD83D\uDC64                   3.Orders \uD83D\uDC64                     4.Wallet \uD83D\uDC64 ");
         System.out.println("5.Shopping cart \uD83D\uDC64       6.Products \uD83D\uDC64                       7.Search for product \uD83D\uDC64         8.Log out⚪      ");
         System.out.println("************************************************************* --ADMIN ACCESS-- **************************************************************");
-        System.out.println("1.Confirm/Reject request of admin to become member \uD83D\uDCBC                  2.List All of users and admin & Edit desired user \uD83D\uDCBC ");
-        System.out.println("3.Confirm request of User for money \uD83D\uDCBC                                 4.Confirm/Reject request of seller for sell product \uD83D\uDCBC    5.Log out⚪");
+        System.out.println("1.Confirm/Reject request of admin to become member \uD83D\uDCBC            2.List All of users and admin & Edit desired user \uD83D\uDCBC   5.Confirm/reject user to bye \uD83D\uDCBC              ");
+        System.out.println("3.Confirm request of User for money \uD83D\uDCBC                           4.Confirm/Reject request of seller for sell product \uD83D\uDCBC    6.Log out⚪");
         System.out.println("************************************************************* --SELLER ACCESS-- *************************************************************");
-        System.out.println("1.Sell Product \uD83D\uDECD        2.Change ShopName \uD83D\uDECD                3.Wallet \uD83D\uDECD                      4.Log out⚪ \n");
-        System.out.println("          Web address : " + shop.getWebAddress()     +     "        Support Phone : "  +shop.getSupportPhone());
+        System.out.println("1.Sell Product \uD83D\uDECD     2.Change ShopName \uD83D\uDECD      3.Wallet \uD83D\uDECD    4.List Available Product \uD83D\uDECD       4.Log out⚪ \n");
+        System.out.println("        Web address : " + shop.getWebAddress()     +     "      Support Phone : "  +shop.getSupportPhone()  +      "       Shop totalProfit : "+shop.getTotalProfit());
 
     }
 
@@ -255,6 +257,7 @@ public static String color = "YELLOW";
                 TimeUnit.SECONDS.sleep(2);
                 userMenu(shop, user, admin, seller);
             case 3:
+
                 System.out.println("⤯ ⤯ ⤯ ⤯ ⤯ Your Order List(not purchased) ⤰ ⤰ ⤰ ⤰ ⤰");
                 System.out.println(user.getListOrder());
                 System.out.println("⤯ ⤯ ⤯ ⤯ ⤯ Latest Order List(Purchased Products) ⤰ ⤰ ⤰ ⤰ ⤰");
@@ -280,8 +283,9 @@ public static String color = "YELLOW";
             case 5:
                 ShoppingCart carts = new ShoppingCart();
                 System.out.println(user.getListOrder());
-                TimeUnit.SECONDS.sleep(2);
+                System.out.println("Your Current Money is = " + user.getWallet().getCurrentMoney());
                 System.out.println("Total Price You have to pay is = " + carts.getTotalPrice(user) + "\n");
+                TimeUnit.SECONDS.sleep(2);
                 System.out.println("If you want to update the number of items in your cart press '1'.\n" +
                         " If you want to remove products from your list, press '2'.\n" +
                         " If your list is not yet finished, press '3'.\n" +
@@ -332,35 +336,57 @@ public static String color = "YELLOW";
                     userMenu(shop, user, admin, seller);
                 }
                 if (option == 4) {
+                    System.out.println("Do you ask for admin to buy?(y/n)");
+                    yn = input.next();
+                    if (yn.equals("y")) {
+                        if (shop.getCurrentAccount(user.getUsername()).getConfirm()) {
+                            ShoppingCart cart = new ShoppingCart();
+                            if (cart.PriceInCart(user) >= cart.getTotalPrice(user)) {
+                                System.out.print("\007");
+                                System.out.flush();
+                                double remainPrice = cart.PriceInCart(user) - cart.getTotalPrice(user);
+                                System.out.println("****\uD83D\uDCB6 YOU PAID SUCCESSFULLY \uD83D\uDCB6****" + "\n" +
+                                        "Remaining = " + remainPrice + "\n");
+                                user.getWallet().setCurrentMoney(remainPrice); //   <---current money
+                                shop.setTotalProfit(cart.getTotalPrice(user) * (0.1));
+                                /*seller.setPriceInWallet();*/
+                                /*user.FindOrderUser()*(0.9);*/
+                                //the money should go to in seller wallet
+                                //make date related to this date
+                                user.addPurchasedProducts();
+                                user.getListOrder().clear();
+                                user.getCart().clear();
 
-                    ShoppingCart cart = new ShoppingCart();
-                    if (cart.PriceInCart(user) >= cart.getTotalPrice(user)) {
-                        double remainPrice = cart.PriceInCart(user) - cart.getTotalPrice(user);
-                        cart.setTotalPrice(remainPrice);
-                        System.out.println("remaining = " + remainPrice + "\n");
-                        //the money should go to in seller wallet
+                            } else {
+                                System.out.println("You have insufficient funds to purchase these products.");
+                            }
+                        }
+
+                        if (!shop.getCurrentAccount(user.getUsername()).getConfirm()) {
+                            System.out.println("Sorry\uD83D\uDD12 --> admin reject you to sell product....");
+                        }
+
                     } else {
-                        System.out.println("You have insufficient funds to purchase these products.");
+                        shop.transaction(user);
+                        System.out.println("SEND --> " + user.getUsername() + "Wants to buy these product");
                     }
                     userMenu(shop, user, admin, seller);
                 }
-            case 8:
-                shop.logout();
-                run(shop);
+
             case 6:
                 System.out.println("-----Category-----");
                 System.out.println("⭕Clothes");
-                System.out.println("  ○ Man "); //blue circle
-                System.out.println("  ○ Woman"); //blue circle
-                System.out.println("  ○ Kids"); //blue circle
+                System.out.println("  ○ Man \uD83D\uDC55");
+                System.out.println("  ○ Woman \uD83D\uDC57");
+                System.out.println("  ○ Kids \uD83E\uDDE6");
                 System.out.println("⭕Electronics");
                 System.out.println("  ◌ Laptop \uD83D\uDCBB");
                 System.out.println("  ◌ Phone \uD83D\uDCF1");
                 System.out.println("  ◌ Tv \uD83D\uDCFA   ");
                 System.out.println("⭕Books");
-                System.out.println("  ✪ Fiction");
-                System.out.println("  ✪ Poetry ");
-                System.out.println("  ✪ Drama ");
+                System.out.println("  ✪ Fiction \uD83D\uDCD6");
+                System.out.println("  ✪ Poetry \uD83D\uDCD3");
+                System.out.println("  ✪ Drama \uD83D\uDCD5");
                 String optionss = input.next();
                 if (optionss.equals("Man")) {
                     product.ManClothes();
@@ -408,48 +434,6 @@ public static String color = "YELLOW";
                     runFromCategory(user);
                     userMenu(shop, user, admin, seller);
                 }
-            case 9:
-                System.out.println(admin.getListWaitedAdmin());
-                System.out.println("Which admin do you want to confirm OR reject?");
-
-                    System.out.print("username = ");String admin1 = input.next();
-                    System.out.println("Do you want to confirm?(y,n)");
-                    yn = input.next();
-                    if (yn.equals("y")) {
-                        Admin account = admin.ListWaited(admin1);
-                        shop.addToListAccounts(account);
-                        admin.removeListWaited(account);
-                    } else {
-                        Admin account = admin.ListWaited(admin1);
-                        admin.removeListWaited(account);
-                    }
-
-                userMenu(shop, user, admin, seller);
-
-            case 10:
-                System.out.println(shop.getListAccounts());
-                System.out.println("Do you want to edit desired user (y/n)?");
-                yn = input.next();
-                if (yn.equals("y")) {
-                    System.out.println("write it's username...");
-                    String ans = input.next();
-                    System.out.println(shop.searchByUsername(ans));
-                    editProfile(user);
-                }
-                userMenu(shop, user, admin, seller);
-            case 11:
-                userMenu(shop, user, admin, seller);
-            case 12:
-                System.out.println(Account.getUserAndNewAmount());
-                System.out.println("Which user do you want to add Fund?(if you don't want to continue press'0' in front of username)");
-                    System.out.print("username = ");  String username = input.next();
-                    System.out.println("How much money does it want?");
-                    double amount = input.nextDouble();
-                    admin.addFunds(amount, new Wallet(), (User) shop.getCurrentAccount(username));
-                    admin.removeUserAndNewAmountList((User) shop.getCurrentAccount(username),amount);
-
-
-                userMenu(shop, user, admin, seller);
             case 7:
 
                 System.out.println("Write the Title of this product...");
@@ -466,205 +450,283 @@ public static String color = "YELLOW";
                 }
                 runFromCategory(user);
                 userMenu(shop,user,admin, seller);
-
-            case 14:
-                System.out.println("Did you ask for authorization?(y/n)['y' means go and see the result and 'n' means go and ask]");
-                yn = input.next();
-                if(yn.equals("y")) {
-
-                    if (shop.getCurrentAccount(seller.getUsername()).getConfirm()) {
-                        System.out.println("** You can sell now ** ");
-                        System.out.println("Which product in this category do you want to sell?");
-                        System.out.println("-----Category-----");
-                        System.out.println("⭕Clothes");
-                        System.out.println("  ○ Man ");
-                        System.out.println("  ○ Woman");
-                        System.out.println("  ○ Kids");
-                        System.out.println("⭕Electronics");
-                        System.out.println("  ◌ Laptop");
-                        System.out.println("  ◌ Phone ");
-                        System.out.println("  ◌ Tv    ");
-                        System.out.println("⭕Books");
-                        System.out.println("  ✪ Fiction");
-                        System.out.println("  ✪ Poetry ");
-                        System.out.println("  ✪ Drama ");
-
-
-                        String sell = input.next();
-                        System.out.print("Enter new id : ");
-                        String id = input.next();
-                        System.out.print("Enter name product : ");
-                        title = input.next();
-                        System.out.print("Enter Price : ");
-                        double price = input.nextDouble();
-                        System.out.print("Enter Quantity : ");
-                        int quantity = input.nextInt();
-
-                        if (sell.equals("Man")) {
-
-                            Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername());
-                            Product.ManClothes.add(clothes);
-                            shop.addToListProducts(clothes);
-                        }
-                        if (sell.equals("Woman")) {
-
-                            Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername());
-                            Product.WomanClothes.add(clothes);
-                            shop.addToListProducts(clothes);
-                        }
-                        if (sell.equals("Kids")) {
-
-                            Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername());
-                            Product.KidsClothes.add(clothes);
-                            shop.addToListProducts(clothes);
-                        }
-                        if (sell.equals("Laptop")) {
-
-                            Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Laptops", seller.getUsername());
-                            Product.Laptops.add(electronics);
-                            shop.addToListProducts(electronics);
-                        }
-                        if (sell.equals("Phone")) {
-
-                            Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Phone", seller.getUsername());
-                            Product.Phone.add(electronics);
-                            shop.addToListProducts(electronics);
-                        }
-                        if (sell.equals("Tv")) {
-
-                            Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Tv", seller.getUsername());
-                            Product.Tv.add(electronics);
-                            shop.addToListProducts(electronics);
-                        }
-                        if (sell.equals("Drama")) {
-
-                            Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Drama", seller.getUsername());
-                            Product.Drama.add(books);
-                            shop.addToListProducts(books);
-                        }
-                        if (sell.equals("Fiction")) {
-                            Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Fiction", seller.getUsername());
-                            Product.Fiction.add(books);
-                            shop.addToListProducts(books);
-                        }
-                        if (sell.equals("Poetry")) {
-                            Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Poetry", seller.getUsername());
-                            Product.Poetry.add(books);
-                            shop.addToListProducts(books);
-                        }
-
-                    }
-                    if (!shop.getCurrentAccount(seller.getUsername()).getConfirm()) {
-                        System.out.println("Sorry --> admin reject you to sell product....");
-                    }
-                }
-                if(yn.equals("n")){
-                    System.out.println("send --> "+seller.getUsername()+ " Ask for sell the product");
-                    shop.addSeller(seller);
-                }
-
-                userMenu(shop, user, admin, seller);
-
-            case 15:
-                System.out.print("Enter your desired name :"); String choose = input.next();
-                seller.setShopName(choose,shop);
-                System.out.println("Do you want to change the color?(y/n)"); yn = input.next();
-                if(yn.equals("y")){
-                    System.out.println("Select color for background :     BLACK / RED / GREEN / YELLOW / BLUE / PURPLE / CYAN / WHITE ");
-                    color = input.next();
-                    switch (color){
-                        case "BLACK":
-                            shop.setColor("BLACK");
-                        case "RED":
-                            shop.setColor("RED");
-                        case "GREEN":
-                            shop.setColor("GREEN");
-                        case "YELLOW":
-                            shop.setColor("YELLOW");
-                        case "BLUE":
-                            shop.setColor("BLUE");
-                        case "PURPLE":
-                            shop.setColor("PURPLE");
-                        case "CYAN":
-                            shop.setColor("CYAN");
-                        case "WHITE":
-                            shop.setColor("WHITE");
-                    }
-
-                }
-                userMenu(shop,user,admin, seller);
-
-            case 16:
-                System.out.println(shop.getListAuthorization());
-                System.out.println("Write seller username..."); String name = input.next();
-                System.out.println("Do you want to confirm it?(y/n)"); yn = input.next();
-                if(yn.equals("y")){
-                    shop.getCurrentAccount(name).setConfirm(true);
-                }
-                if (yn.equals("n")){
-                    shop.getCurrentAccount(name).setConfirm(false);
-                }
-                shop.removeSeller((Seller) shop.getCurrentAccount(name));
-                userMenu(shop,user,admin,seller);
+            case 8:
+                shop.logout();
+                run(shop);
 
         }
     }
+        public static void adminMenu (Shop shop , User user , Admin admin, Seller seller) throws InterruptedException {
+            Design();
+            int select = input.nextInt();
+            switch (select) {
+                case 1:
+                    System.out.println(admin.getListWaitedAdmin());
+                    System.out.println("Which admin do you want to confirm OR reject?");
 
-        public static void runFromCategory(User user){
-            System.out.println("Would you like to add any products to your order list?(y/n)");
-             String yn = input.next();
-            if (yn.equals("y")) {
-                System.out.println("plz write it's id..");
-                String id = input.next();
-                if (shop.doesProductExist(id)) {
-                    System.out.println("How many of this product do you want?");
-                    int count = input.nextInt();
-                    shop.decreaseQuantity(shop.getChoosenProduct(id), count, shop, id, count, user);
-                    System.out.println("Do you want to add comment below of this product?(y/n)");
-                    yn = input.next();
+                    System.out.print("username = ");String admin1 = input.next();
+                    System.out.println("Do you want to confirm?(y,n)");
+                    String yn = input.next();
                     if (yn.equals("y")) {
-                        System.out.println("add your comment ...");
-                        String ans = input.next();
-                        shop.addComment(shop.getChoosenProduct(id), ans);
+                        Admin account = admin.ListWaited(admin1);
+                        shop.addToListAccounts(account);
+                        admin.removeListWaited(account);
+                    } else {
+                        Admin account = admin.ListWaited(admin1);
+                        admin.removeListWaited(account);
                     }
 
-                } else {
-                    System.out.println("If you haven't noticed, this product no longer exists.");
+                    adminMenu(shop, user, admin, seller);
+
+                case 2:
+                    System.out.println(shop.getListAccounts());
+                    System.out.println("Do you want to edit desired user (y/n)?");
+                    yn = input.next();
+                    if (yn.equals("y")) {
+                        System.out.println("write it's username...");
+                        String ans = input.next();
+                        System.out.println(shop.searchByUsername(ans));
+                        editProfile(user);
+                    }
+                    adminMenu(shop, user, admin, seller);
+
+                case 3:
+                    System.out.println(Account.getUserAndNewAmount());
+                    System.out.println("Which user do you want to add Fund?");
+                    System.out.print("username = ");  String username = input.next();
+                    System.out.println("How much money does it want?");
+                    double amount = input.nextDouble();
+                    admin.addFunds(amount, new Wallet(), (User) shop.getCurrentAccount(username));
+                    admin.removeUserAndNewAmountList((User) shop.getCurrentAccount(username),amount);
+
+
+                    adminMenu(shop, user, admin, seller);
+
+                case 4:
+                    System.out.println(shop.getListAuthorization());
+
+                    System.out.println("Write seller username..."); String name = input.next();
+                    System.out.println("Do you want to confirm it?(y/n)");   yn = input.next();
+                    if(yn.equals("y")){
+                        shop.getCurrentAccount(name).setConfirm(true);
+                    }
+                    if (yn.equals("n")){
+                        shop.getCurrentAccount(name).setConfirm(false);
+                    }
+                    shop.removeSeller((Seller) shop.getCurrentAccount(name));
+                    adminMenu(shop,user,admin,seller);
+
+                case 5:
+                    System.out.println(shop.getListAuthorize());
+                    System.out.println("Write User username..."); name = input.next();
+                    System.out.println("Do you want to confirm it?(y/n)");   yn = input.next();
+                    if(yn.equals("y")){
+                        shop.getCurrentAccount(name).setConfirm(true);
+                    }
+                    if (yn.equals("n")){
+                        shop.getCurrentAccount(name).setConfirm(false);
+                    }
+                    shop.removeUser((User) shop.getCurrentAccount(name));
+                    adminMenu(shop,user,admin,seller);
+
+                case 6:
+                    shop.logout();
+                    run(shop);
+
+            }
+        }
+        public static void sellerMenu (Shop shop , User user , Admin admin, Seller seller) throws InterruptedException {
+            Design();
+            int select = input.nextInt();
+            switch (select) {
+
+                case 1:
+                    System.out.println("Did you ask for authorization?(y/n)['y' means go and see the result and 'n' means go and ask]");
+                   String yn = input.next();
+                    if(yn.equals("y")) {
+
+                        if (shop.getCurrentAccount(seller.getUsername()).getConfirm()) {
+                            System.out.println("** You can sell now \uD83D\uDD13︎ ** ");
+                            System.out.println("Which product in this category do you want to sell?");
+                            System.out.println("-----Category-----");
+                            System.out.println("⭕Clothes");
+                            System.out.println("  ○ Man \uD83D\uDC55");
+                            System.out.println("  ○ Woman \uD83D\uDC57");
+                            System.out.println("  ○ Kids \uD83E\uDDE6");
+                            System.out.println("⭕Electronics");
+                            System.out.println("  ◌ Laptop \uD83D\uDCBB");
+                            System.out.println("  ◌ Phone \uD83D\uDCF1");
+                            System.out.println("  ◌ Tv \uD83D\uDCFA   ");
+                            System.out.println("⭕Books");
+                            System.out.println("  ✪ Fiction \uD83D\uDCD7");
+                            System.out.println("  ✪ Poetry \uD83D\uDCD8");
+                            System.out.println("  ✪ Drama \uD83D\uDCD9");
+
+
+                            String sell = input.next();
+                            System.out.print("Enter new id : ");
+                            String id = input.next();
+                            System.out.print("Enter name product : ");
+                            String title = input.next();
+                            System.out.print("Enter Price : ");
+                            double price = input.nextDouble();
+                            System.out.print("Enter Quantity : ");
+                            int quantity = input.nextInt();
+
+                            if (sell.equals("Man")) {
+
+                                Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername());
+                                Product.ManClothes.add(clothes);
+                                shop.addToListProducts(clothes);
+                            }
+                            if (sell.equals("Woman")) {
+
+                                Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername());
+                                Product.WomanClothes.add(clothes);
+                                shop.addToListProducts(clothes);
+                            }
+                            if (sell.equals("Kids")) {
+
+                                Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername());
+                                Product.KidsClothes.add(clothes);
+                                shop.addToListProducts(clothes);
+                            }
+                            if (sell.equals("Laptop")) {
+
+                                Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Laptops", seller.getUsername());
+                                Product.Laptops.add(electronics);
+                                shop.addToListProducts(electronics);
+                            }
+                            if (sell.equals("Phone")) {
+
+                                Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Phone", seller.getUsername());
+                                Product.Phone.add(electronics);
+                                shop.addToListProducts(electronics);
+                            }
+                            if (sell.equals("Tv")) {
+
+                                Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Tv", seller.getUsername());
+                                Product.Tv.add(electronics);
+                                shop.addToListProducts(electronics);
+                            }
+                            if (sell.equals("Drama")) {
+
+                                Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Drama", seller.getUsername());
+                                Product.Drama.add(books);
+                                shop.addToListProducts(books);
+                            }
+                            if (sell.equals("Fiction")) {
+                                Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Fiction", seller.getUsername());
+                                Product.Fiction.add(books);
+                                shop.addToListProducts(books);
+                            }
+                            if (sell.equals("Poetry")) {
+                                Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Poetry", seller.getUsername());
+                                Product.Poetry.add(books);
+                                shop.addToListProducts(books);
+                            }
+
+                        }
+                        if (!shop.getCurrentAccount(seller.getUsername()).getConfirm()) {
+                            System.out.println("Sorry\uD83D\uDD12 --> admin reject you to sell product....");
+                        }
+                    }
+                    if(yn.equals("n")){
+                        System.out.println("send --> "+seller.getUsername()+ " Ask for sell the product");
+                        shop.addSeller(seller);
+                    }
+
+                    sellerMenu(shop, user, admin, seller);
+
+
+                case 2:
+                    System.out.print("Enter your desired name :"); String choose = input.next();
+                    seller.setShopName(choose,shop);
+                    System.out.println("Do you want to change the color?(y/n)"); yn = input.next();
+                    if(yn.equals("y")){
+                        System.out.println("Select color for background :     BLACK / RED / GREEN / YELLOW / BLUE / PURPLE / CYAN / WHITE ");
+                        color = input.next();
+                        switch (color){
+                            case "BLACK":
+                                shop.setColor("BLACK");
+                            case "RED":
+                                shop.setColor("RED");
+                            case "GREEN":
+                                shop.setColor("GREEN");
+                            case "YELLOW":
+                                shop.setColor("YELLOW");
+                            case "BLUE":
+                                shop.setColor("BLUE");
+                            case "PURPLE":
+                                shop.setColor("PURPLE");
+                            case "CYAN":
+                                shop.setColor("CYAN");
+                            case "WHITE":
+                                shop.setColor("WHITE");
+                        }
+
+                    }
+                    sellerMenu(shop,user,admin, seller);
+
+                case 3:
+                    //wallet
+                    sellerMenu(shop,user,admin, seller);
+                case 4:
+                    shop.logout();
+                    run(shop);
+            }
+        }
+    public static void runFromCategory(User user){
+        System.out.println("Would you like to add any products to your order list?(y/n)");
+        String yn = input.next();
+        if (yn.equals("y")) {
+            System.out.println("plz write it's id..");
+            String id = input.next();
+            if (shop.doesProductExist(id)) {
+                System.out.println("How many of this product do you want?");
+                int count = input.nextInt();
+               /* Seller seller1 = user.FindOrderUser(id).getDetailsBuyer();*/
+                 Seller seller1 = shop.getChoosenProduct(id).getBuyer();
+                shop.takeMoneyBack(shop.getChoosenProduct(id).getPrice(),(Seller) shop.getCurrentAccount(seller1.getUsername()));
+               /* seller1.saveMoney(count,shop.getChoosenProduct(id).getPrice());*/
+                shop.decreaseQuantity(shop.getChoosenProduct(id), count, shop, id, count, user,seller1);
+
+                System.out.println("Do you want to add comment below of this product?(y/n)");
+                yn = input.next();
+                if (yn.equals("y")) {
+                    System.out.println("add your comment ...");
+                    String ans = input.next();
+                    shop.addComment(shop.getChoosenProduct(id), ans);
                 }
 
+            } else {
+                System.out.println("If you haven't noticed, this product no longer exists.");
             }
 
         }
-        public static void editProfile(User user){
-            System.out.println("*** if you want to edit so do it ***");
-            System.out.print("Username :");
-            String username = input.next();
-            System.out.print("Password :");
-            String password = input.next();
-            System.out.print("Email Address :");
-            String email = input.next();
-            System.out.print("Phone Number : +98");
-            String phone = input.next();
-            System.out.print("Address : ");
-            String address = input.next();
-            System.out.println("Gender : (Man/Woman)");
-            String gender = input.next();
-            shop.getCurrentAccount(user.getUsername()).setUsername(username);
-            shop.getCurrentAccount(user.getUsername()).setPassword(password);
-            shop.getCurrentAccount(user.getUsername()).setEmailAddress(email);
-            shop.getCurrentAccount(user.getUsername()).setPhoneNumber(phone);
-            shop.getCurrentAccount(user.getUsername()).setAddress(address);
-            shop.getCurrentAccount(user.getUsername()).setGender(gender);
 
-        }
+    }
+    public static void editProfile(User user){
+        System.out.println("*** if you want to edit so do it ***");
+        System.out.print("Username :");
+        String username = input.next();
+        System.out.print("Password :");
+        String password = input.next();
+        System.out.print("Email Address :");
+        String email = input.next();
+        System.out.print("Phone Number : +98");
+        String phone = input.next();
+        System.out.print("Address : ");
+        String address = input.next();
+        System.out.println("Gender : (Man/Woman)");
+        String gender = input.next();
+        shop.getCurrentAccount(user.getUsername()).setUsername(username);
+        shop.getCurrentAccount(user.getUsername()).setPassword(password);
+        shop.getCurrentAccount(user.getUsername()).setEmailAddress(email);
+        shop.getCurrentAccount(user.getUsername()).setPhoneNumber(phone);
+        shop.getCurrentAccount(user.getUsername()).setAddress(address);
+        shop.getCurrentAccount(user.getUsername()).setGender(gender);
 
-        public static void adminMenu (Shop shop , User user , Admin admin){
-            Design();
-
-
-        }
-        public static void sellerMenu (Shop shop){
-            Design();
-        }
+    }
 
 }

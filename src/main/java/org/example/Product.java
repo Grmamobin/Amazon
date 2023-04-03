@@ -9,6 +9,7 @@ public class Product {
     private double price;
     private int quantity;
     private ArrayList<String> commentList;
+    private Seller buyer;
     public static ArrayList<Clothes> ManClothes = new ArrayList<>();
     public static ArrayList<Clothes> WomanClothes = new ArrayList<>();
     public static ArrayList<Clothes> KidsClothes = new ArrayList<>();
@@ -19,12 +20,13 @@ public class Product {
     public static ArrayList<Books> Poetry = new ArrayList<>();
     public static ArrayList<Books> Fiction = new ArrayList<>();
 
-    public Product( String id, String productName , double price ,int quantity , ArrayList<String> commentList){
-        this.id = /*nextId++;*/ id;
+    public Product( String id, String productName , double price ,int quantity , ArrayList<String> commentList ){
+        this.id = id;
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
         this.commentList = commentList;
+        this.buyer = getBuyer();
     }
     public Product( ){
         this.id = null;
@@ -32,6 +34,7 @@ public class Product {
         this.price = 0.0;
         this.quantity =0;
         this.commentList = null;
+        this.buyer =null;
     }
 
     public String getProductName() {
@@ -51,6 +54,10 @@ public class Product {
     }
 
     public String getId() {return id;}
+
+    public Seller getBuyer() {
+        return buyer;
+    }
 
     public void setProductName(String productName) {
         this.productName = productName;

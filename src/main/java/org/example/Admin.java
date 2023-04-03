@@ -20,7 +20,7 @@ public class Admin extends Account{
     }
 
     public void addAdmin(Admin admin) {}
-    public void sendFunds(double amount, User user, Admin admin) {
+   /* public void sendFunds(double amount, User user, Admin admin) {
         if (admin.confirmRequest()) {
 
             admin.addFunds(amount, user.getWallet() ,user);
@@ -32,7 +32,7 @@ public class Admin extends Account{
             System.out.println("Request denied by admin");
         }
 
-    }
+    }*/
 
     public void addFunds(double amount , Wallet wallet , User user){
         user.getWallet().setCurrentMoney(user.getWallet().getCurrentMoney() + amount);

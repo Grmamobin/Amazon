@@ -1,18 +1,19 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public  class User extends Account{
     private ArrayList<Order> ListOrderforUser;
-    private ArrayList<Product> PurchasedProducts;
+    private ArrayList<Order> PurchasedProducts;
     private ArrayList<Order> cart;
-   /* ShoppingCart cart;*/
+   private ShoppingCart carts;
     public  User(String username , String password , String emailAddress , String phoneNumber , String address, String gender){
         super(username,password,emailAddress,phoneNumber,address , gender);
         this.ListOrderforUser = new ArrayList<>();
-        this.PurchasedProducts = new ArrayList<>();
+        this.PurchasedProducts = new ArrayList<Order>();
         this.cart = new ArrayList<Order>();
+        this.carts = new ShoppingCart();
+
     }
     public User(String username , String password){
         super(username, password);
@@ -29,15 +30,19 @@ public  class User extends Account{
         return ListOrderforUser;
     }
 
-    public ArrayList<Product> getPurchasedProducts() {
+    public ArrayList<Order> getPurchasedProducts() {
         return PurchasedProducts;
     }
 
-    public void setPurchasedProducts(ArrayList<Product> purchasedProducts) {
+    public void setPurchasedProducts(ArrayList<Order> purchasedProducts) {
         PurchasedProducts = purchasedProducts;
     }
     public ArrayList<Order> getCart() {
         return cart;
+    }
+
+    public ShoppingCart getCarts() {
+        return carts;
     }
 
     public void setCart(ArrayList<Order> cart) {
@@ -58,6 +63,7 @@ public  class User extends Account{
         ListOrderforUser.remove(order);
         removeToCart(order);
     }
+
     public Order FindOrderUser(String id){
         for (Order order : this.ListOrderforUser) {
 
@@ -67,10 +73,9 @@ public  class User extends Account{
         }
         return null;
     }
-    public void addPurchasedProducts(Product product){
-        PurchasedProducts.add(product);
+    public void addPurchasedProducts(){
+        PurchasedProducts.addAll(ListOrderforUser);
     }
-
     public void viewProfile(){
 
         if(getGender().equals("Woman")){

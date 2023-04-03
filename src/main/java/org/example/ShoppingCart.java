@@ -55,11 +55,9 @@ public class ShoppingCart {
         }
         return totalPrice;
     }
-
-
     public double PriceInCart(User user){
 
-        return 0;
+        return user.getWallet().getCurrentMoney();
     }
 
     public void setTotalPrice(double totalPrice) {

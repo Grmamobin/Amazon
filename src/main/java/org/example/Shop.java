@@ -10,6 +10,7 @@ public class Shop {
     private HashMap<String, Integer> ProductMaps;
     private ArrayList<Order> ListOrders;
     private ArrayList<Seller> ListAuthorization;
+    private ArrayList<User>ListAuthorize;
     public static String ANSI_RESET = "\u001B[0m";
     // Declaring the color
     // Custom declaration
@@ -23,7 +24,7 @@ public class Shop {
     public static String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
-    private double TotalProfit;
+    private double TotalProfit = 0.0;
     private Account currentAccount; //*
 /*    public Shop() {
         currentAccount = new Account("", "", "", "","","");
@@ -45,7 +46,6 @@ public class Shop {
         this.ListAccounts = new ArrayList<>();
         this.ListProducts = new ArrayList<>();
         this.ListOrders = new ArrayList<>();
-        this.TotalProfit = 0.0;
         this.currentAccount = currentAccount;
         this.ListAuthorization = new ArrayList<>();
     }
@@ -74,7 +74,7 @@ public class Shop {
             return ANSI_PURPLE_BACKGROUND;
         }
         if(color.equals("WHITE")){
-            return ANSI_YELLOW_BACKGROUND;
+            return ANSI_WHITE_BACKGROUND;
         }
         if(color.equals("RED")){
             return ANSI_RED_BACKGROUND;
@@ -92,6 +92,11 @@ public class Shop {
     public double getTotalProfit() {
         return TotalProfit;
     }
+
+    public void setTotalProfit(double totalProfit) {
+        TotalProfit  = totalProfit + TotalProfit;
+    }
+
     public void addToListProducts(Product product ){
         ListProducts.add(product);
     }
@@ -151,17 +156,17 @@ public class Shop {
         }
         if (typeAccount.equals("Admin")) {
             /*Account accokunt = new Admin(username, password, email, phone, address);ListAccounts.add(account);*/
-            System.out.println("...........***...........................WELCOME New Admin Plz Wait For Head Of Admins To Accept you And Try It Again In LogIn ...........***...........................");
+            System.out.println("      WELCOME New Admin Plz Wait For Head Of Admins To Accept you And Try It Again In LogIn                      ");
 
             return true;
         }
         if (typeAccount.equals("Seller")) {
             /* Account ackcount = new Seller(username, password, email, password, address, shopName); ListAccounts.add(account);*/
-            System.out.println("...........***...........................WELCOME New Seller...........***...........................");
+            System.out.println("        WELCOME New Seller          ");
 
             return true;
         }
-        System.out.println("...........***...........................WELCOME New User...........***...........................");
+        System.out.println("           WELCOME New User         ");
           /*  Account acckount = new User(username, password, email, password, address);
             ListAccounts.add(account);*/
         return true;
@@ -181,7 +186,7 @@ public class Shop {
         return false;
     }
     public void logout() {
-        System.out.println("Hope you're Entertaining");
+        System.out.println("     Hope you're Entertaining       ");
         this.currentAccount = null;
         return;
     }
@@ -189,12 +194,12 @@ public class Shop {
         int currentQuantity = product.getQuantity();
         product.setQuantity(currentQuantity + quantity);
     }
-    public void decreaseQuantity(Product product , int quantity , Shop shop ,String id , int count , User user) {
+    public void decreaseQuantity(Product product , int quantity , Shop shop ,String id , int count , User user,Seller seller) {
         int currentQuantity = product.getQuantity();
         if (currentQuantity >= quantity) {
             product.setQuantity(currentQuantity - quantity);
             System.out.println("ADD SUCCESSFULLY");
-            Order order = new Order(shop.getChoosenProduct(id).getId(),count, new Date(), shop.getChoosenProduct(id).getPrice(),shop.getChoosenProduct(id).getPrice(), user, null);
+            Order order = new Order(shop.getChoosenProduct(id).getId(),count, new Date(), shop.getChoosenProduct(id).getPrice(),shop.getChoosenProduct(id).getPrice(), user, seller);
             shop.addToListOrder(user,order);
         } else {
             System.out.println("If you haven't noticed, this product no longer exists.");
@@ -218,7 +223,11 @@ public class Shop {
     public void addToListOrder(User user,Order order){
         ListOrders.add(order); //related to doc we should have list of all order
         user.addToListOrderForUser(order);
-        TotalProfit += order.getTotalPrice();
+       /* seller.addToListSave(order);*/
+        /*TotalProfit += order.getTotalPrice();*/
+    }
+    public void takeMoneyBack(double amount, Seller seller){
+        seller.getWallet().setCurrentMoney(amount);
     }
 
     public ArrayList<Account> getListAccounts() {
@@ -287,12 +296,21 @@ public class Shop {
     public void addSeller(Seller seller){
         ListAuthorization.add(seller);
     }
+    public void transaction(User user){
+        ListAuthorize.add(user);
+    }
+
+    public ArrayList<User> getListAuthorize() {
+        return ListAuthorize;
+    }
+
     public void removeSeller(Seller seller) {
         ListAuthorization.remove(seller);
     }
+    public void removeUser(User user){ListAuthorize.remove(user);}
 
     @Override
     public String toString() {
-        return "ListAccounts = " + getListAccounts();
+        return "Shop totalProfit  : " + getTotalProfit();
     }
 }
