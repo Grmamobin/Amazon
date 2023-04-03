@@ -227,6 +227,7 @@ public static String color = "YELLOW";
             System.out.println("             WELCOME BACK SELLER             ");
             sellerMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin ,(Seller) shop.getCurrentAccount(seller.getUsername()));
         }
+
         else{run(shop);}
 
     }
