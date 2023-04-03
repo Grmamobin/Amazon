@@ -240,7 +240,7 @@ public static String color = "YELLOW";
         System.out.println("1.Confirm/Reject request of admin to become member \uD83D\uDCBC            2.List All of users and admin & Edit desired user \uD83D\uDCBC   5.Confirm/reject user to buy \uD83D\uDCBC              ");
         System.out.println("3.Confirm request of User for money \uD83D\uDCBC                           4.Confirm/Reject request of seller for sell product \uD83D\uDCBC    6.Log out⚪");
         System.out.println("************************************************************* --SELLER ACCESS-- *************************************************************");
-        System.out.println("1.Sell Product \uD83D\uDECD        2.Change ShopName \uD83D\uDECD               3.Wallet \uD83D\uDECD             4.Log out⚪ \n");
+        System.out.println("1.Sell Product \uD83D\uDECD        2.Change ShopName \uD83D\uDECD             3.Wallet \uD83D\uDECD         4.List Available Product    5.Log out⚪ \n");
         System.out.println("        Web address : " + shop.getWebAddress()     +     "      Support Phone : "  +shop.getSupportPhone()  +      "       Shop totalProfit : "+shop.getTotalProfit());
 
     }
@@ -354,6 +354,7 @@ public static String color = "YELLOW";
                                 /*user.FindOrderUser()*(0.9);*/
                                 //the money should go to in seller wallet
                                 //make date related to this date
+                                shop.checkout(shop);
                                 user.addPurchasedProducts();
                                 user.getListOrder().clear();
                                 user.getCart().clear();
@@ -691,8 +692,13 @@ public static String color = "YELLOW";
 
                 case 3:
                     //wallet
+                        System.out.print(seller.getPriceInWallet());
+
                     sellerMenu(shop,user,admin, seller);
                 case 4:
+                    seller.ListAvailable(shop);
+                    sellerMenu(shop,user,admin, seller);
+                case 5:
                     shop.logout();
                     run(shop);
             }
@@ -706,8 +712,8 @@ public static String color = "YELLOW";
             if (shop.doesProductExist(id)) {
                 System.out.println("How many of this product do you want?");
                 int count = input.nextInt();
-               /* Seller seller1 = user.FindOrderUser(id).getDetailsBuyer();*/
-                 /*Seller seller1 = shop.getChoosenProduct(id).getBuyer();*/
+                 /*Seller seller1 = shop.getChoosenProduct(id).getBuyer();
+                 seller1.setPriceInWallet(shop.getChoosenProduct(id).getPrice() * count);*/
               /*  shop.takeMoneyBack(shop.getChoosenProduct(id).getPrice());*/
                /* seller1.saveMoney(count,shop.getChoosenProduct(id).getPrice());*/
                 shop.decreaseQuantity(shop.getChoosenProduct(id), count, shop, id, count, user);

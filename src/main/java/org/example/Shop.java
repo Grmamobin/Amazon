@@ -227,8 +227,23 @@ public class Shop {
        /* seller.addToListSave(order);*/
         /*TotalProfit += order.getTotalPrice();*/
     }
+
+    public ArrayList<Product> getListProducts() {
+        return ListProducts;
+    }
+    public void removeProduct(Product product){
+        ListProducts.remove(product);
+    }
+
     public void takeMoneyBack(double amount, Seller seller){
         seller.getWallet().setCurrentMoney(amount);
+    }
+    public void checkout(Shop shop){
+        for(Product product : this.ListProducts){
+            if(product.getQuantity() == 0){
+                shop.removeProduct(product);
+            }
+        }
     }
 
     public ArrayList<Account> getListAccounts() {
