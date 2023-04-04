@@ -478,6 +478,7 @@ public static String color = "YELLOW";
                             Admin account = admin.ListWaited(admin1);
                             admin.removeListWaited(account);
                         }
+
                     }
 
                     adminMenu(shop, user, admin, seller);
