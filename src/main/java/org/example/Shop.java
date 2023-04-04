@@ -82,6 +82,23 @@ public class Shop {
         }
         return ANSI_GREEN_BACKGROUND;
     }
+    public void transaction(Order order){
+        for(Account account: this.ListAccounts){
+            if(account.getUsername().equals(order.getDetailsSeller())){
+                Seller seller = (Seller) account;
+                seller.setSaveMoney(order.getTotalPrice() * 0.9);
+            }
+        }
+    }
+    public void  removeInTransaction(Order order){
+        for(Account account: this.ListAccounts){
+            if(account.getUsername().equals(order.getDetailsSeller())){
+                Seller seller = (Seller) account;
+                 double remain = seller.getPriceInWallet() - order.getTotalPrice() *(0.9);
+                seller.setSaveMoney(remain);
+            }
+        }
+    }
     public String getWebAddress() {
         return WebAddress;
     }
@@ -195,12 +212,12 @@ public class Shop {
         int currentQuantity = product.getQuantity();
         product.setQuantity(currentQuantity + quantity);
     }
-    public void decreaseQuantity(Product product , int quantity , Shop shop ,String id , int count , User user) {
+    public void decreaseQuantity(Product product , int quantity , Shop shop ,String id , int count , User user , String seller) {
         int currentQuantity = product.getQuantity();
         if (currentQuantity >= quantity) {
             product.setQuantity(currentQuantity - quantity);
             System.out.println("ADD SUCCESSFULLY");
-            Order order = new Order(shop.getChoosenProduct(id).getId(),count, new Date(), shop.getChoosenProduct(id).getPrice(),shop.getChoosenProduct(id).getPrice(), user,null);
+            Order order = new Order(shop.getChoosenProduct(id).getId(),count, new Date(), shop.getChoosenProduct(id).getPrice(),shop.getChoosenProduct(id).getPrice(),user,seller);
             shop.addToListOrder(user,order);
         } else {
             System.out.println("If you haven't noticed, this product no longer exists.");
@@ -238,12 +255,13 @@ public class Shop {
     public void takeMoneyBack(double amount, Seller seller){
         seller.getWallet().setCurrentMoney(amount);
     }
-    public void checkout(Shop shop){
+    public Shop checkout(Shop shop){
         for(Product product : this.ListProducts){
             if(product.getQuantity() == 0){
                 shop.removeProduct(product);
             }
         }
+        return null;
     }
 
     public ArrayList<Account> getListAccounts() {

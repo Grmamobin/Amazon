@@ -5,6 +5,7 @@ public class Seller extends Account{
     private String ShopName;
     private double priceInWallet;
     private double saveMoney;
+    private ArrayList<Seller>sellers;
 
 
     public  Seller(String ShopName, String username,String password , String emailAddress , String phoneNumber, String address , String gender){
@@ -13,7 +14,7 @@ public class Seller extends Account{
         this.priceInWallet = 0.0;
         this.saveMoney = 0.0;
     }
-    public Seller(String ShopName,String username , String password){
+    public Seller( String ShopName,String username , String password){
         super(username, password);
         this.ShopName = ShopName;
         this.priceInWallet = 0.0;
@@ -49,16 +50,15 @@ public class Seller extends Account{
         return saveMoney;
     }
 
-    public void setSaveMoney(double Money) {
-        this.saveMoney = saveMoney +Money;
+    public void setSaveMoney(double saveMoney) {
+        this.saveMoney = saveMoney;
     }
+
 
     public void setPriceInWallet(double price) {
         this.priceInWallet = price+ priceInWallet;
     }
-    public void saveMoney(double quantity, double price){
-         setSaveMoney(price * quantity);
-    }
+
     public void ListAvailable(Shop shop){
         System.out.println("List of available products: ");
         for(Product product :  shop.getListProducts()){
@@ -71,7 +71,7 @@ public class Seller extends Account{
 
     @Override
     public String toString() {
-        return "Name seller : " + getUsername() ;
+        return "Name seller : " + getUsername();
     }
 
 

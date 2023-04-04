@@ -1,7 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
 public class Product {
    /* private static int nextId = 1;*/
     private String id;
@@ -9,7 +9,7 @@ public class Product {
     private double price;
     private int quantity;
     private ArrayList<String> commentList;
-    private Seller buyer;
+    private String buyer;
     public static ArrayList<Clothes> ManClothes = new ArrayList<>();
     public static ArrayList<Clothes> WomanClothes = new ArrayList<>();
     public static ArrayList<Clothes> KidsClothes = new ArrayList<>();
@@ -20,13 +20,13 @@ public class Product {
     public static ArrayList<Books> Poetry = new ArrayList<>();
     public static ArrayList<Books> Fiction = new ArrayList<>();
 
-    public Product( String id, String productName , double price ,int quantity , ArrayList<String> commentList ){
+    public Product( String id, String productName , double price ,int quantity , ArrayList<String> commentList,String buyer){
         this.id = id;
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
         this.commentList = commentList;
-        this.buyer = getBuyer();
+        this.buyer = buyer;
     }
     public Product( ){
         this.id = null;
@@ -55,7 +55,7 @@ public class Product {
 
     public String getId() {return id;}
 
-    public Seller getBuyer() {
+    public String getBuyer() {
         return buyer;
     }
 

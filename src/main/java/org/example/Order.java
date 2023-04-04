@@ -11,11 +11,12 @@ public class Order {
     private double totalPrice;
     private double unitPrice;
     private User detailsBuyer;
-    private Seller detailsSeller;
+    private String detailsSeller;
     private ArrayList<Product> products;
+    private ArrayList<Seller> seller;
   /*  private ArrayList<Order> orderUser;*/
 
-    public Order(String id,int quantity,Date date , double totalPrice ,double unitPrice ,User detailsBuyer , Seller detailsSeller){
+    public Order(String id,int quantity,Date date , double totalPrice ,double unitPrice ,User detailsBuyer , String detailsSeller){
         this.id = id;
         this.quantity = quantity;
         this.date = date;
@@ -24,15 +25,19 @@ public class Order {
         this.detailsBuyer = detailsBuyer;
         this.detailsSeller = detailsSeller;
     }
-    public Order( User detailsBuyer){
-        this.totalPrice = getTotalPrice();
-        this.detailsBuyer = getDetailsBuyer();
+    public Order( ){
+        this.id = id;
+        this.quantity = quantity;
+        this.date = date;
+        this.totalPrice = unitPrice * quantity;
+        this.unitPrice = unitPrice;
+        this.detailsBuyer = detailsBuyer;
+        this.detailsSeller = detailsSeller;
     }
 
     public Date getDate() {
         return new Date();
     }
-
     public double getTotalPrice(/*Product product , int quantity*/) {
         /*totalPrice += (product.getPrice() * quantity);*/
         return totalPrice;
@@ -42,7 +47,8 @@ public class Order {
         return detailsBuyer;
     }
 
-    public Seller getDetailsSeller() {
+    public  String getDetailsSeller() {
+
         return detailsSeller;
     }
 
@@ -55,6 +61,14 @@ public class Order {
     }
     public  void  UpdateRemaining(){
 
+    }
+
+    public ArrayList<Seller> getSeller() {
+        return seller;
+    }
+
+    public void setSeller(ArrayList<Seller> seller) {
+        this.seller = seller;
     }
 
     public int getQuantity() {
@@ -84,20 +98,6 @@ public class Order {
     public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
-    // Confirm an order
-/*    public void confirmOrder(Order order) {
-        if (order.getBuyer().getWallet() >= order.getTotalPrice()) {
-            order.getSeller().getWallet().subtractFunds(order.getTotalPrice() * 0.9);
-            order.getBuyer().getWallet().subtractFunds(order.getTotalPrice());
-            order.getBuyer().getPurchasedProducts().addAll(order.getItems());
-            order.getSeller().getAvailableProducts().removeAll(order.getItems());
-            order.getBuyer().setShoppingCart(new ArrayList<Product>());
-            order.getSeller().setWallet(order.getSeller().getWallet().getFunds() + order.getTotalPrice() * 0.9);
-            order.getDate(); // set the order date
-        }*/
-   /* public void addOrderForUser(User detailsBuyer, Order order){
-        orderUser.add(order);
-    }*/
 
     @Override
     public String toString() {
@@ -107,7 +107,7 @@ public class Order {
                 " totalPrice = " + totalPrice + "\n" +
                 " unitPrice = " + unitPrice + "\n" +
                 " detailsBuyer = " + detailsBuyer + "\n" +
-                " detailsSeller = " + getDetailsSeller()+ "\n";
+                " detailsSeller = " + detailsSeller+ "\n";
     }
 
     @Override

@@ -16,37 +16,38 @@ public class Main {
     public  static Shop shop = new Shop(ShopName,WebAddress,SupportPhone);
     public static Admin admin = new Admin("Mobina", "2004", "dymamsijhidjj@gmail.com", "09100000040","iran","Woman");
     public static User user = new User("","");
-    public static Seller seller =  new Seller(shop.getShopName(),"me","4560");
-    public static Seller sellers = new Seller(shop.getShopName(),"cole","9360");
+    public static Seller sellers =  new Seller(shop.getShopName(), "me","4560");
+    public static Seller seller = new Seller(shop.getShopName(), "cole","9360");
     public static Scanner input = new Scanner(System.in);
     public static void main(String[] args) throws InterruptedException {
         shop.addToListAccounts(admin);
+        shop.addToListAccounts(seller);
+        shop.addToListAccounts(sellers);
 
-
-        Electronics laptops = new Electronics("Lap001","MacbookPro", 900.99, 10, new ArrayList<String>(), "Laptops","cole");
+        Electronics laptops = new Electronics("Lap001","MacbookPro", 900.99, 10, new ArrayList<String>(), "Laptops",seller.getUsername());
         laptops.addComment("Despite being a Windows user for many years," +
                 " I have to say the transition over to Apple was by far the best decision." +
                 " The MacBook Pro 13 inch offers a beautiful Retina display that's wildly clear and vivid." +
                 " This laptop is incredibly lightweight and slim.");
 
-        Electronics laptop = new Electronics("Lap002","MacbookPro", 920.99, 5, new ArrayList<String>(), "Laptops","me");
+        Electronics laptop = new Electronics("Lap002","MacbookPro", 920.99, 5, new ArrayList<String>(), "Laptops",sellers.getUsername());
         laptop.addComment("Amazon made finding a MacBook Air within my budget easy!" +
                 " I settled on the 2015 version because it had all the specs I needed for home and work use." +
                 " And after trying out the 2017 MacBook Pro in-store, I am happy with my decision." +
                 " I HATE the new keyboard the newer version comes with." +
                 " It's essentially flat");
 
-        Electronics phones = new Electronics("Ph001","SamsungA73" ,668.8,12,new ArrayList<String>(),"Phone","cole");
+        Electronics phones = new Electronics("Ph001","SamsungA73" ,668.8,12,new ArrayList<String>(),"Phone",seller.getUsername());
         phones.addComment("This is my first new phone in about 4 to 5 years." +
                 " I love this phone so far. I have had it a week or so." +
                 " I am still learning everything." +
                 " I looked a long time for a new phone and I believe I made a good choice.");
 
-        Electronics phone = new Electronics("Ph002","SamsungS23" ,700.12,3,new ArrayList<String>(),"Phone","me");
+        Electronics phone = new Electronics("Ph002","SamsungS23" ,700.12,3,new ArrayList<String>(),"Phone",sellers.getUsername());
 
-        Electronics Tvs = new Electronics("Tv001","LG" ,1200.8,8,new ArrayList<String>(),"Tv","cole");
+        Electronics Tvs = new Electronics("Tv001","LG" ,1200.8,8,new ArrayList<String>(),"Tv",sellers.getUsername());
 
-        Electronics Tv = new Electronics("Tv002","Sony️" ,3290.8,7,new ArrayList<String>(),"Tv","me");
+        Electronics Tv = new Electronics("Tv002","Sony️" ,3290.8,7,new ArrayList<String>(),"Tv",sellers.getUsername());
         Tv.addComment("Like others I was frustrated trying to interact with this skill directly through Alexa," +
                 " The real power of this skill is when it is used with Alexa routines," +
                 " using that method it works flawlessly" +
@@ -64,26 +65,26 @@ public class Main {
         shop.addToListProducts(phone);
         shop.addToListProducts(phones);
 
-        Books fictions = new Books("Fi001","EyesOfTheMind",100 ,3,new ArrayList<String>(),"Fiction","cole");
+        Books fictions = new Books("Fi001","EyesOfTheMind",100 ,3,new ArrayList<String>(),"Fiction",sellers.getUsername());
         fictions.addComment("I really like James Dashner's writing," +
                 " and was excited to read the first installment in The Mortality Doctrine series." +
                 " The Eye of Minds was very different from my usual reads:" +
                 " it's about high-intensity virtual gaming. I'm not a gamer," +
                 " but I still really enjoyed this unique, imaginative, thrilling book.");
 
-        Books fiction = new Books("Fi002","KillOrder",124 ,1,new ArrayList<String>(),"Fiction","me");
+        Books fiction = new Books("Fi002","KillOrder",124 ,1,new ArrayList<String>(),"Fiction",seller.getUsername());
 
-        Books dramas = new Books("Dr001","Hamlet",98,4,new ArrayList<String>(),"Drama","cole");
+        Books dramas = new Books("Dr001","Hamlet",98,4,new ArrayList<String>(),"Drama",sellers.getUsername());
         dramas.addComment("We got this for our teenager who is studying Shakespeare in school." +
                 " When asked if the book were helpful, I received a “Yeah, it’s fine” type of response." +
                 "For those who do not speak teenager, that means: “It did what I needed it to do." +
                 " I am not really thrilled about it but thank you.”");
 
-        Books drama = new Books("Dr002","Freedom",83 ,7,new ArrayList<String>(),"Drama","cole");
+        Books drama = new Books("Dr002","Freedom",83 ,7,new ArrayList<String>(),"Drama",seller.getUsername());
 
-        Books poetrys = new Books("Py001","MilkAndHoney",120 ,6,new ArrayList<String>(),"Poetry","me");
+        Books poetrys = new Books("Py001","MilkAndHoney",120 ,6,new ArrayList<String>(),"Poetry",sellers.getUsername());
 
-        Books poetry = new Books("Py002","TheSonAndHerFlowers",170 ,5,new ArrayList<String>(),"Poetry","cole");
+        Books poetry = new Books("Py002","TheSonAndHerFlowers",170 ,5,new ArrayList<String>(),"Poetry",seller.getUsername());
         poetry.addComment("I absolutely love this book I love the author and it is so great.\n");
         poetry.addComment("I read this After., \"Milk and Honey\", and it's made made me more of a fan." +
                 " This is a great follow up to her first. You can definitely hear her voice and feel her tone and style." +
@@ -98,15 +99,15 @@ public class Main {
         shop.addToListProducts(poetry);
         shop.addToListProducts(poetrys);
 
-        Clothes man = new Clothes("Mn001","ShirtBlue",560,12,new ArrayList<String>(),"Man","me");
+        Clothes man = new Clothes("Mn001","ShirtBlue",560,12,new ArrayList<String>(),"Man",sellers.getUsername());
         man.addComment("bought the solid dark & light blue shirts for my husband but had to return both." +
                 " First the fiber blend is not as stated cotton/linen but Rayon/Linen." +
                 " They are true to size and fabric is not too thick for summer" +
                 " BUT they itch..... Probably because of the linen being a coarser natural fibers so had to return them. ");
 
-        Clothes woman = new Clothes("Wn001","DressCyan",710.78,8,new ArrayList<String>(),"Woman","me");
+        Clothes woman = new Clothes("Wn001","DressCyan",710.78,8,new ArrayList<String>(),"Woman",seller.getUsername());
 
-        Clothes kid = new Clothes("Ks001","Socks",211.23,35,new ArrayList<String>(),"Kids","me");
+        Clothes kid = new Clothes("Ks001","Socks",211.23,35,new ArrayList<String>(),"Kids",sellers.getUsername());
         Product.ManClothes.add(man);
         Product.WomanClothes.add(woman);
         Product.KidsClothes.add(kid);
@@ -211,9 +212,9 @@ public static String color = "YELLOW";
         System.out.print("Address :");String address = input.next();
         System.out.println("Gender : (Man/Woman)"); String gender = input.next();
         if(shop.createAccount(username,password,"Seller")){
-            Account seller = new Seller(shop.getShopName(),username, password, email, phone, address , gender);
-            shop.addToListAccounts(seller);
-            sellerMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin ,(Seller) shop.getCurrentAccount(seller.getUsername()));
+            Account sellerx = new Seller(shop.getShopName(),username, password, email, phone, address , gender);
+            shop.addToListAccounts(sellerx);
+            sellerMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin ,(Seller) shop.getCurrentAccount(sellerx.getUsername()));
         }
         else{run(shop);}
     }
@@ -240,7 +241,7 @@ public static String color = "YELLOW";
         System.out.println("1.Confirm/Reject request of admin to become member \uD83D\uDCBC            2.List All of users and admin & Edit desired user \uD83D\uDCBC   5.Confirm/reject user to buy \uD83D\uDCBC              ");
         System.out.println("3.Confirm request of User for money \uD83D\uDCBC                           4.Confirm/Reject request of seller for sell product \uD83D\uDCBC    6.Log out⚪");
         System.out.println("************************************************************* --SELLER ACCESS-- *************************************************************");
-        System.out.println("1.Sell Product \uD83D\uDECD        2.Change ShopName \uD83D\uDECD             3.Wallet \uD83D\uDECD         4.List Available Product    5.Log out⚪ \n");
+        System.out.println("1.Sell Product \uD83D\uDECD        2.Change ShopName \uD83D\uDECD             3.Wallet \uD83D\uDECD         4.List Available Product \uD83D\uDECD    5.Log out⚪ \n");
         System.out.println("        Web address : " + shop.getWebAddress()     +     "      Support Phone : "  +shop.getSupportPhone()  +      "       Shop totalProfit : "+shop.getTotalProfit());
 
     }
@@ -350,11 +351,7 @@ public static String color = "YELLOW";
                                         "Remaining = " + remainPrice + "\n");
                                 user.getWallet().setCurrentMoney(remainPrice); //   <---current money
                                 shop.setTotalProfit(cart.getTotalPrice(user) * (0.1));
-                                /*seller.setPriceInWallet();*/
-                                /*user.FindOrderUser()*(0.9);*/
-                                //the money should go to in seller wallet
-                                //make date related to this date
-                                shop.checkout(shop);
+                                user.transaction(shop);
                                 user.addPurchasedProducts();
                                 user.getListOrder().clear();
                                 user.getCart().clear();
@@ -692,9 +689,9 @@ public static String color = "YELLOW";
 
                 case 3:
                     //wallet
-                        System.out.print(seller.getPriceInWallet());
-
-                    sellerMenu(shop,user,admin, seller);
+                        System.out.println( "This is all of your Money : "+ seller.getPriceInWallet());
+                        TimeUnit.SECONDS.sleep(3);
+                        sellerMenu(shop,user,admin, seller);
                 case 4:
                     seller.ListAvailable(shop);
                     sellerMenu(shop,user,admin, seller);
@@ -712,12 +709,7 @@ public static String color = "YELLOW";
             if (shop.doesProductExist(id)) {
                 System.out.println("How many of this product do you want?");
                 int count = input.nextInt();
-                 /*Seller seller1 = shop.getChoosenProduct(id).getBuyer();
-                 seller1.setPriceInWallet(shop.getChoosenProduct(id).getPrice() * count);*/
-              /*  shop.takeMoneyBack(shop.getChoosenProduct(id).getPrice());*/
-               /* seller1.saveMoney(count,shop.getChoosenProduct(id).getPrice());*/
-                shop.decreaseQuantity(shop.getChoosenProduct(id), count, shop, id, count, user);
-
+                shop.decreaseQuantity(shop.getChoosenProduct(id), count, shop, id, count, user ,shop.getChoosenProduct(id).getBuyer());
                 System.out.println("Do you want to add comment below of this product?(y/n)");
                 yn = input.next();
                 if (yn.equals("y")) {

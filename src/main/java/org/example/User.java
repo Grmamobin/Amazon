@@ -19,6 +19,21 @@ public  class User extends Account{
         super(username, password);
     }
 
+    public void transaction(Shop shop){
+        for(Account seller : shop.getListAccounts()){
+            if(shop.getCurrentAccount(seller.getUsername()) != null ){
+                for(Order order: this.ListOrderforUser){
+                    if(seller.getUsername().equals(order.getDetailsSeller())){
+                        Seller seller1 = (Seller) seller;
+                         seller1.setPriceInWallet(order.getTotalPrice() * 0.9);
+                    }
+                }
+            }
+
+        }
+
+    }
+
     public void setListOrder(int quantity , Order order) {
         order.setQuantity(quantity);
         order.setUnitPrice(order.getUnitPrice());
@@ -73,6 +88,7 @@ public  class User extends Account{
         }
         return null;
     }
+
     public void addPurchasedProducts(){
         PurchasedProducts.addAll(ListOrderforUser);
     }
