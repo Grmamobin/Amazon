@@ -77,12 +77,12 @@ public class Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return quantity == order.quantity && Double.compare(order.totalPrice, totalPrice) == 0 && Double.compare(order.unitPrice, unitPrice) == 0 && Objects.equals(id, order.id) && Objects.equals(date, order.date) && Objects.equals(detailsBuyer, order.detailsBuyer) && Objects.equals(detailsSeller, order.detailsSeller) && Objects.equals(products, order.products);
+        return quantity == order.quantity && Double.compare(order.totalPrice, totalPrice) == 0 && Double.compare(order.unitPrice, unitPrice) == 0 && Objects.equals(id, order.id) && Objects.equals(date, order.date) && Objects.equals(detailsBuyer, order.detailsBuyer) && Objects.equals(detailsSeller, order.detailsSeller);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, quantity, date, totalPrice, unitPrice, detailsBuyer, detailsSeller, products);
+        return Objects.hash(id, quantity, date, totalPrice, unitPrice, detailsBuyer, detailsSeller);
     }
 
 }
