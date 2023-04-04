@@ -1,18 +1,15 @@
 package org.example;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.lang.Math;
 import java.util.concurrent.TimeUnit;
+
 public class Main {
 
-    // Declaring ANSI_RESET so that we can reset the color
     public static String ANSI_RESET = "\u001B[0m";
-    // Declaring the color
-    // Custom declaration
     public static Product product = new Product();
-     static String ShopName = "Amazon";
+    static String ShopName = "Amazon";
     static String WebAddress = "https://www.amazon.com/";
-     static String SupportPhone = "09336145843";
+    static String SupportPhone = "09336145843";
     public  static Shop shop = new Shop(ShopName,WebAddress,SupportPhone);
     public static Admin admin = new Admin("Mobina", "2004", "dymamsijhidjj@gmail.com", "09100000040","iran","Woman");
     public static User user = new User("","");
@@ -20,6 +17,7 @@ public class Main {
     public static Seller seller = new Seller(shop.getShopName(), "cole","9360");
     public static Scanner input = new Scanner(System.in);
     public static void main(String[] args) throws InterruptedException {
+
         shop.addToListAccounts(admin);
         shop.addToListAccounts(seller);
         shop.addToListAccounts(sellers);
@@ -116,9 +114,11 @@ public class Main {
         shop.addToListProducts(kid);
 
         run(shop);
+
     }
-public static String color = "YELLOW";
+    public static String color = "YELLOW";
     public static void run(Shop shop ) throws InterruptedException {
+
         System.out.print("     _                     \n" +
                 "    | |                    \n" +
                 " ___| |__   ___  _ __  ___ \n" +
@@ -137,7 +137,9 @@ public static String color = "YELLOW";
         if(select.equals("3-1")){SignUpSeller(shop);}
         if (select.equals("3-2")){LogInSeller(shop);}
         if(select.equals("4")){return;}
+
     }
+
     public static void SignUpUser(Shop shop) throws InterruptedException {
 
         System.out.print("Username :");String username = input.next();
@@ -152,8 +154,11 @@ public static String color = "YELLOW";
             shop.addToListAccounts(user);
             userMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin,seller);
         }
-        else{run(shop);}
+        else{
+            run(shop);
+        }
     }
+
     public static void LogInUser(Shop shop ) throws InterruptedException {
 
         System.out.print("Username :"); String username = input.next();
@@ -167,6 +172,7 @@ public static String color = "YELLOW";
         else{run(shop);}
 
     }
+
     public static void SignUpAdmin(Shop shop) throws InterruptedException {
 
         System.out.print("Username :");
@@ -181,15 +187,15 @@ public static String color = "YELLOW";
         String address = input.next();
         System.out.println("Gender : (Man/Woman)");
         String gender = input.next();
+
         if (shop.createAccount(username, password, "Admin")) {
             Admin admin1 = new Admin(username, password, email, phone, address, gender);
-           /* shop.addToListAccounts(admin1);*/
             admin.ListWaitedAdmin(admin1);
-           /* userMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin, seller);*/
-            /* adminMenu(shop, (Admin) shop.getCurrentAccount(admin1.getUsername()), (Admin) shop.getCurrentAccount(admin.getUsername()));*/
+
         }
         run(shop);
     }
+
     public static void LogInAdmin(Shop shop ) throws InterruptedException {
 
         System.out.print("Username :"); String username = input.next();
@@ -200,9 +206,12 @@ public static String color = "YELLOW";
             /*Account admin = new Admin(username,password);*/
             adminMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin, seller);
         }
-        else{run(shop);}
+        else {
+            run(shop);
+        }
 
     }
+
     public static void SignUpSeller(Shop shop) throws InterruptedException {
 
         System.out.print("Username :");String username = input.next();
@@ -211,13 +220,19 @@ public static String color = "YELLOW";
         System.out.print("Phone Number : +98");String phone = input.next();
         System.out.print("Address :");String address = input.next();
         System.out.println("Gender : (Man/Woman)"); String gender = input.next();
-        if(shop.createAccount(username,password,"Seller")){
+
+        if(shop.createAccount(username,password,"Seller")) {
+
             Account sellerx = new Seller(shop.getShopName(),username, password, email, phone, address , gender);
             shop.addToListAccounts(sellerx);
             sellerMenu(shop, (User) shop.getCurrentAccount(user.getUsername()),admin ,(Seller) shop.getCurrentAccount(sellerx.getUsername()));
         }
-        else{run(shop);}
+        else {
+            run(shop);
+        }
+
     }
+
     public static void LogInSeller(Shop shop) throws InterruptedException {
 
         System.out.print("Username :"); String username = input.next();
@@ -232,6 +247,7 @@ public static String color = "YELLOW";
         else{run(shop);}
 
     }
+
     public static void Design(){
 
         System.out.println("************************************************************* --USER ACCESS-- ***************************************************************");
@@ -249,15 +265,19 @@ public static String color = "YELLOW";
     public static void userMenu(Shop shop , User user , Admin admin, Seller seller) throws InterruptedException {
         Design();
         int select = input.nextInt();
+
         switch (select) {
+
             case 1:
                 user.viewProfile();
                 TimeUnit.SECONDS.sleep(2);
                 userMenu(shop, user, admin, seller);
+
             case 2:
                 editProfile(user);
                 TimeUnit.SECONDS.sleep(2);
                 userMenu(shop, user, admin, seller);
+
             case 3:
 
                 System.out.println("⤯ ⤯ ⤯ ⤯ ⤯ Your Order List(not purchased) ⤰ ⤰ ⤰ ⤰ ⤰");
@@ -266,12 +286,14 @@ public static String color = "YELLOW";
                 System.out.println(user.getPurchasedProducts());
                 TimeUnit.SECONDS.sleep(2);
                 userMenu(shop, user, admin, seller);
+
             case 4:
                 System.out.println("This is all the money [[" + user.getWallet() + "]] you have in your wallet.");
 
                 System.out.println("Do you want to ask the admin for more money? (y/n)" +
                         "     NOTICE: If you write 'n', you will go back to the menu.");
                 String yn = input.next();
+
                 if (yn.equals("y")) {
                     System.out.println("How much funding are you looking for?");
                     double amount = input.nextInt();
@@ -279,6 +301,7 @@ public static String color = "YELLOW";
                     user.addToUserAndNewAmountList(user, amount);
                     System.out.println("To find out about the result wait for admin to accept your requests.");
                 }
+
                 TimeUnit.SECONDS.sleep(2);
                 userMenu(shop, user, admin, seller);
 
@@ -292,8 +315,11 @@ public static String color = "YELLOW";
                         " If you want to remove products from your list, press '2'.\n" +
                         " If your list is not yet finished, press '3'.\n" +
                         " If you are ready to pay off, press '4'.\n");
+
                 int option = input.nextInt();
+
                 if (option == 1) {
+
                     System.out.println("Which of them do you want to update?(write it's id)");
                     String id = input.next();
                     // in this part all quantity that user take is go back in to  the product--->
@@ -301,7 +327,9 @@ public static String color = "YELLOW";
 
                     System.out.println("Do you want to 'increase' it or 'decrease' it?");
                     String choose1 = input.next();
+
                     if (choose1.equals("decrease")) {
+
                         System.out.println("How much do you want it Now?");
                         int amount = input.nextInt();
                         user.setListOrder(amount, user.FindOrderUser(id));
@@ -311,8 +339,11 @@ public static String color = "YELLOW";
                         shop.getChoosenProduct(id).setQuantity(currentQuantity - amount);
 
                         userMenu(shop, user, admin, seller);
+
                     }
+
                     if (choose1.equals("increase")) {
+
                         System.out.println("How much do you want it Now?");
                         int amount = input.nextInt();
 
@@ -328,22 +359,30 @@ public static String color = "YELLOW";
                         userMenu(shop, user, admin, seller);
                     }
                 }
+
                 if (option == 2) {
                     System.out.println("Which of them do you want to remove?(write it's id)");
                     String id = input.next();
                     user.removeToListOrderForUser(user.FindOrderUser(id));
                     userMenu(shop, user, admin, seller);
                 }
+
                 if (option == 3) {
                     userMenu(shop, user, admin, seller);
                 }
+
                 if (option == 4) {
                     System.out.println("Do you ask for admin to buy?(y/n)");
                     yn = input.next();
+
                     if (yn.equals("y")) {
+
                         if (shop.getCurrentAccount(user.getUsername()).getConfirm()) {
+
                             ShoppingCart cart = new ShoppingCart();
+
                             if (cart.PriceInCart(user) >= cart.getTotalPrice(user)) {
+
                                 System.out.print("\007");
                                 System.out.flush();
                                 double remainPrice = cart.PriceInCart(user) - cart.getTotalPrice(user);
@@ -356,12 +395,14 @@ public static String color = "YELLOW";
                                 user.getListOrder().clear();
                                 user.getCart().clear();
                                 shop.getCurrentAccount(user.getUsername()).setConfirm(false);
+
                             } else {
                                 System.out.println("You have insufficient funds to purchase these products.");
                             }
+
                         }
 
-                        if (!shop.getCurrentAccount(user.getUsername()).getConfirm()) {
+                        else if (!shop.getCurrentAccount(user.getUsername()).getConfirm()) {
                             System.out.println("Sorry\uD83D\uDD12 --> admin reject you to buy product....");
                         }
 
@@ -369,6 +410,7 @@ public static String color = "YELLOW";
                         shop.transaction(user);
                         System.out.println("SEND --> " + user.getUsername() + "Wants to buy these product");
                     }
+
                     userMenu(shop, user, admin, seller);
                 }
 
@@ -387,57 +429,85 @@ public static String color = "YELLOW";
                 System.out.println("  ✪ Poetry \uD83D\uDCD3");
                 System.out.println("  ✪ Drama \uD83D\uDCD5");
                 String optionss = input.next();
+
                 if (optionss.equals("Man")) {
+
                     product.ManClothes();
                     runFromCategory(user);
                     userMenu(shop, user, admin, seller);
 
                 }
+
                 if ("Woman".equals(optionss)) {
+
                     product.WomanClothes();
                     runFromCategory(user);
                     userMenu(shop, user, admin, seller);
+
                 }
+
                 if ("Kids".equals(optionss)) {
+
                     product.KidsClothes();
                     runFromCategory(user);
                     userMenu(shop, user, admin, seller);
+
                 }
+
                 if ("Laptop".equals(optionss)) {
+
                     product.LaptopEle();
                     runFromCategory(user);
                     userMenu(shop, user, admin, seller);
+
                 }
+
                 if ("Phone".equals(optionss)) {
+
                     product.PhoneELe();
                     runFromCategory(user);
                     userMenu(shop, user, admin, seller);
+
                 }
+
                 if ("Tv".equals(optionss)) {
+
                     product.TvELe();
                     runFromCategory(user);
                     userMenu(shop, user, admin, seller);
+
                 }
+
                 if ("Fiction".equals(optionss)) {
+
                     product.FictionBook();
                     runFromCategory(user);
                     userMenu(shop, user, admin, seller);
+
                 }
+
                 if ("Poetry".equals(optionss)) {
+
                     product.PoetryBook();
                     runFromCategory(user);
                     userMenu(shop, user, admin, seller);
+
                 }
+
                 if ("Drama".equals(optionss)) {
+
                     product.DramaBook();
                     runFromCategory(user);
                     userMenu(shop, user, admin, seller);
-                }
-            case 7:
 
+                }
+
+            case 7:
                 System.out.println("Write the Title of this product...");
                 String title = input.next();
-                System.out.println("Do you want to sort it by a 'Higher' price, a 'Lower' price, or 'Random' order?"); String ans = input.next();
+                System.out.println("Do you want to sort it by a 'Higher' price, a 'Lower' price, or 'Random' order?");
+                String ans = input.next();
+
                 if(ans.equals("Lower")){
                     System.out.println(shop.ClassifiedHigher(title));
                 }
@@ -447,8 +517,10 @@ public static String color = "YELLOW";
                 if(ans.equals("Random")) {
                     System.out.println(shop.searchByTitle(title));
                 }
+
                 runFromCategory(user);
                 userMenu(shop,user,admin, seller);
+
             case 8:
                 shop.logout();
                 run(shop);
@@ -456,9 +528,12 @@ public static String color = "YELLOW";
         }
     }
         public static void adminMenu (Shop shop , User user , Admin admin, Seller seller) throws InterruptedException {
+
             Design();
             int select = input.nextInt();
+
             switch (select) {
+
                 case 1:
                     System.out.println(admin.getListWaitedAdmin());
                     System.out.println("Do you want to reject or confirm?(y/n)"); String yn = input.next();
@@ -470,6 +545,7 @@ public static String color = "YELLOW";
                         String admin1 = input.next();
                         System.out.println("Do you want to confirm?(y,n)");
                         yn = input.next();
+
                         if (yn.equals("y")) {
                             Admin account = admin.ListWaited(admin1);
                             shop.addToListAccounts(account);
@@ -478,7 +554,6 @@ public static String color = "YELLOW";
                             Admin account = admin.ListWaited(admin1);
                             admin.removeListWaited(account);
                         }
-
                     }
 
                     adminMenu(shop, user, admin, seller);
@@ -487,18 +562,23 @@ public static String color = "YELLOW";
                     System.out.println(shop.getListAccounts());
                     System.out.println("Do you want to edit desired user (y/n)?");
                     yn = input.next();
+
                     if (yn.equals("y")) {
+
                         System.out.println("write it's username...");
                         String ans = input.next();
                         System.out.println(shop.searchByUsername(ans));
                         editProfile(user);
+
                     }
                     adminMenu(shop, user, admin, seller);
 
                 case 3:
                     System.out.println(Account.getUserAndNewAmount());
                     System.out.println("Do you want to add Fund?(y/n)"); yn = input.next();
+
                     if(yn.equals("y")) {
+
                         System.out.println("Which user do you want to add Fund?");
                         System.out.print("username = ");
                         String username = input.next();
@@ -513,7 +593,9 @@ public static String color = "YELLOW";
                 case 4:
                     System.out.println(shop.getListAuthorization());
                     System.out.println("Do you want to check it now?(y/n)"); yn = input.next();
+
                     if(yn.equals("y")) {
+
                         System.out.println("Write seller username...");
                         String name = input.next();
                         System.out.println("Do you want to confirm it?(y/n)");
@@ -525,13 +607,16 @@ public static String color = "YELLOW";
                             shop.getCurrentAccount(name).setConfirm(false);
                         }
                         shop.removeSeller((Seller) shop.getCurrentAccount(name));
+
                     }
                     adminMenu(shop,user,admin,seller);
 
                 case 5:
                     System.out.println(shop.getListAuthorize());
                     System.out.println("Do you want to check it now?(y/n)"); yn = input.next();
+
                     if(yn.equals("y")) {
+
                         System.out.println();
                         System.out.println("Write User username...");
                         String name = input.next();
@@ -539,13 +624,17 @@ public static String color = "YELLOW";
                         System.out.println(user1.getListOrder());
                         System.out.println("Do you want to confirm it?(y/n)");
                         yn = input.next();
+
                         if (yn.equals("y")) {
                             shop.getCurrentAccount(name).setConfirm(true);
                         }
+
                         if (yn.equals("n")) {
                             shop.getCurrentAccount(name).setConfirm(false);
                         }
+
                         shop.removeUser((User) shop.getCurrentAccount(name));
+
                     }
                     adminMenu(shop,user,admin,seller);
 
@@ -555,17 +644,20 @@ public static String color = "YELLOW";
 
             }
         }
+
         public static void sellerMenu (Shop shop , User user , Admin admin, Seller seller) throws InterruptedException {
+
             Design();
             int select = input.nextInt();
             switch (select) {
 
                 case 1:
                     System.out.println("Did you ask for authorization?(y/n)['y' means go and see the result and 'n' means go and ask]");
-                   String yn = input.next();
+                    String yn = input.next();
                     if(yn.equals("y")) {
 
                         if (shop.getCurrentAccount(seller.getUsername()).getConfirm()) {
+
                             System.out.println("** You can sell now \uD83D\uDD13︎ ** ");
                             System.out.println("Which product in this category do you want to sell?");
                             System.out.println("-----Category-----");
@@ -582,7 +674,6 @@ public static String color = "YELLOW";
                             System.out.println("  ✪ Poetry \uD83D\uDCD8");
                             System.out.println("  ✪ Drama \uD83D\uDCD9");
 
-
                             String sell = input.next();
                             System.out.print("Enter new id : ");
                             String id = input.next();
@@ -598,75 +689,99 @@ public static String color = "YELLOW";
                                 Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername());
                                 Product.ManClothes.add(clothes);
                                 shop.addToListProducts(clothes);
+
                             }
+
                             if (sell.equals("Woman")) {
 
                                 Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername());
                                 Product.WomanClothes.add(clothes);
                                 shop.addToListProducts(clothes);
+
                             }
+
                             if (sell.equals("Kids")) {
 
                                 Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername());
                                 Product.KidsClothes.add(clothes);
                                 shop.addToListProducts(clothes);
+
                             }
+
                             if (sell.equals("Laptop")) {
 
                                 Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Laptops", seller.getUsername());
                                 Product.Laptops.add(electronics);
                                 shop.addToListProducts(electronics);
+
                             }
+
                             if (sell.equals("Phone")) {
 
                                 Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Phone", seller.getUsername());
                                 Product.Phone.add(electronics);
                                 shop.addToListProducts(electronics);
+
                             }
+
                             if (sell.equals("Tv")) {
 
                                 Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Tv", seller.getUsername());
                                 Product.Tv.add(electronics);
                                 shop.addToListProducts(electronics);
+
                             }
+
                             if (sell.equals("Drama")) {
 
                                 Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Drama", seller.getUsername());
                                 Product.Drama.add(books);
                                 shop.addToListProducts(books);
+
                             }
+
                             if (sell.equals("Fiction")) {
+
                                 Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Fiction", seller.getUsername());
                                 Product.Fiction.add(books);
                                 shop.addToListProducts(books);
+
                             }
+
                             if (sell.equals("Poetry")) {
+
                                 Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Poetry", seller.getUsername());
                                 Product.Poetry.add(books);
                                 shop.addToListProducts(books);
+
                             }
                             shop.getCurrentAccount(user.getUsername()).setConfirm(false);
                         }
+
                         if (!shop.getCurrentAccount(seller.getUsername()).getConfirm()) {
                             System.out.println("Sorry\uD83D\uDD12 --> admin reject you to sell product....");
                         }
                     }
-                    if(yn.equals("n")){
+
+                    if(yn.equals("n")) {
                         System.out.println("send --> "+seller.getUsername()+ " Ask for sell the product");
                         shop.addSeller(seller);
                     }
 
                     sellerMenu(shop, user, admin, seller);
 
-
                 case 2:
                     System.out.print("Enter your desired name :"); String choose = input.next();
                     seller.setShopName(choose,shop);
                     System.out.println("Do you want to change the color?(y/n)"); yn = input.next();
+
                     if(yn.equals("y")){
+
                         System.out.println("Select color for background :     BLACK / RED / GREEN / YELLOW / BLUE / PURPLE / CYAN / WHITE ");
                         color = input.next();
-                        switch (color){
+
+                        switch (color) {
+
                             case "BLACK":
                                 shop.setColor("BLACK");
                             case "RED":
@@ -683,36 +798,46 @@ public static String color = "YELLOW";
                                 shop.setColor("CYAN");
                             case "WHITE":
                                 shop.setColor("WHITE");
+
                         }
 
                     }
+
                     sellerMenu(shop,user,admin, seller);
 
                 case 3:
-                    //wallet
                         System.out.println( "This is all of your Money : "+ seller.getPriceInWallet());
                         TimeUnit.SECONDS.sleep(3);
                         sellerMenu(shop,user,admin, seller);
+
                 case 4:
                     seller.ListAvailable(shop);
                     sellerMenu(shop,user,admin, seller);
+
                 case 5:
                     shop.logout();
                     run(shop);
             }
+
         }
+
     public static void runFromCategory(User user){
+
         System.out.println("Would you like to add any products to your order list?(y/n)");
         String yn = input.next();
+
         if (yn.equals("y")) {
             System.out.println("plz write it's id..");
             String id = input.next();
+
             if (shop.doesProductExist(id)) {
                 System.out.println("How many of this product do you want?");
                 int count = input.nextInt();
+
                 shop.decreaseQuantity(shop.getChoosenProduct(id), count, shop, id, count, user ,shop.getChoosenProduct(id).getBuyer());
                 System.out.println("Do you want to add comment below of this product?(y/n)");
                 yn = input.next();
+
                 if (yn.equals("y")) {
                     System.out.println("add your comment ...");
                     String ans = input.next();
@@ -726,7 +851,9 @@ public static String color = "YELLOW";
         }
 
     }
-    public static void editProfile(User user){
+
+    public static void editProfile(User user) {
+
         System.out.println("*** if you want to edit so do it ***");
         System.out.print("Username :");
         String username = input.next();

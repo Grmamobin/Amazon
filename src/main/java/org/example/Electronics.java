@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Electronics extends SubCategory {
 
-    public Electronics(String id,String name, double price, int quantity, ArrayList<String> commentList, String subcategory,String buyer) {
+    public Electronics(String id,String name, double price, int quantity,
+                       ArrayList<String> commentList, String subcategory,String buyer) {
 
         super(id,name, price, quantity,commentList ,"Electronics", subcategory,buyer);
 

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Order {
+
     private String id;
     private int quantity;
     private Date date;
@@ -12,11 +13,10 @@ public class Order {
     private double unitPrice;
     private User detailsBuyer;
     private String detailsSeller;
-    private ArrayList<Product> products;
     private ArrayList<Seller> seller;
-  /*  private ArrayList<Order> orderUser;*/
 
-    public Order(String id,int quantity,Date date , double totalPrice ,double unitPrice ,User detailsBuyer , String detailsSeller){
+    public Order(String id,int quantity,Date date , double totalPrice ,double unitPrice ,User detailsBuyer
+                 ,String detailsSeller){
         this.id = id;
         this.quantity = quantity;
         this.date = date;
@@ -24,51 +24,15 @@ public class Order {
         this.unitPrice = unitPrice;
         this.detailsBuyer = detailsBuyer;
         this.detailsSeller = detailsSeller;
-    }
-    public Order( ){
-        this.id = id;
-        this.quantity = quantity;
-        this.date = date;
-        this.totalPrice = unitPrice * quantity;
-        this.unitPrice = unitPrice;
-        this.detailsBuyer = detailsBuyer;
-        this.detailsSeller = detailsSeller;
+
     }
 
-    public Date getDate() {
-        return new Date();
-    }
-    public double getTotalPrice(/*Product product , int quantity*/) {
-        /*totalPrice += (product.getPrice() * quantity);*/
+    public double getTotalPrice() {
         return totalPrice;
     }
 
-    public User getDetailsBuyer() {
-        return detailsBuyer;
-    }
-
     public  String getDetailsSeller() {
-
         return detailsSeller;
-    }
-
-    public ArrayList<Product> getProduct() {
-        return products;
-    }
-
-    public void ConformReceive(){
-
-    }
-    public  void  UpdateRemaining(){
-
-    }
-
-    public ArrayList<Seller> getSeller() {
-        return seller;
-    }
-
-    public void setSeller(ArrayList<Seller> seller) {
-        this.seller = seller;
     }
 
     public int getQuantity() {
@@ -87,10 +51,6 @@ public class Order {
         return id;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
@@ -101,6 +61,7 @@ public class Order {
 
     @Override
     public String toString() {
+
         return  " id = " + id + "\n" +
                 " quantity = " + quantity + "\n" +
                 " date = " + date + "\n" +
@@ -108,6 +69,7 @@ public class Order {
                 " unitPrice = " + unitPrice + "\n" +
                 " detailsBuyer = " + detailsBuyer + "\n" +
                 " detailsSeller = " + detailsSeller+ "\n";
+
     }
 
     @Override
@@ -122,4 +84,5 @@ public class Order {
     public int hashCode() {
         return Objects.hash(id, quantity, date, totalPrice, unitPrice, detailsBuyer, detailsSeller, products);
     }
+
 }

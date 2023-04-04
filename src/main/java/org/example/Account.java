@@ -1,9 +1,9 @@
 package org.example;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class Account {
+
     private String username;
     private String password;
     private String emailAddress;
@@ -26,7 +26,9 @@ public abstract class Account {
         this.confirm = false;
 
     }
+
     public Account(String username ,String password){
+
         this.username = username;
         this.password = password;
         this.emailAddress = getEmailAddress();
@@ -34,6 +36,7 @@ public abstract class Account {
         this.address = getAddress();
         this.gender = getGender();
         this.wallet = new Wallet();
+
     }
 
     public String getUsername() {
@@ -56,7 +59,9 @@ public abstract class Account {
         return address;
     }
 
-    public String getGender() {return gender;}
+    public String getGender() {
+        return gender;
+    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -74,39 +79,37 @@ public abstract class Account {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setAddress(String address) {this.address = address;}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-    public void setGender(String gender) {this.gender = gender;}
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public Wallet getWallet() {
         return wallet;
     }
 
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
-    }
     public static HashMap<String,Double> getUserAndNewAmount() {
         return UserAndNewAmount;
-    }
-
-    public void setUserAndNewAmount(HashMap<String, Double> userAndNewAmount) {
-        UserAndNewAmount = userAndNewAmount;
     }
 
     public void addToUserAndNewAmountList(User user , Double amount){
         UserAndNewAmount.put(user.getUsername() ,amount);
     }
+
     public void removeUserAndNewAmountList(User user , Double amount){
         UserAndNewAmount.remove(user.getUsername(),amount);
     }
+
     public boolean getConfirm(){
         return  this.confirm;
     }
+
     public void setConfirm(boolean confirm){
         this.confirm = confirm;
     }
 
-
-   /* public abstract String getType();*/
 
 }

@@ -3,7 +3,7 @@ package org.example;
 import java.util.ArrayList;
 
 public class Product {
-   /* private static int nextId = 1;*/
+
     private String id;
     private String productName;
     private double price;
@@ -20,21 +20,27 @@ public class Product {
     public static ArrayList<Books> Poetry = new ArrayList<>();
     public static ArrayList<Books> Fiction = new ArrayList<>();
 
-    public Product( String id, String productName , double price ,int quantity , ArrayList<String> commentList,String buyer){
+    public Product( String id, String productName , double price ,int quantity , ArrayList<String> commentList
+            ,String buyer){
+
         this.id = id;
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
         this.commentList = commentList;
         this.buyer = buyer;
+
     }
-    public Product( ){
+
+    public Product(){
+
         this.id = null;
         this.productName = null;
         this.price = 0.0;
         this.quantity =0;
         this.commentList = null;
         this.buyer =null;
+
     }
 
     public String getProductName() {
@@ -49,61 +55,22 @@ public class Product {
         return quantity;
     }
 
-    public ArrayList<String> getCommentList() {
-        return commentList;
-    }
-
     public String getId() {return id;}
 
     public String getBuyer() {
         return buyer;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    public void setCommentList(ArrayList<String> commentList) {
-        this.commentList = commentList;
-    }
-
-    public void setId(String id) {this.id = id;}
 
     public void addComment(String comment){
         commentList.add(comment);
     }
 
-    public ArrayList<Clothes> getManClothes() {
-        return ManClothes;
-    }
-    public void setManClothes(ArrayList<Clothes> manClothes) {
-        ManClothes = manClothes;
-    }
+    public void ManClothes() {
 
-    public static ArrayList<Clothes> getWomanClothes() {
-        return WomanClothes;
-    }
-
-    public static void setWomanClothes(ArrayList<Clothes> womanClothes) {
-        WomanClothes = womanClothes;
-    }
-
-    public static ArrayList<Clothes> getKidsClothes() {
-        return KidsClothes;
-    }
-
-    public static void setKidsClothes(ArrayList<Clothes> kidsClothes) {
-        KidsClothes = kidsClothes;
-    }
-    public void ManClothes(){
            System.out.print("                  _\n" +
                 "                 ( |\n" +
                 "                   |\n" +
@@ -124,8 +91,10 @@ public class Product {
 
 
         System.out.print("Man clothes are :\n" + ManClothes);
+
     }
-    public void WomanClothes(){
+
+    public void WomanClothes() {
         System.out.print("                  _\n" +
                 "                 ( |\n" +
                 "                   |\n" +
@@ -145,8 +114,10 @@ public class Product {
                 "            |_____/\\_____|");
 
         System.out.print("Woman clothes are :\n" + WomanClothes);
+
     }
-    public void KidsClothes(){
+
+    public void KidsClothes() {
         System.out.print("                  _\n" +
                 "                 ( |\n" +
                 "                   |\n" +
@@ -166,8 +137,11 @@ public class Product {
                 "            |_____/\\_____|");
 
         System.out.print("Kids clothes are :\n" + KidsClothes);
+
     }
-    public void LaptopEle(){
+
+    public void LaptopEle() {
+
          System.out.print("\n" +
                  "                                      ._________________.\n" +
                  "                                      |.---------------.|\n" +
@@ -183,8 +157,11 @@ public class Product {
                  "                                   /______/__________\\___o_\\ DrS\n" +
                  "                                   \\_______________________/");
         System.out.print("Laptops are :\n" + Laptops);
+
     }
-    public void TvELe(){
+
+    public void TvELe() {
+
         System.out.print("\n" +
                 "                    o\n" +
                 "           o       /\n" +
@@ -203,8 +180,11 @@ public class Product {
                 "+----------------------------+\n" +
                 "   []                    []\n");
         System.out.print("Tvs are :\n"+ Tv);
+
     }
-    public void PhoneELe(){
+
+    public void PhoneELe() {
+
         System.out.print(" \n" +
                 "\n" +
                 "                                                         .\n" +
@@ -225,9 +205,10 @@ public class Product {
                 "                            '-----'\n" +
                 "\n");
         System.out.print("Phones are :\n" + Phone);
-    }
-    public void DramaBook(){
 
+    }
+
+    public void DramaBook() {
 
         System.out.print("\n" +
                 "                .-~~~~~~~~~-._       _.-~~~~~~~~~-.\n" +
@@ -240,8 +221,10 @@ public class Product {
                 ".'______________________________\\|/______________________________`.");
 
         System.out.print("Dramas books are :\n" + Drama);
+
     }
-    public void FictionBook(){
+
+    public void FictionBook() {
 
         System.out.print("\n" +
                 "                .-~~~~~~~~~-._       _.-~~~~~~~~~-.\n" +
@@ -253,8 +236,10 @@ public class Product {
                 "  .'//______.============-..   \\ | /   ..-============.______\\\\`.\n" +
                 ".'______________________________\\|/______________________________`.");
         System.out.print("Fiction books are :\n" + Fiction);
+
     }
-    public void PoetryBook(){
+
+    public void PoetryBook() {
 
         System.out.print("\n" +
                 "                .-~~~~~~~~~-._       _.-~~~~~~~~~-.\n" +
@@ -266,10 +251,8 @@ public class Product {
                 "  .'//______.============-..   \\ | /   ..-============.______\\\\`.\n" +
                 ".'______________________________\\|/______________________________`.");
         System.out.print("Poetry books are :\n" + Poetry);
+
     }
-
-
-
 
     @Override
     public String toString() {
@@ -280,5 +263,7 @@ public class Product {
                 "  price =  " + price +   "\n" +
                 "  quantity = " + quantity +   "\n" +
                 "  commentList = " + commentList +   "\n\n";
+
     }
+
 }
