@@ -108,9 +108,7 @@ public class Shop {
 
             }
         }
-
         return null;
-
     }
 
     public Product getChoosenProduct(String id) {
