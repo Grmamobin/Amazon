@@ -121,6 +121,7 @@ public class Main {
         run(shop);
 
     }
+
     public static String color = "YELLOW";
     public static void run(Shop shop ) throws InterruptedException {
 
