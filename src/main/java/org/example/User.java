@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 
-public  class User extends Account{
+public  class User extends Account {
 
     private ArrayList<Order> ListOrderforUser;
     private ArrayList<Order> PurchasedProducts;
@@ -127,7 +127,7 @@ public  class User extends Account{
     }
 
     public void requestFunds(double amount, User user) {
-        System.out.println("Sent--> request to admin for "+amount+" money from  "+ user.getUsername() +"'s wallet");
+        System.out.println("SENT \uD83D\uDCE9--> request to admin for "+amount+" money from  "+ user.getUsername() +"'s wallet");
     }
 
     @Override

@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 
-public class Admin extends Account{
+public class Admin extends Account {
 
     private ArrayList<Admin> ListWaitedAdmin;
 

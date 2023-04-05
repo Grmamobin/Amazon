@@ -186,7 +186,7 @@ public class Shop {
         product.setQuantity(currentQuantity + quantity);
     }
 
-    public void decreaseQuantity(Product product , int quantity , Shop shop ,String id , int count , User user , String seller) {
+    public void decreaseQuantity(Product product , int quantity , Shop shop , String id , int count , User user , String seller) {
 
         int currentQuantity = product.getQuantity();
         if (currentQuantity >= quantity) {
@@ -219,7 +219,7 @@ public class Shop {
 
     }
 
-    public void addToListOrder(User user,Order order){
+    public void addToListOrder(User user, Order order){
         ListOrders.add(order); //related to doc we should have list of all order
         user.addToListOrderForUser(order);
     }
