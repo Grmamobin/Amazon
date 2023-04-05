@@ -1,5 +1,8 @@
 package org.example;
 import java.util.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import org.json.JSONObject;
 
 public class Shop {
 
@@ -247,10 +250,22 @@ public class Shop {
 
     public ArrayList<Product> searchByTitle(String title) {
 
+        //If this has capital and normal case in programing it will be recognizing --->
+
+        Pattern search1 = Pattern.compile(".*" + title + ".*", Pattern.CASE_INSENSITIVE);
+
         ArrayList<Product> result = new ArrayList<>();
+
         for (Product product : ListProducts) {
-            if(title.compareTo(product.getProductName())== 0) {
+
+            Pattern search2 = Pattern.compile("(?i)(?:"+product.getProductName()+")",Pattern.CASE_INSENSITIVE);
+            Matcher matcher1 = search1.matcher(product.getProductName());
+            Matcher matcher2 = search2.matcher(title);
+
+            if(title.compareTo(product.getProductName())== 0 || matcher1.find() || matcher2.find()) {
+
                 result.add(product);
+
             }
         }
 
@@ -260,10 +275,22 @@ public class Shop {
 
     public ArrayList<Product> ClassifiedHigher(String title) {
 
+        //classify the list of product by higher price --->
+
+        Pattern search1 = Pattern.compile(".*" + title + ".*", Pattern.CASE_INSENSITIVE);
+
         ArrayList<Product> result = new ArrayList<>();
+
         for (Product product : ListProducts) {
-            if(title.compareTo(product.getProductName())== 0) {
+
+            Pattern search2 = Pattern.compile("(?i)(?:"+product.getProductName()+")",Pattern.CASE_INSENSITIVE);
+            Matcher matcher1 = search1.matcher(product.getProductName());
+            Matcher matcher2 = search2.matcher(title);
+
+            if(title.compareTo(product.getProductName())== 0 || matcher1.find() || matcher2.find()) {
+
                 result.add(product);
+
             }
         }
 
@@ -274,10 +301,22 @@ public class Shop {
 
     public ArrayList<Product> ClassifiedLower(String title) {
 
+        //classify the list of product by Lower price --->
+
+        Pattern search1 = Pattern.compile(".*" + title + ".*", Pattern.CASE_INSENSITIVE);
+
         ArrayList<Product> result = new ArrayList<>();
+
         for (Product product : ListProducts) {
-            if(title.compareTo(product.getProductName())== 0) {
+
+            Pattern search2 = Pattern.compile("(?i)(?:"+product.getProductName()+")",Pattern.CASE_INSENSITIVE);
+            Matcher matcher1 = search1.matcher(product.getProductName());
+            Matcher matcher2 = search2.matcher(title);
+
+            if(title.compareTo(product.getProductName())== 0 || matcher1.find() || matcher2.find()) {
+
                 result.add(product);
+
             }
         }
 

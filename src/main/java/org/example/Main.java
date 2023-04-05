@@ -3,9 +3,9 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import org.json.JSONObject;
 
 public class Main {
 
@@ -102,13 +102,13 @@ public class Main {
         shop.addToListProducts(poetry);
         shop.addToListProducts(poetrys);
 
-        Clothes man = new Clothes("Mn001","ShirtBlue",560,12,new ArrayList<String>(),"Man",sellers.getUsername());
+        Clothes man = new Clothes("Mn001","Shirt",560,12,new ArrayList<String>(),"Man",sellers.getUsername());
         man.addComment("bought the solid dark & light blue shirts for my husband but had to return both." +
                 " First the fiber blend is not as stated cotton/linen but Rayon/Linen." +
                 " They are true to size and fabric is not too thick for summer" +
                 " BUT they itch..... Probably because of the linen being a coarser natural fibers so had to return them. ");
 
-        Clothes woman = new Clothes("Wn001","DressCyan",710.78,8,new ArrayList<String>(),"Woman",seller.getUsername());
+        Clothes woman = new Clothes("Wn001","Dress",710.78,8,new ArrayList<String>(),"Woman",seller.getUsername());
 
         Clothes kid = new Clothes("Ks001","Socks",211.23,35,new ArrayList<String>(),"Kids",sellers.getUsername());
         Product.ManClothes.add(man);
@@ -135,7 +135,7 @@ public class Main {
                 "                |_|        ");
         System.out.println(shop.setColor(color)+"    " + shop.getShopName() +" Shop   "+ ANSI_RESET);
         System.out.print(" 1.User       2.Admin       3.Seller       4.Exit\n 1-1.Sign up  2-1.Sign up   3-1.Sign up \n 1-2.log in   2-2.log in    3-2.log in \n ");
-        System.out.print("Choose your Access by selecting number =  "); String select = input.next();
+        System.out.print("Choose your Access by selecting number =  "); String select = input.nextLine();
         if(select.equals("1-1")){SignUpUser(shop);}
         if(select.equals("1-2")){LogInUser(shop);}
         if(select.equals("2-1")){SignUpAdmin(shop);}
@@ -148,9 +148,9 @@ public class Main {
 
     public static void SignUpUser(Shop shop) throws InterruptedException {
 
-        System.out.print("Username :");String username = input.next();
-        System.out.print("Password :");String password = input.next();
-        System.out.print("Email Address :");String email = input.next();
+        System.out.print("Username :");String username = input.nextLine();
+        System.out.print("Password :");String password = input.nextLine();
+        System.out.print("Email Address :");String email = input.nextLine();
 
         Pattern Email = Pattern.compile("^\\w+([.-]?\\w+)*@[a-zA-Z\\\\d]*\\.[a-zA-Z]{3}$");
         Matcher matcher = Email.matcher(email);
@@ -158,14 +158,14 @@ public class Main {
         while (!matcher.find()){
 
              System.out.println("Your Email Address is wrong ⚠️ ︎");
-             System.out.print("Email Address :");  email = input.next();
+             System.out.print("Email Address :");  email = input.nextLine();
 
              Email = Pattern.compile("^\\w+([.-]?\\w+)*@[a-zA-Z\\\\d]*\\.[a-zA-Z]{3}$");
              matcher = Email.matcher(email);
 
         }
 
-        System.out.print("Phone Number : "); String phone = input.next();
+        System.out.print("Phone Number : "); String phone = input.nextLine();
 
         Pattern Phone = Pattern.compile("^(0|0098|\\+98)9(0[1-5]|[1 3]\\d|2[0-2]|98)\\d{7}$");
         Matcher matcher1 = Phone.matcher(phone);
@@ -173,15 +173,15 @@ public class Main {
         while (!matcher1.find()){
 
             System.out.println("Your Phone Number is wrong ⚠️ ︎");
-            System.out.print("Phone Number : ");  phone = input.next();
+            System.out.print("Phone Number : ");  phone = input.nextLine();
 
             Phone = Pattern.compile("^(0|0098|\\+98)9(0[1-5]|[1 3]\\d|2[0-2]|98)\\d{7}$");
             matcher1 = Phone.matcher(phone);
 
         }
 
-        System.out.print("Address :");String address = input.next();
-        System.out.println("Gender : (Man/Woman)"); String gender = input.next();
+        System.out.print("Address :");String address = input.nextLine();
+        System.out.println("Gender : (Man/Woman)"); String gender = input.nextLine();
 
         if(shop.createAccount(username,password,"User")){
             Account user = new User(username, password, email, phone , address , gender);
@@ -195,8 +195,8 @@ public class Main {
 
     public static void LogInUser(Shop shop ) throws InterruptedException {
 
-        System.out.print("Username :"); String username = input.next();
-        System.out.print("Password :"); String password = input.next();
+        System.out.print("Username :"); String username = input.nextLine();
+        System.out.print("Password :"); String password = input.nextLine();
 
         if(shop.login(username, password)){
             Account user = new User(username,password);
@@ -209,9 +209,9 @@ public class Main {
 
     public static void SignUpAdmin(Shop shop) throws InterruptedException {
 
-        System.out.print("Username :");String username = input.next();
-        System.out.print("Password :");String password = input.next();
-        System.out.print("Email Address :");String email = input.next();
+        System.out.print("Username :");String username = input.nextLine();
+        System.out.print("Password :");String password = input.nextLine();
+        System.out.print("Email Address :");String email = input.nextLine();
 
         Pattern Email = Pattern.compile("^\\w+([.-]?\\w+)*@[a-zA-Z\\\\d]*\\.[a-zA-Z]{3}$");
         Matcher matcher = Email.matcher(email);
@@ -219,14 +219,14 @@ public class Main {
         while (!matcher.find()){
 
             System.out.println("Your Email Address is wrong ⚠️ ︎");
-            System.out.print("Email Address :");  email = input.next();
+            System.out.print("Email Address :");  email = input.nextLine();
 
             Email = Pattern.compile("^\\w+([.-]?\\w+)*@[a-zA-Z\\\\d]*\\.[a-zA-Z]{3}$");
             matcher = Email.matcher(email);
 
         }
 
-        System.out.print("Phone Number : "); String phone = input.next();
+        System.out.print("Phone Number : "); String phone = input.nextLine();
 
         Pattern Phone = Pattern.compile("^(0|0098|\\+98)9(0[1-5]|[1 3]\\d|2[0-2]|98)\\d{7}$");
         Matcher matcher1 = Phone.matcher(phone);
@@ -234,16 +234,16 @@ public class Main {
         while (!matcher1.find()){
 
             System.out.println("Your Phone Number is wrong ⚠️ ︎");
-            System.out.print("Phone Number : ");  phone = input.next();
+            System.out.print("Phone Number : ");  phone = input.nextLine();
 
             Phone = Pattern.compile("^(0|0098|\\+98)9(0[1-5]|[1 3]\\d|2[0-2]|98)\\d{7}$");
             matcher1 = Phone.matcher(phone);
 
         }
 
-        String address = input.next();
+        System.out.print("Address :");String address = input.nextLine();
         System.out.println("Gender : (Man/Woman)");
-        String gender = input.next();
+        String gender = input.nextLine();
 
         if (shop.createAccount(username, password, "Admin")) {
             Admin admin1 = new Admin(username, password, email, phone, address, gender);
@@ -255,8 +255,8 @@ public class Main {
 
     public static void LogInAdmin(Shop shop ) throws InterruptedException {
 
-        System.out.print("Username :"); String username = input.next();
-        System.out.print("Password :"); String password = input.next();
+        System.out.print("Username :"); String username = input.nextLine();
+        System.out.print("Password :"); String password = input.nextLine();
 
         if(shop.login(username, password)){
             System.out.println("            WELCOME ADMIN            ");
@@ -271,9 +271,9 @@ public class Main {
 
     public static void SignUpSeller(Shop shop) throws InterruptedException {
 
-        System.out.print("Username :");String username = input.next();
-        System.out.print("Password :");String password = input.next();
-        System.out.print("Email Address :");String email = input.next();
+        System.out.print("Username :");String username = input.nextLine();
+        System.out.print("Password :");String password = input.nextLine();
+        System.out.print("Email Address :");String email = input.nextLine();
 
         Pattern Email = Pattern.compile("^\\w+([.-]?\\w+)*@[a-zA-Z\\\\d]*\\.[a-zA-Z]{3}$");
         Matcher matcher = Email.matcher(email);
@@ -281,14 +281,14 @@ public class Main {
         while (!matcher.find()){
 
             System.out.println("Your Email Address is wrong ⚠️ ︎");
-            System.out.print("Email Address :");  email = input.next();
+            System.out.print("Email Address :");  email = input.nextLine();
 
             Email = Pattern.compile("^\\w+([.-]?\\w+)*@[a-zA-Z\\\\d]*\\.[a-zA-Z]{3}$");
             matcher = Email.matcher(email);
 
         }
 
-        System.out.print("Phone Number : "); String phone = input.next();
+        System.out.print("Phone Number : "); String phone = input.nextLine();
 
         Pattern Phone = Pattern.compile("^(0|0098|\\+98)9(0[1-5]|[1 3]\\d|2[0-2]|98)\\d{7}$");
         Matcher matcher1 = Phone.matcher(phone);
@@ -296,15 +296,15 @@ public class Main {
         while (!matcher1.find()){
 
             System.out.println("Your Phone Number is wrong ⚠️ ︎");
-            System.out.print("Phone Number : ");  phone = input.next();
+            System.out.print("Phone Number : ");  phone = input.nextLine();
 
             Phone = Pattern.compile("^(0|0098|\\+98)9(0[1-5]|[1 3]\\d|2[0-2]|98)\\d{7}$");
             matcher1 = Phone.matcher(phone);
 
         }
 
-        System.out.print("Address :");String address = input.next();
-        System.out.println("Gender : (Man/Woman)"); String gender = input.next();
+        System.out.print("Address :");String address = input.nextLine();
+        System.out.println("Gender : (Man/Woman)"); String gender = input.nextLine();
 
         if(shop.createAccount(username,password,"Seller")) {
 
@@ -320,8 +320,8 @@ public class Main {
 
     public static void LogInSeller(Shop shop) throws InterruptedException {
 
-        System.out.print("Username :"); String username = input.next();
-        System.out.print("Password :"); String password = input.next();
+        System.out.print("Username :"); String username = input.nextLine();
+        System.out.print("Password :"); String password = input.nextLine();
 
         if(shop.login(username, password)){
             Account seller = new Seller(shop.getShopName(),username,password);
@@ -350,6 +350,8 @@ public class Main {
     public static void userMenu(Shop shop , User user , Admin admin, Seller seller) throws InterruptedException {
         Design();
         int select = input.nextInt();
+        input.nextLine();
+
 
         switch (select) {
 
@@ -377,17 +379,20 @@ public class Main {
 
                 System.out.println("Do you want to ask the admin for more money? (y/n)" +
                         "     NOTICE: If you write 'n', you will go back to the menu.");
-                String yn = input.next();
+                String yn = input.nextLine();
 
                 if (yn.equals("y")) {
                     System.out.println("How much funding are you looking for?");
-                    double amount = input.nextInt();
+                    double amount = input.nextDouble();
+                    input.nextLine();
+
                     user.requestFunds(amount, user);
-                    user.addToUserAndNewAmountList(user, amount);
                     System.out.println("To find out about the result wait for admin to accept your requests.");
+
+                    TimeUnit.SECONDS.sleep(3);
+                    user.addToUserAndNewAmountList(user, amount);
                 }
 
-                TimeUnit.SECONDS.sleep(2);
                 userMenu(shop, user, admin, seller);
 
             case 5:
@@ -396,33 +401,38 @@ public class Main {
                 System.out.println("Your Current Money is = " + user.getWallet().getCurrentMoney());
                 System.out.println("Total Price You have to pay is = " + carts.getTotalPrice(user) + "\n");
                 TimeUnit.SECONDS.sleep(2);
+
                 System.out.println("If you want to update the number of items in your cart press '1'.\n" +
                         " If you want to remove products from your list, press '2'.\n" +
                         " If your list is not yet finished, press '3'.\n" +
                         " If you are ready to pay off, press '4'.\n");
 
                 int option = input.nextInt();
+                input.nextLine();
 
                 if (option == 1) {
 
                     System.out.println("Which of them do you want to update?(write it's id)");
-                    String id = input.next();
+                    String id = input.nextLine();
                     // in this part all quantity that user take is go back in to  the product--->
                     shop.increaseQuantity(shop.getChoosenProduct(id) ,user.FindOrderUser(id).getQuantity());
 
                     System.out.println("Do you want to 'increase' it or 'decrease' it?");
-                    String choose1 = input.next();
+                    String choose1 = input.nextLine();
 
                     if (choose1.equals("decrease")) {
 
                         System.out.println("How much do you want it Now?");
                         int amount = input.nextInt();
+                        input.nextLine();
+
                         user.setListOrder(amount, user.FindOrderUser(id));
                         carts.setTotalPrice(carts.getTotalPrice(user));
                         // in this part it is decrease from product--->
                         int currentQuantity = shop.getChoosenProduct(id).getQuantity();
                         shop.getChoosenProduct(id).setQuantity(currentQuantity - amount);
 
+                        TimeUnit.SECONDS.sleep(2);
                         userMenu(shop, user, admin, seller);
 
                     }
@@ -431,6 +441,7 @@ public class Main {
 
                         System.out.println("How much do you want it Now?");
                         int amount = input.nextInt();
+                        input.nextLine();
 
                         int currentQuantity = shop.getChoosenProduct(id).getQuantity();
                         if (currentQuantity >= amount) {
@@ -441,14 +452,19 @@ public class Main {
                             System.out.println("We don't have this amount of product in our category");
                         }
 
+                        TimeUnit.SECONDS.sleep(2);
                         userMenu(shop, user, admin, seller);
                     }
                 }
 
                 if (option == 2) {
                     System.out.println("Which of them do you want to remove?(write it's id)");
-                    String id = input.next();
+                    String id = input.nextLine();
+
                     user.removeToListOrderForUser(user.FindOrderUser(id));
+                    System.out.println("REMOVE.................");
+
+                    TimeUnit.SECONDS.sleep(2);
                     userMenu(shop, user, admin, seller);
                 }
 
@@ -458,7 +474,7 @@ public class Main {
 
                 if (option == 4) {
                     System.out.println("Do you ask for admin to buy?(y/n)");
-                    yn = input.next();
+                    yn = input.nextLine();
 
                     if (yn.equals("y")) {
 
@@ -468,11 +484,10 @@ public class Main {
 
                             if (cart.PriceInCart(user) >= cart.getTotalPrice(user)) {
 
-                                System.out.print("\007");
-                                System.out.flush();
                                 double remainPrice = cart.PriceInCart(user) - cart.getTotalPrice(user);
                                 System.out.println("****\uD83D\uDCB6 YOU PAID SUCCESSFULLY \uD83D\uDCB6****" + "\n" +
                                         "Remaining = " + remainPrice + "\n");
+
                                 user.getWallet().setCurrentMoney(remainPrice); //   <---current money
                                 shop.setTotalProfit(cart.getTotalPrice(user) * (0.1));
                                 user.transaction(shop);
@@ -496,6 +511,7 @@ public class Main {
                         System.out.println("SENT \uD83D\uDCE9 --> " + user.getUsername() + "  Wants to buy these product");
                     }
 
+                    TimeUnit.SECONDS.sleep(3);
                     userMenu(shop, user, admin, seller);
                 }
 
@@ -513,7 +529,9 @@ public class Main {
                 System.out.println("  ✪ Fiction \uD83D\uDCD6");
                 System.out.println("  ✪ Poetry \uD83D\uDCD3");
                 System.out.println("  ✪ Drama \uD83D\uDCD5");
-                String optionss = input.next();
+
+                String optionss = input.nextLine();
+                System.out.println("Is this any product that you look for?(y/n)");
 
                 if (optionss.equals("Man")) {
 
@@ -588,10 +606,11 @@ public class Main {
                 }
 
             case 7:
-                System.out.println("Write the Title of this product...");
-                String title = input.next();
-                System.out.println("Do you want to sort it by a 'Higher' price, a 'Lower' price, or 'Random' order?");
-                String ans = input.next();
+                System.out.println("Write the Title of this product ...");
+                String title = input.nextLine();
+
+                System.out.println("Do you want it to sort by a 'Higher' price, a 'Lower' price, or 'Random' order?");
+                String ans = input.nextLine();
 
                 if(ans.equals("Lower")){
                     System.out.println(shop.ClassifiedHigher(title));
@@ -604,10 +623,12 @@ public class Main {
                 }
 
                 runFromCategory(user);
+                TimeUnit.SECONDS.sleep(3);
                 userMenu(shop,user,admin, seller);
 
             case 8:
                 shop.logout();
+                TimeUnit.SECONDS.sleep(3);
                 run(shop);
 
         }
@@ -616,20 +637,21 @@ public class Main {
 
             Design();
             int select = input.nextInt();
+            input.nextLine();
 
             switch (select) {
 
                 case 1:
                     System.out.println(admin.getListWaitedAdmin());
-                    System.out.println("Do you want to reject or confirm?(y/n)"); String yn = input.next();
+                    System.out.println("Do you want to reject or confirm?(y/n)"); String yn = input.nextLine();
                     if(yn.equals("y")) {
 
                         System.out.println("Which admin do you want to confirm OR reject?");
 
                         System.out.print("username = ");
-                        String admin1 = input.next();
+                        String admin1 = input.nextLine();
                         System.out.println("Do you want to confirm?(y,n)");
-                        yn = input.next();
+                        yn = input.nextLine();
 
                         if (yn.equals("y")) {
                             Admin account = admin.ListWaited(admin1);
@@ -641,50 +663,55 @@ public class Main {
                         }
                     }
 
+                    TimeUnit.SECONDS.sleep(2);
                     adminMenu(shop, user, admin, seller);
 
                 case 2:
                     System.out.println(shop.getListAccounts());
                     System.out.println("Do you want to edit desired user (y/n)?");
-                    yn = input.next();
+                    yn = input.nextLine();
 
                     if (yn.equals("y")) {
 
                         System.out.println("write it's username...");
-                        String ans = input.next();
+                        String ans = input.nextLine();
                         System.out.println(shop.searchByUsername(ans));
                         editProfile(user);
 
                     }
+                    TimeUnit.SECONDS.sleep(2);
                     adminMenu(shop, user, admin, seller);
 
                 case 3:
                     System.out.println(Account.getUserAndNewAmount());
-                    System.out.println("Do you want to add Fund?(y/n)"); yn = input.next();
+                    System.out.println("Do you want to add Fund?(y/n)"); yn = input.nextLine();
 
                     if(yn.equals("y")) {
 
                         System.out.println("Which user do you want to add Fund?");
                         System.out.print("username = ");
-                        String username = input.next();
+                        String username = input.nextLine();
                         System.out.println("How much money does it want?");
                         double amount = input.nextDouble();
                         admin.addFunds(amount, new Wallet(), (User) shop.getCurrentAccount(username));
                         admin.removeUserAndNewAmountList((User) shop.getCurrentAccount(username), amount);
 
                     }
+
+                    TimeUnit.SECONDS.sleep(2);
                     adminMenu(shop, user, admin, seller);
 
                 case 4:
                     System.out.println(shop.getListAuthorization());
-                    System.out.println("Do you want to check it now?(y/n)"); yn = input.next();
+                    System.out.println("Do you want to check it now?(y/n)"); yn = input.nextLine();
 
                     if(yn.equals("y")) {
 
                         System.out.println("Write seller username...");
-                        String name = input.next();
+                        String name = input.nextLine();
                         System.out.println("Do you want to confirm it?(y/n)");
-                        yn = input.next();
+                        yn = input.nextLine();
+
                         if (yn.equals("y")) {
                             shop.getCurrentAccount(name).setConfirm(true);
                         }
@@ -694,21 +721,23 @@ public class Main {
                         shop.removeSeller((Seller) shop.getCurrentAccount(name));
 
                     }
+
+                    TimeUnit.SECONDS.sleep(2);
                     adminMenu(shop,user,admin,seller);
 
                 case 5:
                     System.out.println(shop.getListAuthorize());
-                    System.out.println("Do you want to check it now?(y/n)"); yn = input.next();
+                    System.out.println("Do you want to check it now?(y/n)"); yn = input.nextLine();
 
                     if(yn.equals("y")) {
 
                         System.out.println();
                         System.out.println("Write User username...");
-                        String name = input.next();
+                        String name = input.nextLine();
                         User user1 = (User) shop.getCurrentAccount(name);
                         System.out.println(user1.getListOrder());
                         System.out.println("Do you want to confirm it?(y/n)");
-                        yn = input.next();
+                        yn = input.nextLine();
 
                         if (yn.equals("y")) {
                             shop.getCurrentAccount(name).setConfirm(true);
@@ -721,10 +750,13 @@ public class Main {
                         shop.removeUser((User) shop.getCurrentAccount(name));
 
                     }
+
+                    TimeUnit.SECONDS.sleep(2);
                     adminMenu(shop,user,admin,seller);
 
                 case 6:
                     shop.logout();
+                    TimeUnit.SECONDS.sleep(3);
                     run(shop);
 
             }
@@ -734,11 +766,13 @@ public class Main {
 
             Design();
             int select = input.nextInt();
+            input.nextLine();
+
             switch (select) {
 
                 case 1:
                     System.out.println("Did you ask for authorization?(y/n)['y' means go and see the result and 'n' means go and ask]");
-                    String yn = input.next();
+                    String yn = input.nextLine();
                     if(yn.equals("y")) {
 
                         if (shop.getCurrentAccount(seller.getUsername()).getConfirm()) {
@@ -759,14 +793,15 @@ public class Main {
                             System.out.println("  ✪ Poetry \uD83D\uDCD8");
                             System.out.println("  ✪ Drama \uD83D\uDCD9");
 
-                            String sell = input.next(); //to call the name of category --->
+                            String sell = input.nextLine(); //to call the name of category --->
 
                             System.out.print("Enter name product : ");
-                            String title = input.next();
+                            String title = input.nextLine();
                             System.out.print("Enter Price : ");
                             double price = input.nextDouble();
                             System.out.print("Enter Quantity : ");
                             int quantity = input.nextInt();
+                            input.nextLine();
 
                             System.out.println(" * This is the last ID in this category , Use the next one after this -->");
 
@@ -775,32 +810,33 @@ public class Main {
 
                                 System.out.println(seller.LatestIdMan());
                                 System.out.print("Enter new id use s.th like Mn__: ");
-                                String id = input.next();
+                                String id = input.nextLine();
 
                                 while (id.equals(seller.LatestIdMan())) {
 
                                     System.out.println("You Can't Use This ID... " +
                                             "Use id after this " + seller.LatestIdMan());
-                                    id = input.next();
+                                    id = input.nextLine();
 
                                 }
 
                                 Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername());
                                 Product.ManClothes.add(clothes);
                                 shop.addToListProducts(clothes);
+
                             }
 
                             if (sell.equals("Woman")) {
 
                                 System.out.println(seller.LatestIdWoman());
                                 System.out.print("Enter new id use s.th like Wn__: ");
-                                String id = input.next();
+                                String id = input.nextLine();
 
                                 while(id.equals(seller.LatestIdWoman())) {
 
                                     System.out.println("You Can't Use This ID... " +
                                             "Use id after this " + seller.LatestIdWoman());
-                                    id = input.next();
+                                    id = input.nextLine();
 
                                 }
 
@@ -814,13 +850,13 @@ public class Main {
 
                                 System.out.println(seller.LatestIdKids());
                                 System.out.print("Enter new id use s.th like Ks__: ");
-                                String id = input.next();
+                                String id = input.nextLine();
 
                                 while(id.equals(seller.LatestIdKids())) {
 
                                     System.out.println("You Can't Use This ID... " +
                                             "Use id after this " + seller.LatestIdKids());
-                                    id = input.next();
+                                    id = input.nextLine();
 
                                 }
 
@@ -834,13 +870,13 @@ public class Main {
 
                                 System.out.println(seller.LatestIdLaptop());
                                 System.out.print("Enter new id use s.th like Lp__: ");
-                                String id = input.next();
+                                String id = input.nextLine();
 
                                 while(id.equals(seller.LatestIdLaptop())) {
 
                                     System.out.println("You Can't Use This ID... " +
                                             "Use id after this " + seller.LatestIdLaptop());
-                                    id = input.next();
+                                    id = input.nextLine();
 
                                 }
 
@@ -854,13 +890,13 @@ public class Main {
 
                                 System.out.println(seller.LatestIdPhone());
                                 System.out.print("Enter new id use s.th like Ph__: ");
-                                String id = input.next();
+                                String id = input.nextLine();
 
                                 while(id.equals(seller.LatestIdPhone())) {
 
                                     System.out.println("You Can't Use This ID... " +
                                             "Use id after this " + seller.LatestIdPhone());
-                                    id = input.next();
+                                    id = input.nextLine();
 
                                 }
 
@@ -874,13 +910,13 @@ public class Main {
 
                                 System.out.println(seller.LatestIdTv());
                                 System.out.print("Enter new id use s.th like Tv__: ");
-                                String id = input.next();
+                                String id = input.nextLine();
 
                                 while(id.equals(seller.LatestIdTv())) {
 
                                     System.out.println("You Can't Use This ID... " +
                                             "Use id after this " + seller.LatestIdTv());
-                                    id = input.next();
+                                    id = input.nextLine();
 
                                 }
 
@@ -894,13 +930,13 @@ public class Main {
 
                                 System.out.println(seller.LatestIdDrama());
                                 System.out.print("Enter new id use s.th like Dr__: ");
-                                String id = input.next();
+                                String id = input.nextLine();
 
                                 while(id.equals(seller.LatestIdDrama())){
 
                                     System.out.println("You Can't Use This ID... " +
                                             "Use id after this "+seller.LatestIdDrama());
-                                     id = input.next();
+                                     id = input.nextLine();
 
                                 }
 
@@ -914,13 +950,13 @@ public class Main {
 
                                 System.out.println(seller.LatestIdFiction());
                                 System.out.print("Enter new id use s.th like Fi__: ");
-                                String id = input.next();
+                                String id = input.nextLine();
 
                                 while(id.equals(seller.LatestIdFiction())){
 
                                     System.out.println("You Can't Use This ID... " +
                                             "Use id after this "+seller.LatestIdFiction());
-                                    id = input.next();
+                                    id = input.nextLine();
 
                                 }
 
@@ -934,13 +970,13 @@ public class Main {
 
                                 System.out.println(seller.LatestIdPoetry());
                                 System.out.print("Enter new id use s.th like Py__: ");
-                                String id = input.next();
+                                String id = input.nextLine();
 
                                 while(id.equals(seller.LatestIdPoetry())){
 
                                     System.out.println("You Can't Use This ID... " +
                                             "Use id after this "+seller.LatestIdPoetry());
-                                    id = input.next();
+                                    id = input.nextLine();
 
                                 }
 
@@ -962,17 +998,18 @@ public class Main {
                         shop.addSeller(seller);
                     }
 
+                    TimeUnit.SECONDS.sleep(3);
                     sellerMenu(shop, user, admin, seller);
 
                 case 2:
-                    System.out.print("Enter your desired name :"); String choose = input.next();
+                    System.out.print("Enter your desired name :"); String choose = input.nextLine();
                     seller.setShopName(choose,shop);
-                    System.out.println("Do you want to change the color?(y/n)"); yn = input.next();
+                    System.out.println("Do you want to change the color?(y/n)"); yn = input.nextLine();
 
                     if(yn.equals("y")){
 
                         System.out.println("Select color for background :     BLACK / RED / GREEN / YELLOW / BLUE / PURPLE / CYAN / WHITE ");
-                        color = input.next();
+                        color = input.nextLine();
 
                         switch (color) {
 
@@ -997,19 +1034,23 @@ public class Main {
 
                     }
 
+                    TimeUnit.SECONDS.sleep(2);
                     sellerMenu(shop,user,admin, seller);
 
                 case 3:
                         System.out.println( "This is all of your Money : "+ seller.getPriceInWallet());
+
                         TimeUnit.SECONDS.sleep(3);
                         sellerMenu(shop,user,admin, seller);
 
                 case 4:
                     seller.ListAvailable(shop);
+                    TimeUnit.SECONDS.sleep(4);
                     sellerMenu(shop,user,admin, seller);
 
                 case 5:
                     shop.logout();
+                    TimeUnit.SECONDS.sleep(3);
                     run(shop);
             }
 
@@ -1018,23 +1059,24 @@ public class Main {
     public static void runFromCategory(User user){
 
         System.out.println("Would you like to add any products to your order list?(y/n)");
-        String yn = input.next();
+        String yn = input.nextLine();
 
         if (yn.equals("y")) {
             System.out.println("plz write it's id..");
-            String id = input.next();
+            String id = input.nextLine();
 
             if (shop.doesProductExist(id)) {
                 System.out.println("How many of this product do you want?");
                 int count = input.nextInt();
+                input.nextLine();
 
                 shop.decreaseQuantity(shop.getChoosenProduct(id), count, shop, id, count, user ,shop.getChoosenProduct(id).getBuyer());
                 System.out.println("Do you want to add comment below of this product?(y/n)");
-                yn = input.next();
+                yn = input.nextLine();
 
                 if (yn.equals("y")) {
                     System.out.println("add your comment ...");
-                    String ans = input.next();
+                    String ans = input.nextLine();
                     shop.addComment(shop.getChoosenProduct(id), ans);
                 }
 
@@ -1050,17 +1092,17 @@ public class Main {
 
         System.out.println("*** if you want to edit so do it ***");
         System.out.print("Username :");
-        String username = input.next();
+        String username = input.nextLine();
         System.out.print("Password :");
-        String password = input.next();
+        String password = input.nextLine();
         System.out.print("Email Address :");
-        String email = input.next();
+        String email = input.nextLine();
         System.out.print("Phone Number : +98");
-        String phone = input.next();
+        String phone = input.nextLine();
         System.out.print("Address : ");
-        String address = input.next();
+        String address = input.nextLine();
         System.out.println("Gender : (Man/Woman)");
-        String gender = input.next();
+        String gender = input.nextLine();
         shop.getCurrentAccount(user.getUsername()).setUsername(username);
         shop.getCurrentAccount(user.getUsername()).setPassword(password);
         shop.getCurrentAccount(user.getUsername()).setEmailAddress(email);
