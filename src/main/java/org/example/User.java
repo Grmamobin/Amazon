@@ -1,12 +1,15 @@
 package org.example;
 
 import java.util.ArrayList;
+import org.json.JSONObject;
 
 public  class User extends Account {
 
     private ArrayList<Order> ListOrderforUser;
     private ArrayList<Order> PurchasedProducts;
     private ArrayList<Order> cart;
+    JSONObject rateProduct = new JSONObject();
+    private double rate;
     public  User(String username , String password , String emailAddress , String phoneNumber , String address, String gender){
 
         super(username,password,emailAddress,phoneNumber,address , gender);
@@ -128,6 +131,25 @@ public  class User extends Account {
 
     public void requestFunds(double amount, User user) {
         System.out.println("SENT \uD83D\uDCE9--> request to admin for "+amount+" money from  "+ user.getUsername() +"'s wallet");
+    }
+
+    public double getRate(String id) {
+
+        try {
+            return rateProduct.getDouble(id);
+        }
+        catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public void setRate(String id,double rate) {
+
+        if(rate < 6 && rate > 0) {
+            this.rate = rate;
+            rateProduct.put(id, this.rate);
+        }
+
     }
 
     @Override

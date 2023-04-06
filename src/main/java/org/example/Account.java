@@ -15,6 +15,7 @@ public abstract class Account {
     private boolean confirm;
 
     public Account(String username , String password , String emailAddress , String phoneNumber , String address , String gender){
+
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;

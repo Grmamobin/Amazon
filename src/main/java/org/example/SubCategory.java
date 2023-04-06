@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public abstract class SubCategory extends Category {
 
     public SubCategory(String id,String name, double price, int quantity, ArrayList<String> commentList,
-                       String category, String subcategory ,String buyer){
+                       String category, String subcategory ,String buyer,double rating){
 
-        super(id,name, price, quantity, commentList ,category,buyer);
+        super(id,name, price, quantity, commentList ,category,buyer,rating);
 
     }
 

@@ -6,6 +6,13 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import org.json.JSONObject;
+import java.net.URL;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.io.IOException;
+import org.json.JSONException;
+import java.net.MalformedURLException;
 
 public class Main {
 
@@ -21,36 +28,53 @@ public class Main {
     public static Seller seller = new Seller(shop.getShopName(), "cole","9360");
     public static Scanner input = new Scanner(System.in);
 
-    public static void main(String[] args) throws InterruptedException {
+
+    public static  void main(String[] args) throws InterruptedException, IOException {
+
+        JSONObject distance = new JSONObject();// it is about kilometers
+
+        distance.put("Ardebil",589);
+        distance.put("Arak",279);
+        distance.put("Yazd", 621);
+        distance.put("Mashhad", 894);
+        distance.put("Karaj", 52);
+        distance.put("Isfahan", 439);
+        distance.put("Rasht",327);
+        distance.put("Tabriz",633);
+        distance.put("Tabriz",98);
+
+
+
+        System.out.println(distance.toString());
 
         shop.addToListAccounts(admin);
         shop.addToListAccounts(seller);
         shop.addToListAccounts(sellers);
 
-        Electronics laptops = new Electronics("Lp001","MacbookPro", 900.99, 10, new ArrayList<String>(), "Laptops",seller.getUsername());
+        Electronics laptops = new Electronics("Lp001","MacbookPro", 900.99, 10, new ArrayList<String>(), "Laptops",seller.getUsername(),0);
         laptops.addComment("Despite being a Windows user for many years," +
                 " I have to say the transition over to Apple was by far the best decision." +
                 " The MacBook Pro 13 inch offers a beautiful Retina display that's wildly clear and vivid." +
                 " This laptop is incredibly lightweight and slim.");
 
-        Electronics laptop = new Electronics("Lp002","MacbookPro", 920.99, 5, new ArrayList<String>(), "Laptops",sellers.getUsername());
+        Electronics laptop = new Electronics("Lp002","MacbookPro", 920.99, 5, new ArrayList<String>(), "Laptops",sellers.getUsername(),0);
         laptop.addComment("Amazon made finding a MacBook Air within my budget easy!" +
                 " I settled on the 2015 version because it had all the specs I needed for home and work use." +
                 " And after trying out the 2017 MacBook Pro in-store, I am happy with my decision." +
                 " I HATE the new keyboard the newer version comes with." +
                 " It's essentially flat");
 
-        Electronics phones = new Electronics("Ph001","SamsungA73" ,668.8,12,new ArrayList<String>(),"Phone",seller.getUsername());
+        Electronics phones = new Electronics("Ph001","SamsungA73" ,668.8,12,new ArrayList<String>(),"Phone",seller.getUsername(),0);
         phones.addComment("This is my first new phone in about 4 to 5 years." +
                 " I love this phone so far. I have had it a week or so." +
                 " I am still learning everything." +
                 " I looked a long time for a new phone and I believe I made a good choice.");
 
-        Electronics phone = new Electronics("Ph002","SamsungS23" ,700.12,3,new ArrayList<String>(),"Phone",sellers.getUsername());
+        Electronics phone = new Electronics("Ph002","SamsungS23" ,700.12,3,new ArrayList<String>(),"Phone",sellers.getUsername(),0);
 
-        Electronics Tvs = new Electronics("Tv001","LG" ,1200.8,8,new ArrayList<String>(),"Tv",sellers.getUsername());
+        Electronics Tvs = new Electronics("Tv001","LG" ,1200.8,8,new ArrayList<String>(),"Tv",sellers.getUsername(),0);
 
-        Electronics Tv = new Electronics("Tv002","Sony️" ,3290.8,7,new ArrayList<String>(),"Tv",sellers.getUsername());
+        Electronics Tv = new Electronics("Tv002","Sony️" ,3290.8,7,new ArrayList<String>(),"Tv",sellers.getUsername(),0);
         Tv.addComment("Like others I was frustrated trying to interact with this skill directly through Alexa," +
                 " The real power of this skill is when it is used with Alexa routines," +
                 " using that method it works flawlessly" +
@@ -68,26 +92,26 @@ public class Main {
         shop.addToListProducts(phone);
         shop.addToListProducts(phones);
 
-        Books fictions = new Books("Fi001","EyesOfTheMind",100 ,3,new ArrayList<String>(),"Fiction",sellers.getUsername());
+        Books fictions = new Books("Fi001","EyesOfTheMind",100 ,3,new ArrayList<String>(),"Fiction",sellers.getUsername(),0);
         fictions.addComment("I really like James Dashner's writing," +
                 " and was excited to read the first installment in The Mortality Doctrine series." +
                 " The Eye of Minds was very different from my usual reads:" +
                 " it's about high-intensity virtual gaming. I'm not a gamer," +
                 " but I still really enjoyed this unique, imaginative, thrilling book.");
 
-        Books fiction = new Books("Fi002","KillOrder",124 ,1,new ArrayList<String>(),"Fiction",seller.getUsername());
+        Books fiction = new Books("Fi002","KillOrder",124 ,1,new ArrayList<String>(),"Fiction",seller.getUsername(),0);
 
-        Books dramas = new Books("Dr001","Hamlet",98,4,new ArrayList<String>(),"Drama",sellers.getUsername());
+        Books dramas = new Books("Dr001","Hamlet",98,4,new ArrayList<String>(),"Drama",sellers.getUsername(),0);
         dramas.addComment("We got this for our teenager who is studying Shakespeare in school." +
                 " When asked if the book were helpful, I received a “Yeah, it’s fine” type of response." +
                 "For those who do not speak teenager, that means: “It did what I needed it to do." +
                 " I am not really thrilled about it but thank you.”");
 
-        Books drama = new Books("Dr002","Freedom",83 ,7,new ArrayList<String>(),"Drama",seller.getUsername());
+        Books drama = new Books("Dr002","Freedom",83 ,7,new ArrayList<String>(),"Drama",seller.getUsername(),0);
 
-        Books poetrys = new Books("Py001","MilkAndHoney",120 ,6,new ArrayList<String>(),"Poetry",sellers.getUsername());
+        Books poetrys = new Books("Py001","MilkAndHoney",120 ,6,new ArrayList<String>(),"Poetry",sellers.getUsername(),0);
 
-        Books poetry = new Books("Py002","TheSonAndHerFlowers",170 ,5,new ArrayList<String>(),"Poetry",seller.getUsername());
+        Books poetry = new Books("Py002","TheSonAndHerFlowers",170 ,5,new ArrayList<String>(),"Poetry",seller.getUsername(),0);
         poetry.addComment("I absolutely love this book I love the author and it is so great.\n");
         poetry.addComment("I read this After., \"Milk and Honey\", and it's made made me more of a fan." +
                 " This is a great follow up to her first. You can definitely hear her voice and feel her tone and style." +
@@ -102,15 +126,15 @@ public class Main {
         shop.addToListProducts(poetry);
         shop.addToListProducts(poetrys);
 
-        Clothes man = new Clothes("Mn001","Shirt",560,12,new ArrayList<String>(),"Man",sellers.getUsername());
+        Clothes man = new Clothes("Mn001","Shirt",560,12,new ArrayList<String>(),"Man",sellers.getUsername(),0);
         man.addComment("bought the solid dark & light blue shirts for my husband but had to return both." +
                 " First the fiber blend is not as stated cotton/linen but Rayon/Linen." +
                 " They are true to size and fabric is not too thick for summer" +
                 " BUT they itch..... Probably because of the linen being a coarser natural fibers so had to return them. ");
 
-        Clothes woman = new Clothes("Wn001","Dress",710.78,8,new ArrayList<String>(),"Woman",seller.getUsername());
+        Clothes woman = new Clothes("Wn001","Dress",710.78,8,new ArrayList<String>(),"Woman",seller.getUsername(),0);
 
-        Clothes kid = new Clothes("Ks001","Socks",211.23,35,new ArrayList<String>(),"Kids",sellers.getUsername());
+        Clothes kid = new Clothes("Ks001","Socks",211.23,35,new ArrayList<String>(),"Kids",sellers.getUsername(),0);
         Product.ManClothes.add(man);
         Product.WomanClothes.add(woman);
         Product.KidsClothes.add(kid);
@@ -531,7 +555,6 @@ public class Main {
                 System.out.println("  ✪ Drama \uD83D\uDCD5");
 
                 String optionss = input.nextLine();
-                System.out.println("Is this any product that you look for?(y/n)");
 
                 if (optionss.equals("Man")) {
 
@@ -820,7 +843,7 @@ public class Main {
 
                                 }
 
-                                Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername());
+                                Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername(),0);
                                 Product.ManClothes.add(clothes);
                                 shop.addToListProducts(clothes);
 
@@ -840,7 +863,7 @@ public class Main {
 
                                 }
 
-                                Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername());
+                                Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername(),0);
                                 Product.WomanClothes.add(clothes);
                                 shop.addToListProducts(clothes);
 
@@ -860,7 +883,7 @@ public class Main {
 
                                 }
 
-                                Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername());
+                                Clothes clothes = new Clothes(id, title, price, quantity, new ArrayList<String>(), "Clothes", seller.getUsername(),0);
                                 Product.KidsClothes.add(clothes);
                                 shop.addToListProducts(clothes);
 
@@ -880,7 +903,7 @@ public class Main {
 
                                 }
 
-                                Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Laptops", seller.getUsername());
+                                Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Laptops", seller.getUsername(),0);
                                 Product.Laptops.add(electronics);
                                 shop.addToListProducts(electronics);
 
@@ -900,7 +923,7 @@ public class Main {
 
                                 }
 
-                                Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Phone", seller.getUsername());
+                                Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Phone", seller.getUsername(),0);
                                 Product.Phone.add(electronics);
                                 shop.addToListProducts(electronics);
 
@@ -920,7 +943,7 @@ public class Main {
 
                                 }
 
-                                Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Tv", seller.getUsername());
+                                Electronics electronics = new Electronics(id, title, price, quantity, new ArrayList<String>(), "Tv", seller.getUsername(),0);
                                 Product.Tv.add(electronics);
                                 shop.addToListProducts(electronics);
 
@@ -940,7 +963,7 @@ public class Main {
 
                                 }
 
-                                Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Drama", seller.getUsername());
+                                Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Drama", seller.getUsername(),0);
                                 Product.Drama.add(books);
                                 shop.addToListProducts(books);
 
@@ -960,7 +983,7 @@ public class Main {
 
                                 }
 
-                                Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Fiction", seller.getUsername());
+                                Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Fiction", seller.getUsername(),0);
                                 Product.Fiction.add(books);
                                 shop.addToListProducts(books);
 
@@ -980,7 +1003,7 @@ public class Main {
 
                                 }
 
-                                Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Poetry", seller.getUsername());
+                                Books books = new Books(id, title, price, quantity, new ArrayList<String>(), "Poetry", seller.getUsername(),0);
                                 Product.Poetry.add(books);
                                 shop.addToListProducts(books);
 
@@ -1057,34 +1080,54 @@ public class Main {
         }
 
     public static void runFromCategory(User user){
+        System.out.println("Would you like to rate any product?(y/n) If you had before you can edit it");String yn = input.nextLine();
 
-        System.out.println("Would you like to add any products to your order list?(y/n)");
-        String yn = input.nextLine();
+        if(yn.equals("y")) {
 
-        if (yn.equals("y")) {
-            System.out.println("plz write it's id..");
-            String id = input.nextLine();
-
-            if (shop.doesProductExist(id)) {
-                System.out.println("How many of this product do you want?");
-                int count = input.nextInt();
-                input.nextLine();
-
-                shop.decreaseQuantity(shop.getChoosenProduct(id), count, shop, id, count, user ,shop.getChoosenProduct(id).getBuyer());
-                System.out.println("Do you want to add comment below of this product?(y/n)");
-                yn = input.nextLine();
-
-                if (yn.equals("y")) {
-                    System.out.println("add your comment ...");
-                    String ans = input.nextLine();
-                    shop.addComment(shop.getChoosenProduct(id), ans);
-                }
-
-            } else {
-                System.out.println("If you haven't noticed, this product no longer exists.");
+            System.out.println("plz write it's id.."); String id = input.nextLine();
+            System.out.println("Your Last Rate is (For user who rated it)   :   "+user.getRate(id));
+            System.out.println("Choose between 1 to 5"); double rate = input.nextDouble(); input.nextLine();
+            if(user.getRate(id) != 0){
+                shop.rateEdit(rate,user,id);
             }
+            else {
+                shop.rateCalculate(rate);
+            }
+            user.setRate(id,rate);
+
+            shop.getChoosenProduct(id).setRating(shop.average());
 
         }
+
+        System.out.println("Would you like to add any products to your order list?(y/n)");
+        yn = input.nextLine();
+
+         if (yn.equals("y")) {
+                System.out.println("plz write it's id..");
+                String id = input.nextLine();
+
+                if (shop.doesProductExist(id)) {
+                    System.out.println("How many of this product do you want?");
+                    int count = input.nextInt();
+                    input.nextLine();
+
+                    shop.decreaseQuantity(shop.getChoosenProduct(id), count, shop, id, count, user, shop.getChoosenProduct(id).getBuyer());
+
+                    System.out.println("Do you want to add comment below of this product?(y/n)");
+                    yn = input.nextLine();
+
+                    if (yn.equals("y")) {
+                        System.out.println("add your comment ...");
+                        String ans = input.nextLine();
+                        shop.addComment(shop.getChoosenProduct(id), ans);
+                    }
+
+                } else {
+                    System.out.println("If you haven't noticed, this product no longer exists.");
+                }
+
+            }
+
 
     }
 

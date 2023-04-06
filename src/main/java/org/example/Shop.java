@@ -14,6 +14,11 @@ public class Shop {
     private ArrayList<Order> ListOrders;
     private ArrayList<Seller> ListAuthorization;
     private ArrayList<User>ListAuthorize;
+    private double ratingsTotal = 0.0;
+    private int ratingsCount = 0;
+    private double TotalProfit = 0.0;
+    private Account currentAccount;
+
 
     // Declaring the color
     // Custom declaration
@@ -25,9 +30,6 @@ public class Shop {
     public static String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
     public static String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static String ANSI_WHITE_BACKGROUND = "\u001B[47m";
-
-    private double TotalProfit = 0.0;
-    private Account currentAccount;
 
     public Shop(String ShopName , String WebAddress , String SupportPhone ){
 
@@ -348,6 +350,41 @@ public class Shop {
 
     public void removeUser(User user) {
         ListAuthorize.remove(user);
+    }
+
+    public int getRatingsCount() {
+        return ratingsCount;
+    }
+
+    public double getRatingsTotal() {
+        return ratingsTotal;
+    }
+
+    public void rateCalculate(double rating) {
+
+        if (rating > 0 && rating < 6) {
+            this.ratingsTotal += rating;
+            this.ratingsCount++;
+        }
+
+    }
+
+    public void rateEdit(double rating , User user ,String id){
+
+        if (rating > 0 && rating < 6) {
+            this.ratingsTotal += rating - user.getRate(id);
+        }
+
+    }
+
+    public double average() {
+
+        if (ratingsCount > 0) {
+            double myRating = this.ratingsTotal / (double)this.ratingsCount;
+            return myRating;
+        }
+        return 0;
+
     }
 
     @Override
