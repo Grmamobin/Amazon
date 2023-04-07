@@ -1,6 +1,6 @@
 # Amazon
 
-![AMAZON-LAYOFFS_1668738856119_1669752081302_1669752081302.webp](..%2F..%2F..%2F..%2F..%2F..%2FAMAZON-LAYOFFS_1668738856119_1669752081302_1669752081302.webp)
+![Screenshot 2023-04-07 at 22.28.55.png](..%2FScreenshot%202023-04-07%20at%2022.28.55.png)
 (Actually mini Amazon with a simple method)
 
 ## Introduction
