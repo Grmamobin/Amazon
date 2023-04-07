@@ -50,6 +50,7 @@ public class Seller extends Account {
             }
         }
     }
+
     public String LatestIdMan(){
 
          ArrayList<Product> result = new ArrayList<>();

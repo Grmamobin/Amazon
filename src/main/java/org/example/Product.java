@@ -63,8 +63,51 @@ public class Product {
         return buyer;
     }
 
-    public double getRating() {
-        return rating;
+    private StringBuilder getStar() {
+
+        StringBuilder addToMe = new StringBuilder();
+
+        for (int i = 1 ; i <= this.rating ; i++) {
+
+            addToMe.append("\uD83C\uDF15"); //sun
+
+            if (i == this.rating) {
+
+                int remain = (int) (5 - this.rating);
+                if(remain == 0) {
+                     return addToMe;
+                 }
+
+                for(int j = 1 ; j <= remain ; j++){
+
+                    addToMe.append("\uD83C\uDF11");
+
+                }
+
+                return addToMe;
+            }
+
+            if(i + 0.5 == this.rating) {
+
+                addToMe.append("\uD83C\uDF17");
+
+                int j = (int) (i + 0.5);
+                int remain = (5 - j);
+
+                if(remain == 0) {
+                    return addToMe;
+                }
+
+                for(int k = 1 ; k <= remain - 1 ; k++){
+
+                    addToMe.append("\uD83C\uDF11");
+
+                }
+
+                return addToMe;
+            }
+        }
+        return new StringBuilder(("\uD83C\uDF11 \uD83C\uDF11 \uD83C\uDF11 \uD83C\uDF11 \uD83C\uDF11"));
     }
 
     public void setQuantity(int quantity) {
@@ -81,23 +124,22 @@ public class Product {
 
     public void ManClothes() {
 
-           System.out.print("                  _\n" +
-                "                 ( |\n" +
-                "                   |\n" +
-                "            __,--./|.--,__\n" +
-                "          .`   \\ \\ / /    `.\n" +
-                "        .`      \\ | /       `.\n" +
-                "       /   /     ^|^      \\   \\\n" +
-                "      /   / |     |o     | \\   \\\n" +
-                "     /===/  |     |      |  \\===\\\n" +
-                "    /___/   |     |o     |   \\___\\\n" +
-                "            |     |      |\n" +
-                "            |     |o     |\n" +
-                "            |     |      |\n" +
-                "            |     |o     |\n" +
-                "            |     |      |\n" +
-                "            |     |o     |      jgs\n" +
-                "            |_____/\\_____|");
+           System.out.print("                       ,,~~~~~~,,..\n" +
+                   "                             ...., ,'~             |\n" +
+                   "                             \\    V                /\n" +
+                   "                              \\  /                 /\n" +
+                   "                              ;####>     @@@@@     )\n" +
+                   "                              ##;,      @@@@@@@    )\n" +
+                   "                           .##/  ~>      @@@@@   .   .\n" +
+                   "                          ###''#>              '      '\n" +
+                   "      .:::::::.      ..###/ #>               '         '\n" +
+                   "     //////))))----~~ ## #}                '            '\n" +
+                   "   ///////))))))                          '             '\n" +
+                   "  ///////)))))))\\                        '              '\n" +
+                   " //////)))))))))))                                      '\n" +
+                   " |////)))))))))))))____________________________________).\n" +
+                   "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n" +
+                   " ````````````````````````````''''''''''''''''''''''''''''\n");
 
 
         System.out.print("Man clothes are :\n" + ManClothes);
@@ -120,7 +162,7 @@ public class Product {
                 "            |     |      |\n" +
                 "            |     |o     |\n" +
                 "            |     |      |\n" +
-                "            |     |o     |      jgs\n" +
+                "            |     |o     |      \n" +
                 "            |_____/\\_____|");
 
         System.out.print("Woman clothes are :\n" + WomanClothes);
@@ -128,23 +170,18 @@ public class Product {
     }
 
     public void KidsClothes() {
-        System.out.print("                  _\n" +
-                "                 ( |\n" +
-                "                   |\n" +
-                "            __,--./|.--,__\n" +
-                "          .`   \\ \\ / /    `.\n" +
-                "        .`      \\ | /       `.\n" +
-                "       /   /     ^|^      \\   \\\n" +
-                "      /   / |     |o     | \\   \\\n" +
-                "     /===/  |     |      |  \\===\\\n" +
-                "    /___/   |     |o     |   \\___\\\n" +
-                "            |     |      |\n" +
-                "            |     |o     |\n" +
-                "            |     |      |\n" +
-                "            |     |o     |\n" +
-                "            |     |      |\n" +
-                "            |     |o     |      jgs\n" +
-                "            |_____/\\_____|");
+        System.out.print(" \n" +
+                "              __.-.__.-.__\n" +
+                "            .'\\ '-.__.-' /'.\n" +
+                "           /  |    ,_    |  \\\n" +
+                "          /   |  _/| \\_  |   \\\n" +
+                "          '-._/ \\.-\"\"-./ \\_.-'\n" +
+                "              | ( ^ \\^ ) |\n" +
+                "              |  \\ == /  |\n" +
+                "              |  /'--'\\  |\n" +
+                "              |          |\n" +
+                "              '._      _.'\n" +
+                "                 `\"\"\"\"`");
 
         System.out.print("Kids clothes are :\n" + KidsClothes);
 
@@ -220,15 +257,22 @@ public class Product {
 
     public void DramaBook() {
 
-        System.out.print("\n" +
-                "                .-~~~~~~~~~-._       _.-~~~~~~~~~-.\n" +
-                "            __.'              ~.   .~              `.__\n" +
-                "          .'//                  \\./                  \\\\`.\n" +
-                "        .'//                     |                     \\\\`.\n" +
-                "      .'// .-~\"\"\"\"\"\"\"~~~~-._     |     _,-~~~~\"\"\"\"\"\"\"~-. \\\\`.     DRAMA\n" +
-                "    .'//.-\"                 `-.  |  .-'                 \"-.\\\\`.\n" +
-                "  .'//______.============-..   \\ | /   ..-============.______\\\\`.\n" +
-                ".'______________________________\\|/______________________________`.");
+        System.out.print("      ___________________   ___________________\n" +
+                "  .-/|  78   ~~**~~      \\ /      ~~**~~   79  |\\-.\n" +
+                "  ||||                    :                    ||||\n" +
+                "  ||||   Dorothy asked    :   The Scarecrow    ||||\n" +
+                "  ||||   the Scarecrow    :   answered \"Some   ||||\n" +
+                "  ||||   \"How can you     :   people without   ||||\n" +
+                "  ||||   talk if you      :   brains do an     ||||\n" +
+                "  ||||   haven't got      :   awful lot        ||||\n" +
+                "  ||||   a brain?\"        :   of talking.\"     ||||\n" +
+                "  ||||   She looked at    :   She replied,     ||||\n" +
+                "  ||||   him puzzled.     :   \"That's true.\"   ||||\n" +
+                "  ||||                    :                    ||||\n" +
+                "  ||||  The Wizard Of Oz  :    boba@wwa.com    ||||\n" +
+                "  ||||___________________ : ___________________||||\n" +
+                "  ||/====================\\:/====================\\||\n" +
+                "  `---------------------~___~--------------------''\n");
 
         System.out.print("Dramas books are :\n" + Drama);
 
@@ -251,15 +295,15 @@ public class Product {
 
     public void PoetryBook() {
 
-        System.out.print("\n" +
-                "                .-~~~~~~~~~-._       _.-~~~~~~~~~-.\n" +
-                "            __.'              ~.   .~              `.__\n" +
-                "          .'//                  \\./                  \\\\`.\n" +
-                "        .'//                     |                     \\\\`.\n" +
-                "      .'// .-~\"\"\"\"\"\"\"~~~~-._     |     _,-~~~~\"\"\"\"\"\"\"~-. \\\\`.     POETRY\n" +
-                "    .'//.-\"                 `-.  |  .-'                 \"-.\\\\`.\n" +
-                "  .'//______.============-..   \\ | /   ..-============.______\\\\`.\n" +
-                ".'______________________________\\|/______________________________`.");
+        System.out.print("  __\n" +
+                " (`/\\\n" +
+                " `=\\/\\ __...--~~~~~-._   _.-~~~~~--...__\n" +
+                "  `=\\/\\               \\ /               \\\\\n" +
+                "   `=\\/                V                 \\\\\n" +
+                "   //_\\___--~~~~~~-._  |  _.-~~~~~~--...__\\\\\n" +
+                "  //  ) (..----~~~~._\\ | /_.~~~~----.....__\\\\\n" +
+                " ===( INK )==========\\\\|//====================\n" +
+                "__ejm\\___/________dwb`---`____________________________________________\n");
         System.out.print("Poetry books are :\n" + Poetry);
 
     }
@@ -272,10 +316,8 @@ public class Product {
                 "  productName =   "  + productName +  "\n" +
                 "  price =  " + price +   "\n" +
                 "  quantity = " + quantity +   "\n" +
-                "  Rating = " + rating + "\n"+
-                "  commentList = " + commentList +   "\n\n";
-
-
+                "  Rating = " + rating +" "+getStar()+"\n"+
+                "  commentList = " + commentList +   "\n";
     }
 
 }

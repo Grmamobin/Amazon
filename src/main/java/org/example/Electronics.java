@@ -11,8 +11,9 @@ public class Electronics extends SubCategory {
 
     }
 
+    @Override
     public double getDiscount() {
-     return getPrice() * (0.2); // 20% off
+        return 0;
     }
 
     @Override

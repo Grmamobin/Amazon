@@ -18,11 +18,7 @@ public class Shop {
     private int ratingsCount = 0;
     private double TotalProfit = 0.0;
     private Account currentAccount;
-
-
-    // Declaring the color
-    // Custom declaration
-    public static String ANSI_BLACK_BACKGROUND = "\u001B[40m";
+    public static String ANSI_BLACK_BACKGROUND = "\u001B[40m"; // Declaring the color
     public static String ANSI_RED_BACKGROUND = "\u001B[41m";
     public static String ANSI_GREEN_BACKGROUND = "\u001B[42m";
     public static String ANSI_YELLOW_BACKGROUND = "\u001B[43m";
@@ -369,9 +365,9 @@ public class Shop {
 
     }
 
-    public void rateEdit(double rating , User user ,String id){
+    public void rateEdit(double rating , User user , String id){
 
-        if (rating > 0 && rating < 6) {
+        if (rating > 0 && rating < 5.5) {
             this.ratingsTotal += rating - user.getRate(id);
         }
 

@@ -35,6 +35,7 @@ public  class User extends Account {
 
                         Seller seller1 = (Seller) seller;
                         seller1.setPriceInWallet(order.getTotalPrice() * 0.9);
+                        seller1.setNotification1("\uD83D\uDD14");
                     }
 
                 }
