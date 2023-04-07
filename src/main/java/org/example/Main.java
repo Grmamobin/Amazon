@@ -15,7 +15,7 @@ public class Main {
     static String WebAddress = "https://www.amazon.com/";
     static String SupportPhone = "09336145843";
     public  static Shop shop = new Shop(ShopName,WebAddress,SupportPhone);
-    public static Admin admin = new Admin("Mobina", "2004", "dymamsijhidjj@gmail.com", "09100000040","iran","Woman");
+    public static Admin admin = new Admin("Mobina", "2004", "dymamsijhidjj@gmail.com", "09100000040","tehran","Woman");
     public static User user = new User("","");
     public static Seller sellers =  new Seller(shop.getShopName(), "me","4560");
     public static Seller seller = new Seller(shop.getShopName(), "cole","9360");

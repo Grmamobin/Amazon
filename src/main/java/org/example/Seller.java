@@ -7,7 +7,6 @@ import java.util.Comparator;
 public class Seller extends Account {
 
     private double priceInWallet;
-    private ArrayList<Product> ListOfSell;
 
     private String ShopName;
 

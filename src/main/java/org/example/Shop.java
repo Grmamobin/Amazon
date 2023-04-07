@@ -348,14 +348,6 @@ public class Shop {
         ListAuthorize.remove(user);
     }
 
-    public int getRatingsCount() {
-        return ratingsCount;
-    }
-
-    public double getRatingsTotal() {
-        return ratingsTotal;
-    }
-
     public void rateCalculate(double rating) {
 
         if (rating > 0 && rating < 6) {
