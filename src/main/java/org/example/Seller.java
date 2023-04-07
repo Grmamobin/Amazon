@@ -6,7 +6,7 @@ import java.util.Comparator;
 
 public class Seller extends Account {
 
-    private double priceInWallet;
+    private double priceInWallet; //total price for seller -->
 
     private String ShopName;
 
@@ -40,7 +40,7 @@ public class Seller extends Account {
         this.priceInWallet = price+ priceInWallet;
     }
 
-    public void ListAvailable(Shop shop){
+    public void ListAvailable(Shop shop){ //if quantity is equals to 0 it won't be appear --->
         System.out.println("List of available products: ");
 
         for(Product product :  shop.getListProducts()){
@@ -50,7 +50,7 @@ public class Seller extends Account {
         }
     }
 
-    public String LatestIdMan(){
+    public String LatestIdMan(){ //find Latest id for user to add the id after this -->
 
          ArrayList<Product> result = new ArrayList<>();
         for (Product product : Product.ManClothes) {

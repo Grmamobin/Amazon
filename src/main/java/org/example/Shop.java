@@ -271,7 +271,7 @@ public class Shop {
 
     }
 
-    public ArrayList<Product> ClassifiedHigher(String title) {
+    public ArrayList<Product> ClassifiedHigher(String title) { // it is related to price-->
 
         //classify the list of product by higher price --->
 
@@ -365,7 +365,7 @@ public class Shop {
 
     }
 
-    public double average() {
+    public double average() { //Average of main -->
 
         if (ratingsCount > 0) {
             double myRating = this.ratingsTotal / (double)this.ratingsCount;

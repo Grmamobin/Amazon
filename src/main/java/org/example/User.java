@@ -1,14 +1,15 @@
 package org.example;
 
-import java.util.ArrayList;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public  class User extends Account {
 
     private ArrayList<Order> ListOrderforUser;
     private ArrayList<Order> PurchasedProducts;
     private ArrayList<Order> cart;
-    JSONObject rateProduct = new JSONObject();
+    JSONObject rateProduct = new JSONObject(); //using json for rating to all products
     private double rate;
     public  User(String username , String password , String emailAddress , String phoneNumber , String address, String gender){
 
@@ -23,7 +24,7 @@ public  class User extends Account {
         super(username, password);
     }
 
-    public void transaction(Shop shop){
+    public void transaction(Shop shop){ //add money to sellers wallet  -->
 
         for(Account seller : shop.getListAccounts()) {
 
@@ -34,7 +35,7 @@ public  class User extends Account {
                     if(seller.getUsername().equals(order.getDetailsSeller())) {
 
                         Seller seller1 = (Seller) seller;
-                        seller1.setPriceInWallet(order.getTotalPrice() * 0.9);
+                        seller1.setPriceInWallet(order.getTotalPrice() * 0.9); //sellers got 90% of money -->
                         seller1.setNotification1("\uD83D\uDD14");
                     }
 
@@ -99,7 +100,7 @@ public  class User extends Account {
         PurchasedProducts.addAll(ListOrderforUser);
     }
 
-    public void viewProfile() {
+    public void viewProfile() {  //take picture for profile-->
 
         if(getGender().equals("Woman")){
             System.out.print("       ),\n" +
@@ -130,7 +131,7 @@ public  class User extends Account {
 
     }
 
-    public void requestFunds(double amount, User user) {
+    public void requestFunds(double amount, User user) { //ask admin for fund
         System.out.println("SENT \uD83D\uDCE9--> request to admin for "+amount+" money from  "+ user.getUsername() +"'s wallet");
     }
 

@@ -63,7 +63,7 @@ public class Product {
         return buyer;
     }
 
-    private StringBuilder getStar() {
+    private StringBuilder getStar() {   //star rating emoji -->
 
         StringBuilder addToMe = new StringBuilder();
 
@@ -122,7 +122,7 @@ public class Product {
         commentList.add(comment);
     }
 
-    public void ManClothes() {
+    public void ManClothes() { //Product menu -->
 
            System.out.print("                       ,,~~~~~~,,..\n" +
                    "                             ...., ,'~             |\n" +

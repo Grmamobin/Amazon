@@ -311,7 +311,7 @@ public class Main {
 
     }
 
-    public static void SignUpSeller(Shop shop) throws InterruptedException {
+    public static void SignUpSeller(Shop shop) throws InterruptedException { //for improvement the security I used rejex -->
 
         System.out.print("Username :");String username = input.nextLine();
         System.out.print("Password :");String password = input.nextLine();
@@ -345,7 +345,7 @@ public class Main {
 
         }
 
-        System.out.print("Address :");String address = input.nextLine();
+        System.out.print("Address :");String address = input.nextLine(); //just use this city's to join as admin/user,seller -->
 
         Pattern Address = Pattern.compile("(?:(yazd|Yazd|ardebil|Ardebil|arak|Arak|Mashhad|mashhad|Karaj|karaj|Isfehan|isfehan|Rasht|rasht|tabriz|Tabriz|tehran|Tehran))");
         Matcher matcher2 = Address.matcher(address);
@@ -389,7 +389,7 @@ public class Main {
 
     }
 
-    public static void Design(Account account){
+    public static void Design(Account account){ //when admin accept the transaction it will be notification next to this numbers -->
 
         System.out.println("************************************************************* --USER ACCESS-- ***************************************************************");
         System.out.println("1.View profile \uD83D\uDC64        2.Edit profile \uD83D\uDC64                   3.Orders \uD83D\uDC64                     4.Wallet \uD83D\uDC64 ");
@@ -415,7 +415,7 @@ public class Main {
 
             case 1:
                 user.viewProfile();
-                TimeUnit.SECONDS.sleep(2);
+                TimeUnit.SECONDS.sleep(2); //used this to wait for few second-->
                 userMenu(shop, user, admin, seller);
 
             case 2:
@@ -427,7 +427,7 @@ public class Main {
 
                 System.out.println("⤯ ⤯ ⤯ ⤯ ⤯ Your Order List(not purchased) ⤰ ⤰ ⤰ ⤰ ⤰");
                 System.out.println(user.getListOrder());
-                System.out.println("⤯ ⤯ ⤯ ⤯ ⤯ Latest Order List(Purchased Products) ⤰ ⤰ ⤰ ⤰ ⤰");
+                System.out.println("⤯ ⤯ ⤯ ⤯ ⤯ Latest Order List(Purchased Products) ⤰ ⤰ ⤰ ⤰ ⤰"); //After transaction it will be full and the order list will be vacant -->
                 System.out.println(user.getPurchasedProducts());
                 TimeUnit.SECONDS.sleep(2);
                 userMenu(shop, user, admin, seller);
@@ -440,9 +440,9 @@ public class Main {
                 String yn = input.nextLine();
 
                 if (yn.equals("y")) {
-                    System.out.println("How much funding are you looking for?");
-                    double amount = input.nextDouble();
-                    input.nextLine();
+                    System.out.println("How much funding are you looking for?"); //you can add more than the total price of products that you buy -->
+                    String x = input.nextLine();
+                    double amount = Double.parseDouble(x);
 
                     user.requestFunds(amount, user);
                     System.out.println("To find out about the result wait for admin to accept your requests.");
@@ -463,7 +463,7 @@ public class Main {
                 System.out.println("If you want to update the number of items in your cart press '1'.\n" +
                         " If you want to remove products from your list, press '2'.\n" +
                         " If your list is not yet finished, press '3'.\n" +
-                        " If you are ready to pay off, press '4'."+user.getNotification()+"\n");
+                        " If you are ready to pay off, press '4'."+user.getNotification()+"\n"); //this notification is for user --->
 
                 int option = input.nextInt();
                 input.nextLine();
@@ -518,8 +518,10 @@ public class Main {
                 if (option == 2) {
                     System.out.println("Which of them do you want to remove?(write it's id)");
                     String id = input.nextLine();
-
+                   //in this part , At first I take back all quantity to shop then delet this product from user order list--->
+                    shop.increaseQuantity(shop.getChoosenProduct(id) ,user.FindOrderUser(id).getQuantity());
                     user.removeToListOrderForUser(user.FindOrderUser(id));
+
                     System.out.println("REMOVE.................");
 
                     TimeUnit.SECONDS.sleep(2);
@@ -527,7 +529,7 @@ public class Main {
                 }
 
                 if (option == 3) {
-                    userMenu(shop, user, admin, seller);
+                    userMenu(shop, user, admin, seller); //go back to menu for find other product--->
                 }
 
                 if (option == 4) {
@@ -536,26 +538,26 @@ public class Main {
 
                     if (yn.equals("y")) {
 
-                        if (shop.getCurrentAccount(user.getUsername()).getConfirm()) {
+                        if (shop.getCurrentAccount(user.getUsername()).getConfirm()) { //in this part user should say 'y' to figured out about admin decision-->
 
                             ShoppingCart cart = new ShoppingCart();
 
                             if (cart.PriceInCart(user) >= cart.getTotalPrice(user)) {
 
-                                double remainPrice = cart.PriceInCart(user) - cart.getTotalPrice(user);
+                                double remainPrice = cart.PriceInCart(user) - cart.getTotalPrice(user); //find remain money-->
                                 System.out.println("****\uD83D\uDCB6 YOU PAID SUCCESSFULLY \uD83D\uDCB6****" + "\n" +
                                         "Remaining = " + remainPrice + "\n");
 
                                 user.getWallet().setCurrentMoney(remainPrice); //   <---current money
-                                shop.setTotalProfit(cart.getTotalPrice(user) * (0.1));
-                                user.setNotification("");
-                                user.transaction(shop);
-                                user.addPurchasedProducts();
-                                user.getListOrder().clear();
-                                user.getCart().clear();
+                                shop.setTotalProfit(cart.getTotalPrice(user) * (0.1)); // shop profit is 10%-->
+                                user.setNotification(""); // delete notification -->
+                                user.transaction(shop);   //send money to sellers wallet -->
+                                user.addPurchasedProducts(); //send list order to purchased list -->
+                                user.getListOrder().clear();  // delete all list from order list-->
+                                user.getCart().clear();// delete all list from shopping cart -->
                                 shop.getCurrentAccount(user.getUsername()).setConfirm(false);
 
-                            } else {
+                            } else { //this statement will appear if money in wallet is lower than total price -->
                                 System.out.println("You have insufficient funds to purchase these products.");
                             }
 
@@ -565,7 +567,7 @@ public class Main {
                             System.out.println("Sorry\uD83D\uDD12 --> admin reject you to buy product....");
                         }
 
-                    } else {
+                    } else {//send request to admin to buy product -->
                         shop.transaction(user);
                         System.out.println("SENT \uD83D\uDCE9 --> " + user.getUsername() + "  Wants to buy these product");
                     }
@@ -594,7 +596,7 @@ public class Main {
                 if (optionss.equals("Man")) {
 
                     product.ManClothes();
-                    runFromCategory(user);
+                    runFromCategory(user); //in this part you can rate/comment/add and see products based on your category selection --->
                     userMenu(shop, user, admin, seller);
 
                 }
@@ -664,6 +666,8 @@ public class Main {
                 }
 
             case 7:
+                //you can choose a product by clicking on a little info about it. for example if you search for 'ham' options such as 'Hamlet' book or 'Hammer' or s.th like that may appear -->
+                //and you can find them by high price or low price or random -->
                 System.out.println("Write the Title of this product ...");
                 String title = input.nextLine();
 
@@ -701,7 +705,8 @@ public class Main {
 
                 case 1:
                     System.out.println(admin.getListWaitedAdmin());
-                    System.out.println("Do you want to reject or confirm?(y/n)"); String yn = input.nextLine();
+                    System.out.println("Do you want to reject or confirm users?(y/n)"); String yn = input.nextLine();
+                    //if admin just want to see these but he/she doesn't want to check it now, can say 'n' -->
                     if(yn.equals("y")) {
 
                         System.out.println("Which admin do you want to confirm OR reject?");
@@ -734,7 +739,7 @@ public class Main {
                         System.out.println("write it's username...");
                         String ans = input.nextLine();
                         System.out.println(shop.searchByUsername(ans));
-                        editProfile(user);
+                        editProfile((User) shop.getCurrentAccount(ans));
 
                     }
                     TimeUnit.SECONDS.sleep(2);
@@ -742,7 +747,7 @@ public class Main {
 
                 case 3:
                     System.out.println(Account.getUserAndNewAmount());
-                    System.out.println("Do you want to add Fund?(y/n)"); yn = input.nextLine();
+                    System.out.println("Do you want to add Fund?(y/n)"); yn = input.nextLine(); //add fund to user -->
 
                     if(yn.equals("y")) {
 
@@ -750,7 +755,10 @@ public class Main {
                         System.out.print("username = ");
                         String username = input.nextLine();
                         System.out.println("How much money does it want?");
-                        double amount = input.nextDouble();
+
+                        String x = input.nextLine();
+                        double amount = Double.parseDouble(x);   //bc of bug in 'double' I used this method --->
+
                         admin.addFunds(amount, new Wallet(), (User) shop.getCurrentAccount(username));
                         admin.removeUserAndNewAmountList((User) shop.getCurrentAccount(username), amount);
 
@@ -771,10 +779,10 @@ public class Main {
                         yn = input.nextLine();
 
                         if (yn.equals("y")) {
-                            shop.getCurrentAccount(name).setConfirm(true);
+                            shop.getCurrentAccount(name).setConfirm(true); //accept
                         }
                         if (yn.equals("n")) {
-                            shop.getCurrentAccount(name).setConfirm(false);
+                            shop.getCurrentAccount(name).setConfirm(false); //reject
                         }
                         shop.removeSeller((Seller) shop.getCurrentAccount(name));
 
@@ -798,7 +806,7 @@ public class Main {
                         yn = input.nextLine();
 
                         if (yn.equals("y")) {
-                            shop.getCurrentAccount(user1.getUsername()).setNotification("\uD83D\uDD14");
+                            shop.getCurrentAccount(user1.getUsername()).setNotification("\uD83D\uDD14"); //add notification --->
                             shop.getCurrentAccount(name).setConfirm(true);
                         }
 
@@ -834,7 +842,7 @@ public class Main {
                     String yn = input.nextLine();
                     if(yn.equals("y")) {
 
-                        if (shop.getCurrentAccount(seller.getUsername()).getConfirm()) {
+                        if (shop.getCurrentAccount(seller.getUsername()).getConfirm()) { //only if admin accept seller can sell product -->
 
                             System.out.println("** You can sell now \uD83D\uDD13︎ ** ");
                             System.out.println("Which product in this category do you want to sell?");
@@ -1048,7 +1056,7 @@ public class Main {
                             shop.getCurrentAccount(seller.getUsername()).setConfirm(false);
                         }
 
-                        if (!shop.getCurrentAccount(seller.getUsername()).getConfirm()) {
+                        else {
                             System.out.println("Sorry\uD83D\uDD12 --> admin reject you to sell product....");
                         }
                     }
@@ -1066,7 +1074,7 @@ public class Main {
                     seller.setShopName(choose,shop);
                     System.out.println("Do you want to change the color?(y/n)"); yn = input.nextLine();
 
-                    if(yn.equals("y")){
+                    if(yn.equals("y")){ // change color of background -->
 
                         System.out.println("Select color for background :     BLACK / RED / GREEN / YELLOW / BLUE / PURPLE / CYAN / WHITE ");
                         color = input.nextLine();
@@ -1099,7 +1107,7 @@ public class Main {
 
                 case 3:
                         System.out.println( "This is all of your Money : "+ seller.getPriceInWallet());
-                        seller.setNotification1("");
+                        seller.setNotification1(""); //notification for seller
 
                         TimeUnit.SECONDS.sleep(3);
                         sellerMenu(shop,user,admin, seller);
@@ -1124,7 +1132,7 @@ public class Main {
         if(yn.equals("y")) {
 
             System.out.println("plz write it's id.."); String id = input.nextLine();
-            System.out.println("Your Last Rate is (For user who rated it)   :   "+user.getRate(id));
+            System.out.println("Your Last Rate is (For user who rated it)   :   "+user.getRate(id)); //if user rated , can edit rated -->
 
 
             System.out.println("Choose between 1 to 5");

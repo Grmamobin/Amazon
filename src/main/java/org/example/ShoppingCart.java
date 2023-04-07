@@ -31,7 +31,9 @@ public class ShoppingCart {
     public double getTotalPrice(User user) {
         double totalPrice = 0;
         for (Order product : user.getCart()) {
+            //based on total price from product which user transaction--->
             totalPrice += product.getUnitPrice() * product.getQuantity();
+
         }
         return totalPrice;
     }

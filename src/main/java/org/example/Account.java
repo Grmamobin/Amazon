@@ -14,6 +14,7 @@ public abstract class  Account {
     private static HashMap<String, Double> UserAndNewAmount;
     private boolean confirm;
     private String notification = "";
+    private String notification1 = "";
 
     public Account(String username, String password, String emailAddress, String phoneNumber, String address, String gender) {
 
@@ -122,11 +123,11 @@ public abstract class  Account {
     }
 
     public String getNotification1() {
-        return notification;
+        return notification1;
     }
 
-    public void setNotification1(String notification) {
-        this.notification = notification;
+    public void setNotification1(String notification1) {
+        this.notification1 = notification1;
     }
 
 }
