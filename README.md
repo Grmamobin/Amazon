@@ -14,11 +14,11 @@ let me Tell you. At first, I created all classes related to the documentary ,the
 
 If you want to know about the big problem that I faced, I was trying to find a map API for my project to locate the addresses of customers. It took me a day but I couldn't find anything suitable because my country is under boycott. I asked my friends who are outside of my country to help me find a solution, but they were not able to find it. So eventually, I had to let it go.
 And I had a problem with the seller's wallet ,but my TA helped me figure it out.
-My biggest problem (or rather my biggest Mistake) in this project, was that I spent six days trying to make it with 'FXML'. Although I did learn some minimum 'CSS'. But I couldn't use 'FXML' clearly in my project. During the review with our TA, he said that ''First do it without graphics, and then when you have time, you can add them later. Manage your time effectively in relation to the project.''
+My biggest problem (or rather my biggest Mistake) in this project, was that I spent six days trying to make it with 'FXML'. Although I did learn some minimum 'CSS'. But I couldn't use 'FXML' clearly in my project. During the review with our TA, he said that 'First do it without graphics, and then when you have time, you can add them later. Manage your time effectively in relation to the project.'
 When I heard the statement "Manage your time," I realized that I didn't actually waste my time. It was just that I started the project without having a clear purpose or a program related to my shop's programming...
 
 Finally, in this project, I used a lot of resources from https://stackoverflow.com especially for the bonus object. I also sourced my emojis from https://www.emojiall.com/en/search_results. In my rating system, I used "🌕🌕🌕🌗🌑 " because I couldn't find a half star emoji.
-Additionally, I used https://www.geeksforgeeks.org to determine the colour of my background and classify prices based on 'Higher Price' and 'Lower Price'."
+Additionally, I used https://www.geeksforgeeks.org to determine the colour of my background and classify prices based on 'Higher Price' and 'Lower Price'.
 
 So, everything that I have shared with those who have read about my project constitutes the entirety of what happened during its development.
 
