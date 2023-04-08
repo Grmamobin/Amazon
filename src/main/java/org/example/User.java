@@ -132,7 +132,7 @@ public  class User extends Account {
     }
 
     public void requestFunds(double amount, User user) { //ask admin for fund
-        System.out.println("SENT \uD83D\uDCE9--> request to admin for "+amount+" money from  "+ user.getUsername() +"'s wallet");
+        System.out.println("SENT \uD83D\uDCE9--> request to admin for "+amount+" money from  "+ user.getUsername()");
     }
 
     public double getRate(String id) {
@@ -147,7 +147,7 @@ public  class User extends Account {
 
     public void setRate(String id,double rate) {
 
-        if(rate < 6 && rate > 0) {
+        if(rate < 5.5 && rate > 0) {
             this.rate = rate;
             rateProduct.put(id, this.rate);
         }
