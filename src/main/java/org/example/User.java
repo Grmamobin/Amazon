@@ -132,7 +132,7 @@ public  class User extends Account {
     }
 
     public void requestFunds(double amount, User user) { //ask admin for fund
-        System.out.println("SENT \uD83D\uDCE9--> request to admin for "+amount+" money from  "+ user.getUsername()");
+        System.out.println("SENT \uD83D\uDCE9--> request to admin for "+amount+" money from  "+ user.getUsername());
     }
 
     public double getRate(String id) {
