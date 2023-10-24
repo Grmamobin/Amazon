@@ -1,6 +1,5 @@
 # Amazon
 
-[![AMAZON-LAYOFFS-1668738856119-1669752081302-1669752081302.webp](https://i.postimg.cc/s2rNKgnx/AMAZON-LAYOFFS-1668738856119-1669752081302-1669752081302.webp)](https://postimg.cc/k2TsgqPP)
 (Actually mini Amazon with a simple method)
 
 ## Introduction
